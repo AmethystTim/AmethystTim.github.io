@@ -200,8 +200,8 @@ nav:
     - 大三下:
       - 计算机网络:
         - 计算机网络概述: 课程笔记/大三下/计算机网络/计算机网络概述.md
-        - 数据链路层与局域网: 课程笔记/大三下/计算机网络/数据链路层与局域网.md
         - 物理层: 课程笔记/大三下/计算机网络/物理层.md
+        - 数据链路层与局域网: 课程笔记/大三下/计算机网络/数据链路层与局域网.md
   - Contests:
     - Contests: 比赛/index.md
     - 信息安全作品赛:
@@ -256,6 +256,7 @@ nav:
     - Thesis: Paper/index.md
     - 数学基础:
       - 梯度有界性: Paper/数学基础/梯度有界性/i.md
+      - Diffusion model: Paper/数学基础/Diffusion model/i.md
     - MambaIR: Paper/mambaIR/index.md
     - PnP: Paper/PnP/index.md
   
