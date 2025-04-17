@@ -1,3 +1,26 @@
+## 基本目标
+
+实现生成的图像分布与现实世界的图像分布尽可能接近
+
+如何衡量尽可能接近？
+
+使用最大似然估计
+
+假设训练模型产生的图像分布为$P_{\theta}(x)$，现实世界的图像分布为$P_{data}(x)$
+
+从$P_{data}(x)$中采样$N$个样本，记为$x^1,x^2,\cdots,x^m$
+
+则有
+
+$$\begin{align}
+   \theta^*=\arg\max_{\theta}\sum_{i=1}^m\log P_{\theta}(x^i)\\
+    \approx \arg\max_{\theta}E_{x\sim P_{data}(x)}\log P_{\theta}(x)\\
+    =\argmax_{\theta}\int_{x}p_{data}(x)\log P_{\theta}(x)dx\\
+    =\argmax_{\theta}\int_{x}p_{data}(x)\log P_{\theta}(x)-\int_{x}p_{data}(x)\log P_{data}(x)dx\\
+    = \arg\max_{\theta}\int_{x}p_{data}(x)\frac{\log P_{\theta}(x)}{\log P_{data}(x)}dx\\
+    =\argmax KL(p_{\theta}(x)\Vert p_{data}(x))
+\end{align}$$
+
 ## FDP(Forward Diffusion Process)
 
 $x_t$可以直接根据$x_0$和$t$推导出来
