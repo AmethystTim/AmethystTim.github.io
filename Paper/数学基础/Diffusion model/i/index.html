@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fdpforward-diffusion-process" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -749,6 +749,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本目标
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fdpforward-diffusion-process" class="md-nav__link">
     <span class="md-ellipsis">
       FDP(Forward Diffusion Process)
@@ -857,6 +866,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本目标
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fdpforward-diffusion-process" class="md-nav__link">
     <span class="md-ellipsis">
       FDP(Forward Diffusion Process)
@@ -894,6 +912,21 @@
 
   <h1>Diffusion model</h1>
 
+<h2 id="_1">基本目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>实现生成的图像分布与现实世界的图像分布尽可能接近</p>
+<p>如何衡量尽可能接近？</p>
+<p>使用最大似然估计</p>
+<p>假设训练模型产生的图像分布为<span class="arithmatex">\(P_{\theta}(x)\)</span>，现实世界的图像分布为<span class="arithmatex">\(P_{data}(x)\)</span></p>
+<p>从<span class="arithmatex">\(P_{data}(x)\)</span>中采样<span class="arithmatex">\(N\)</span>个样本，记为<span class="arithmatex">\(x^1,x^2,\cdots,x^m\)</span></p>
+<p>则有</p>
+<div class="arithmatex">\[\begin{align}
+   \theta^*=\arg\max_{\theta}\sum_{i=1}^m\log P_{\theta}(x^i)\\
+    \approx \arg\max_{\theta}E_{x\sim P_{data}(x)}\log P_{\theta}(x)\\
+    =\argmax_{\theta}\int_{x}p_{data}(x)\log P_{\theta}(x)dx\\
+    =\argmax_{\theta}\int_{x}p_{data}(x)\log P_{\theta}(x)-\int_{x}p_{data}(x)\log P_{data}(x)dx\\
+    = \arg\max_{\theta}\int_{x}p_{data}(x)\frac{\log P_{\theta}(x)}{\log P_{data}(x)}dx\\
+    =\argmax KL(p_{\theta}(x)\Vert p_{data}(x))
+\end{align}\]</div>
 <h2 id="fdpforward-diffusion-process">FDP(Forward Diffusion Process)<a class="headerlink" href="#fdpforward-diffusion-process" title="Permanent link">&para;</a></h2>
 <p><span class="arithmatex">\(x_t\)</span>可以直接根据<span class="arithmatex">\(x_0\)</span>和<span class="arithmatex">\(t\)</span>推导出来</p>
 <div class="arithmatex">\[x_t=\sqrt{\prod_{i=1}^{t}\alpha_i}x_0+\sqrt{1-\prod_{i=1}^{t}\alpha_i}\epsilon\]</div>
