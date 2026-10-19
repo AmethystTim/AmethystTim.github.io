@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block extrahead %}
+  {{ super() }}
+  <meta name="theme-color" content="#7545ef">
+{% endblock %}
+{% block content %}
+  {% if page.meta.home %}
+    {% include "partials/home.html" %}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}

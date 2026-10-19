@@ -1,28 +1,39 @@
-site_name: Tim's blog
+site_name: AMETHYST / Tim
+site_url: https://amethysttim.github.io/
+site_description: 在代码、论文与生活之间，记录思考留下的轨迹。
+use_directory_urls: true
+edit_uri: edit/main/docs/
+hooks:
+  - tools/hooks.py
 copyright: 'Alea jacta est!'
 repo_name: 'amethysttim.github.io'
 repo_url: 'https://github.com/amethysttim/amethysttim.github.io'
 
 theme:
-  logo: https://github.com/amethysttim/amethysttim.github.io/blob/main/assets/logo.png?raw=true
+  custom_dir: overrides
+  font: false
+  logo: assets/mark.svg
+  favicon: assets/mark.svg
   name: material
   language: zh
   icon:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: deep purple
       accent: deep purple
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
+        name: 切换到夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: deep purple
       accent: deep purple
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: 切换到日间模式
   features:
     - navigation.indexes
     - navigation.instant
@@ -31,7 +42,6 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
-    - navigation.prune
     - navigation.top
     - search.share
     - search.highlight
@@ -39,15 +49,19 @@ theme:
     - navigation.footer
     - content.code.copy
     - content.code.annotate
+    - content.action.edit
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/amethysttim
 extra_javascript:
-  - javascripts/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  - javascripts/katex.js
+  - javascripts/library.js
 extra_css:
+  - stylesheets/extra.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 markdown_extensions:
   - pymdownx.betterem
@@ -76,188 +90,8 @@ markdown_extensions:
       permalink: true
   - tables
 plugins:
-  - search
+  - search:
+      lang: [zh, en]
   - blog:
       blog_toc: true
       post_date_format: medium
-nav:
-  - index.md
-  - Blog: 
-    - blog/index.md
-  - Notes:
-    - Notes: 课程笔记/index.md
-    - 大一:
-      - 高等数学: 
-        - 查漏补缺速记版: 课程笔记/大一/高等数学/高等数学查漏补缺版.md
-    - 大二上:
-      - 马原: 
-        - 马原串讲记录: 课程笔记/大二上/马原/马原串讲记录.md
-    - 大二下:
-      - 近世代数:
-        - 集合、映射与变换: 课程笔记/大二下/近世代数/集合、映射与变换.md
-        - 代数运算、运算律: 课程笔记/大二下/近世代数/代数运算、运算律.md
-        - 同态和同构: 课程笔记/大二下/近世代数/同态和同构.md
-        - 等价关系与集合分类: 课程笔记/大二下/近世代数/等价关系与集合分类.md
-        - 群、元素的阶、子群: 课程笔记/大二下/近世代数/群.md
-        - 循环群、变换群: 课程笔记/大二下/近世代数/循环群、变换群.md
-        - 置换群: 课程笔记/大二下/近世代数/置换群.md
-        - 陪集、指数和Lagrange定理: 课程笔记/大二下/近世代数/陪集、指数和Lagrange定理.md
-        - 群同态与同构: 课程笔记/大二下/近世代数/群同态与同构.md
-        - 正规子群、商群: 课程笔记/大二下/近世代数/正规子群、商群.md
-        - 群同态基本定理: 课程笔记/大二下/近世代数/群同态基本定理.md
-        - 群的同构定理: 课程笔记/大二下/近世代数/群的同构定理.md
-        - 环: 课程笔记/大二下/近世代数/环.md
-        - 除环和域: 课程笔记/大二下/近世代数/除环和域.md
-      - 计算机组成原理:
-        - 计算机系统概述: 课程笔记/大二下/计算机组成原理/计算机系统概述.md
-        - 计算机中数的表示: 课程笔记/大二下/计算机组成原理/计算机中数的表示.md
-        - 计算机中数的运算方法: 课程笔记/大二下/计算机组成原理/运算方法.md
-        - RISC-V汇编&指令系统: 课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统.md
-        - 过程调用及栈的使用: 课程笔记/大二下/计算机组成原理/过程调用及栈的使用.md
-        - RISC-V指令表示: 课程笔记/大二下/计算机组成原理/RISC-V指令表示.md
-        - 处理器设计: 课程笔记/大二下/计算机组成原理/处理器设计.md
-        - 流水线处理器: 课程笔记/大二下/计算机组成原理/流水线.md
-        - 存储器: 课程笔记/大二下/计算机组成原理/存储器.md
-      - 面向对象的软件构造理论:
-        - 概述: 课程笔记/大二下/面向对象的软件构造导论/概述.md
-        - Java语言基础: 课程笔记/大二下/面向对象的软件构造导论/Java语言基础.md
-        - 类和对象: 课程笔记/大二下/面向对象的软件构造导论/类和对象.md
-        - static修饰符: 课程笔记/大二下/面向对象的软件构造导论/static修饰符.md
-        # - 异常: 课程笔记/大二下/面向对象的软件构造导论/异常.md
-        - 设计模式: 课程笔记/大二下/面向对象的软件构造导论/设计模式.md
-        - 软件测试和代码保障: 课程笔记/大二下/面向对象的软件构造导论/软件测试和代码保障.md
-        - 集合与策略、迭代器模式: 课程笔记/大二下/面向对象的软件构造导论/集合与策略、迭代器模式.md
-        - MVC模式: 课程笔记/大二下/面向对象的软件构造导论/MVC模式.md
-        - 流家族与输入输出流: 课程笔记/大二下/面向对象的软件构造导论/流家族与输入输出流.md
-        - 对象输入与输出与序列化: 课程笔记/大二下/面向对象的软件构造导论/对象输入与输出与序列化.md
-        - 多线程: 课程笔记/大二下/面向对象的软件构造导论/多线程.md
-        - 泛型、模板方法模式与反射: 课程笔记/大二下/面向对象的软件构造导论/泛型与反射.md
-      - 形式语言与自动机:
-        - 简介及基础知识: 课程笔记/大二下/形式语言与自动机/简介及基础知识.md
-        - 有穷状态和自动机: 课程笔记/大二下/形式语言与自动机/有穷状态和自动机.md
-        - 确定的有穷自动机DFA: 课程笔记/大二下/形式语言与自动机/确定的有穷自动机.md
-        - 非确定有穷自动机NFA: 课程笔记/大二下/形式语言与自动机/非确定有穷自动机.md
-        - epsilon-NFA: 课程笔记/大二下/形式语言与自动机/epsilon-NFA.md
-        - 正则表达式和正则语言: 课程笔记/大二下/形式语言与自动机/正则表达式和正则语言.md
-        - 自动机到正则表达式: 课程笔记/大二下/形式语言与自动机/自动机到正则表达式.md
-        - 正则语言的性质: 课程笔记/大二下/形式语言与自动机/正则语言的性质.md
-        - 上下文无关文法: 课程笔记/大二下/形式语言与自动机/上下文无关文法.md
-        - 下推自动机: 课程笔记/大二下/形式语言与自动机/下推自动机.md
-        - 确定型下推自动机: 课程笔记/大二下/形式语言与自动机/确定型下推自动机.md
-        - 上下文无关语言的性质: 课程笔记/大二下/形式语言与自动机/上下文无关语言的性质.md
-      - 毛概:
-        - 毛概串讲: 课程笔记/大二下/毛概/毛概串讲.md
-    - 大三上:
-      - 操作系统:
-        # - 什么是操作系统: 课程笔记/大三上/操作系统/什么是操作系统.md
-        - 进程: 课程笔记/大三上/操作系统/进程.md
-        - 线程: 课程笔记/大三上/操作系统/线程.md
-        - 并发与同步：信号量: 课程笔记/大三上/操作系统/并发与同步：信号量.md
-        - 内存管理: 课程笔记/大三上/操作系统/内存管理.md
-      - 密码学基础:
-        - Intro: 课程笔记/大三上/密码学基础/intro.md
-        - 传统密码技术: 课程笔记/大三上/密码学基础/传统密码技术.md
-        - 数据加密标准: 课程笔记/大三上/密码学基础/数据加密标准.md
-        - 有限域: 课程笔记/大三上/密码学基础/有限域.md
-        - 高级加密标准: 课程笔记/大三上/密码学基础/高级加密标准.md
-        - 分组密码模式: 课程笔记/大三上/密码学基础/分组密码模式.md
-        - 序列密码: 课程笔记/大三上/密码学基础/序列密码.md
-        - 公钥密码数学基础: 课程笔记/大三上/密码学基础/公钥密码数学基础.md
-        - RSA算法: 课程笔记/大三上/密码学基础/RSA算法.md
-        - 消息验证码MAC: 课程笔记/大三上/密码学基础/消息验证码MAC.md
-        - 数字签名: 课程笔记/大三上/密码学基础/数字签名.md
-        - 椭圆曲线加密ECC: 课程笔记/大三上/密码学基础/椭圆曲线加密ECC.md
-      - 编译原理:
-        - 语言及其文法: 课程笔记/大三上/编译原理/语言及其文法.md
-        - 自顶向下分析: 课程笔记/大三上/编译原理/自顶向下分析.md
-        - 文法转换: 课程笔记/大三上/编译原理/文法转换.md
-        - LL(1)文法: 课程笔记/大三上/编译原理/LL(1)文法.md
-        - FIRST集和FOLLOW集的计算: 课程笔记/大三上/编译原理/FIRST集和FOLLOW集的计算.md
-        - 预测分析方法: 课程笔记/大三上/编译原理/预测分析方法.md
-        - 预测分析中的错误处理: 课程笔记/大三上/编译原理/预测分析中的错误处理.md
-        - 算符优先分析法: 课程笔记/大三上/编译原理/算符优先分析法.md
-        - 自底向上分析概述: 课程笔记/大三上/编译原理/自底向上分析概述.md
-        - LR(0)分析法: 课程笔记/大三上/编译原理/LR(0)分析法.md
-        - SLR分析法: 课程笔记/大三上/编译原理/SLR分析法.md
-        - LR(1)分析法: 课程笔记/大三上/编译原理/LR(1)分析法.md
-        - 句法制导翻译: 课程笔记/大三上/编译原理/句法制导翻译.md
-        - 类型表达式: 课程笔记/大三上/编译原理/类型表达式.md
-        - 运行存储分配策略: 课程笔记/大三上/编译原理/运行存储分配策略.md
-      - 数据库系统:
-        - 数据库系统基本概念: 课程笔记/大三上/数据库系统/数据库系统基本概念.md
-        - 关系模型与关系运算: 课程笔记/大三上/数据库系统/关系模型与关系运算.md
-        - SQL语言: 课程笔记/大三上/数据库系统/SQL语言.md
-        - 数据库的安全性与完整性: 课程笔记/大三上/数据库系统/数据库的安全性与完整性.md
-        - 数据库设计和ER模型: 课程笔记/大三上/数据库系统/数据库设计和ER模型.md
-        - 函数依赖、范式、分解理论: 课程笔记/大三上/数据库系统/函数依赖、范式、分解理论.md
-      - 模式识别:
-        - 基本概念: 课程笔记/大三上/模式识别/0基本概念/i.md 
-        - 距离分类器: 课程笔记/大三上/模式识别/1距离分类器/i.md
-        - 模式识别系统: 课程笔记/大三上/模式识别/2模式识别系统/i.md
-        - 统计分类器及其学习: 课程笔记/大三上/模式识别/3统计分类器及其学习/i.md
-        # - 聚类分析: 课程笔记/大三上/模式识别/4聚类分析/i.md
-        - 特征提取: 课程笔记/大三上/模式识别/5特征提取/i.md
-    - 大三下:
-      - 计算机网络:
-        - 计算机网络概述: 课程笔记/大三下/计算机网络/计算机网络概述.md
-        - 物理层: 课程笔记/大三下/计算机网络/物理层.md
-        - 数据链路层与局域网: 课程笔记/大三下/计算机网络/数据链路层与局域网.md
-        - 网络层: 课程笔记/大三下/计算机网络/网络层.md
-  - Contests:
-    - Contests: 比赛/index.md
-    - 信息安全作品赛:
-      - scql中心化部署: 比赛/信息安全作品赛/scql部署center.md
-    - 挑战杯: 
-      - 相关基础:
-        - 光学相干断层扫描OCT: 比赛/挑战杯/光学相干断层扫描OCT.md
-        - 医学相关知识: 比赛/挑战杯/医学相关知识.md
-        - 五折交叉验证: 比赛/挑战杯/五折交叉验证.md
-        - 近视对生物力学顺应性影响: 比赛/挑战杯/近视对生物力学顺应性影响.md
-    - 数学建模:
-      - 相关基础:
-        - 中心差分法: 比赛/数学建模/相关基础/中心差分法.md
-        - 差分方程: 比赛/数学建模/相关基础/差分方程.md
-        - 粒子群优化PSO: 比赛/数学建模/相关基础/粒子群优化.md
-        - 遗传算法GA: 比赛/数学建模/相关基础/遗传算法.md
-        - 模拟退火算法SA: 比赛/数学建模/相关基础/模拟退火.md
-        - 规划问题: 比赛/数学建模/相关基础/规划问题.md
-        - 基于熵权法的TOPSIS: 比赛/数学建模/相关基础/topsis.md
-        - 模糊问题: 比赛/数学建模/相关基础/模糊问题.md
-      - 数据搜索/绘图网站: 比赛/数学建模/数据、绘图/data.md
-      - 2020国赛A题复现: 
-        - 题目: 比赛/数学建模/复现/2020AQ.md
-        - Q1: 比赛/数学建模/复现/2020AQ1.md
-        - Q2: 比赛/数学建模/复现/2020AQ2.md
-        - Q3: 比赛/数学建模/复现/2020AQ3.md
-        - Q4: 比赛/数学建模/复现/2020AQ4.md
-        - code: 比赛/数学建模/复现/2020Acode.md
-        - 碎碎念: 比赛/数学建模/复现/2020Atips.md
-      - 2023美赛A题复现:
-        - 题目: 比赛/数学建模/复现/2023AQ.md
-        - Q1: 比赛/数学建模/复现/2023AQ1.md
-        - Q2: 比赛/数学建模/复现/2023AQ2.md
-        - Q3: 比赛/数学建模/复现/2023AQ3.md
-        - code: 比赛/数学建模/复现/2023Acode.md
-      - 2023美赛B题分析: 
-        - 题目: 比赛/数学建模/复现/2023mcm.md
-        - 相关资料/数据: 比赛/数学建模/复现/2023mcmData.md
-        - 探究过程: 比赛/数学建模/复现/2023mcmSol.md
-      - 2022美赛B题分析: 比赛/数学建模/复现/2022mcm.md
-    - CUPT:
-      - CUPT宣讲会: 比赛/CUPT/CUPT宣讲会.md 
-      - 赛题分析 液滴显微镜: 比赛/CUPT/液滴显微镜.md
-      - 校赛总结 液滴显微镜: 比赛/CUPT/液滴显微镜总结.md
-      - CUPT培训:
-        - 研究题目流程: 比赛/CUPT/研究题目流程.md
-        - COMSOL入门: 比赛/CUPT/COMSOL.md
-      - 肥皂螺旋: 比赛/CUPT/肥皂螺旋.md
-    - 中学物竞:
-      - 物竞心得分享: 比赛/中学物竞/物竞心得分享.md
-  - Thesis: 
-    - Thesis: Paper/index.md
-    - 数学基础:
-      - 梯度有界性: Paper/数学基础/梯度有界性/i.md
-      - Diffusion model: Paper/数学基础/Diffusion model/i.md
-    - MambaIR: Paper/mambaIR/index.md
-    - PnP: Paper/PnP/index.md
-  

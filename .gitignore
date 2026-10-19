@@ -1,5 +1,14 @@
-deploy.sh
 .DS_Store
 site/
 tmp/
-site/
+.venv/
+__pycache__/
+*.pyc
+.cache/
+.trash/
+drafts/
+.local/
+HarnessIR.md
+.work-index
+.migration-report.json
+.baseline-build.log

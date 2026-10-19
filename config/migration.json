@@ -1,0 +1,2032 @@
+{
+  "source_commit": "b78004321dcfa4854cf62e6a73f2132ee641dcc3",
+  "documents": [
+    {
+      "source": "docs/blog/index.md",
+      "destination": "docs/blog/index.md"
+    },
+    {
+      "source": "docs/blog/posts/2024年终.md",
+      "destination": "docs/blog/posts/2024年终/2024年终.md"
+    },
+    {
+      "source": "docs/blog/posts/chunithm_0cost.md",
+      "destination": "docs/blog/posts/chunithm_0cost/chunithm_0cost.md"
+    },
+    {
+      "source": "docs/blog/posts/正则表达式re.md",
+      "destination": "docs/blog/posts/正则表达式re/正则表达式re.md"
+    },
+    {
+      "source": "docs/blog/posts/美赛后的一些感想.md",
+      "destination": "docs/blog/posts/美赛后的一些感想/美赛后的一些感想.md"
+    },
+    {
+      "source": "docs/index.md",
+      "destination": "docs/index.md"
+    },
+    {
+      "source": "docs/Paper/index.md",
+      "destination": "docs/Paper/index.md"
+    },
+    {
+      "source": "docs/Paper/mambaIR/index.md",
+      "destination": "docs/Paper/mambaIR/index.md"
+    },
+    {
+      "source": "docs/Paper/PnP/index.md",
+      "destination": "docs/Paper/PnP/index.md"
+    },
+    {
+      "source": "docs/Paper/VAE/i.md",
+      "destination": "docs/Paper/VAE/i/index.md"
+    },
+    {
+      "source": "docs/Paper/数学基础/Diffusion model/i.md",
+      "destination": "docs/Paper/数学基础/Diffusion model/i/index.md"
+    },
+    {
+      "source": "docs/Paper/数学基础/梯度有界性/i.md",
+      "destination": "docs/Paper/数学基础/梯度有界性/i/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/COMSOL.md",
+      "destination": "docs/比赛/CUPT/COMSOL/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/CUPT宣讲会.md",
+      "destination": "docs/比赛/CUPT/CUPT宣讲会/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/液滴显微镜.md",
+      "destination": "docs/比赛/CUPT/液滴显微镜/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/液滴显微镜总结.md",
+      "destination": "docs/比赛/CUPT/液滴显微镜总结/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/研究题目流程.md",
+      "destination": "docs/比赛/CUPT/研究题目流程/index.md"
+    },
+    {
+      "source": "docs/比赛/CUPT/肥皂螺旋.md",
+      "destination": "docs/比赛/CUPT/肥皂螺旋/index.md"
+    },
+    {
+      "source": "docs/比赛/index.md",
+      "destination": "docs/比赛/index.md"
+    },
+    {
+      "source": "docs/比赛/中学物竞/物竞心得分享.md",
+      "destination": "docs/比赛/中学物竞/物竞心得分享/index.md"
+    },
+    {
+      "source": "docs/比赛/信息安全作品赛/scql部署center.md",
+      "destination": "docs/比赛/信息安全作品赛/scql部署center/index.md"
+    },
+    {
+      "source": "docs/比赛/挑战杯/五折交叉验证.md",
+      "destination": "docs/比赛/挑战杯/五折交叉验证/index.md"
+    },
+    {
+      "source": "docs/比赛/挑战杯/光学相干断层扫描OCT.md",
+      "destination": "docs/比赛/挑战杯/光学相干断层扫描OCT/index.md"
+    },
+    {
+      "source": "docs/比赛/挑战杯/医学相关知识.md",
+      "destination": "docs/比赛/挑战杯/医学相关知识/index.md"
+    },
+    {
+      "source": "docs/比赛/挑战杯/近视对生物力学顺应性影响.md",
+      "destination": "docs/比赛/挑战杯/近视对生物力学顺应性影响/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020Acode.md",
+      "destination": "docs/比赛/数学建模/复现/2020Acode/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020AQ.md",
+      "destination": "docs/比赛/数学建模/复现/2020AQ/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020AQ1.md",
+      "destination": "docs/比赛/数学建模/复现/2020AQ1/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020AQ2.md",
+      "destination": "docs/比赛/数学建模/复现/2020AQ2/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020AQ3.md",
+      "destination": "docs/比赛/数学建模/复现/2020AQ3/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020AQ4.md",
+      "destination": "docs/比赛/数学建模/复现/2020AQ4/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2020Atips.md",
+      "destination": "docs/比赛/数学建模/复现/2020Atips/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2022mcm.md",
+      "destination": "docs/比赛/数学建模/复现/2022mcm/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023Acode.md",
+      "destination": "docs/比赛/数学建模/复现/2023Acode/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023AQ.md",
+      "destination": "docs/比赛/数学建模/复现/2023AQ/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023AQ1.md",
+      "destination": "docs/比赛/数学建模/复现/2023AQ1/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023AQ2.md",
+      "destination": "docs/比赛/数学建模/复现/2023AQ2/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023AQ3.md",
+      "destination": "docs/比赛/数学建模/复现/2023AQ3/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023mcm.md",
+      "destination": "docs/比赛/数学建模/复现/2023mcm/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023mcmData.md",
+      "destination": "docs/比赛/数学建模/复现/2023mcmData/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/复现/2023mcmSol.md",
+      "destination": "docs/比赛/数学建模/复现/2023mcmSol/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/数据、绘图/data.md",
+      "destination": "docs/比赛/数学建模/数据、绘图/data/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/topsis.md",
+      "destination": "docs/比赛/数学建模/相关基础/topsis/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/中心差分法.md",
+      "destination": "docs/比赛/数学建模/相关基础/中心差分法/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/差分方程.md",
+      "destination": "docs/比赛/数学建模/相关基础/差分方程/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/模拟退火.md",
+      "destination": "docs/比赛/数学建模/相关基础/模拟退火/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/模糊问题.md",
+      "destination": "docs/比赛/数学建模/相关基础/模糊问题/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/粒子群优化.md",
+      "destination": "docs/比赛/数学建模/相关基础/粒子群优化/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/规划问题.md",
+      "destination": "docs/比赛/数学建模/相关基础/规划问题/index.md"
+    },
+    {
+      "source": "docs/比赛/数学建模/相关基础/遗传算法.md",
+      "destination": "docs/比赛/数学建模/相关基础/遗传算法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/index.md",
+      "destination": "docs/课程笔记/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大一/高等数学/高等数学查漏补缺版.md",
+      "destination": "docs/课程笔记/大一/高等数学/高等数学查漏补缺版/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/intro.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/intro/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/RSA算法.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/RSA算法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/传统密码技术.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/传统密码技术/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/公钥密码数学基础.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/公钥密码数学基础/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/分组密码模式.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/分组密码模式/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/序列密码.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/序列密码/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/数字签名.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/数字签名/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/数据加密标准.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/数据加密标准/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/有限域.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/有限域/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/椭圆曲线加密ECC.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/椭圆曲线加密ECC/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/消息验证码MAC.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/消息验证码MAC/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/高级加密标准.md",
+      "destination": "docs/课程笔记/大三上/密码学基础/高级加密标准/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/内存管理.md",
+      "destination": "docs/课程笔记/大三上/操作系统/内存管理/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/并发与同步：信号量.md",
+      "destination": "docs/课程笔记/大三上/操作系统/并发与同步：信号量/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/线程.md",
+      "destination": "docs/课程笔记/大三上/操作系统/线程/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/进程.md",
+      "destination": "docs/课程笔记/大三上/操作系统/进程/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/SQL语言.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/SQL语言/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/关系模型与关系运算.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/关系模型与关系运算/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/函数依赖、范式、分解理论.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/函数依赖、范式、分解理论/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/数据库的安全性与完整性.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库的安全性与完整性/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/数据库系统基本概念.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库系统基本概念/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/数据库设计和ER模型.md",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库设计和ER模型/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/0基本概念/i.md",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/1距离分类器/i.md",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/i.md",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i.md",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/i.md",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/FIRST集和FOLLOW集的计算.md",
+      "destination": "docs/课程笔记/大三上/编译原理/FIRST集和FOLLOW集的计算/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/LL(1)文法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/LL(1)文法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/LR(0)分析法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/LR(0)分析法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/LR(1)分析法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/LR(1)分析法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/SLR分析法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/SLR分析法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/句法制导翻译.md",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/文法转换.md",
+      "destination": "docs/课程笔记/大三上/编译原理/文法转换/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/算符优先分析法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/算符优先分析法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/类型表达式.md",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/自底向上分析概述.md",
+      "destination": "docs/课程笔记/大三上/编译原理/自底向上分析概述/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/自顶向下分析.md",
+      "destination": "docs/课程笔记/大三上/编译原理/自顶向下分析/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/语言及其文法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/语言及其文法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/运行存储分配策略.md",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/预测分析中的错误处理.md",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析中的错误处理/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/预测分析方法.md",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析方法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三下/网络与系统安全/导论.md",
+      "destination": "docs/课程笔记/大三下/网络与系统安全/导论/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网.md",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/物理层.md",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/网络层.md",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/计算机网络概述.md",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二上/马原/马原串讲记录.md",
+      "destination": "docs/课程笔记/大二上/马原/马原串讲记录/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/epsilon-NFA.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/epsilon-NFA/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/上下文无关文法.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/上下文无关文法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/上下文无关语言的性质.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/上下文无关语言的性质/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/下推自动机.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/有穷状态和自动机.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/有穷状态和自动机/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/正则表达式和正则语言.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/正则表达式和正则语言/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/正则语言的性质.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/正则语言的性质/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/确定型下推自动机.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定型下推自动机/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/简介及基础知识.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/简介及基础知识/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机.md",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/毛概/毛概串讲.md",
+      "destination": "docs/课程笔记/大二下/毛概/毛概串讲/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/RISC-V指令表示.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/RISC-V指令表示/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/处理器设计.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/存储器.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/存储器/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/流水线.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/计算机系统概述.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机系统概述/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/过程调用及栈的使用.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/过程调用及栈的使用/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/计算机组成原理/运算方法.md",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/代数运算、运算律.md",
+      "destination": "docs/课程笔记/大二下/近世代数/代数运算、运算律/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/同态和同构.md",
+      "destination": "docs/课程笔记/大二下/近世代数/同态和同构/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/循环群、变换群.md",
+      "destination": "docs/课程笔记/大二下/近世代数/循环群、变换群/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/正规子群、商群.md",
+      "destination": "docs/课程笔记/大二下/近世代数/正规子群、商群/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/环.md",
+      "destination": "docs/课程笔记/大二下/近世代数/环/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/等价关系与集合分类.md",
+      "destination": "docs/课程笔记/大二下/近世代数/等价关系与集合分类/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/置换群.md",
+      "destination": "docs/课程笔记/大二下/近世代数/置换群/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/群.md",
+      "destination": "docs/课程笔记/大二下/近世代数/群/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/群同态与同构.md",
+      "destination": "docs/课程笔记/大二下/近世代数/群同态与同构/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/群同态基本定理.md",
+      "destination": "docs/课程笔记/大二下/近世代数/群同态基本定理/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/群的同构定理.md",
+      "destination": "docs/课程笔记/大二下/近世代数/群的同构定理/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/除环和域.md",
+      "destination": "docs/课程笔记/大二下/近世代数/除环和域/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/陪集、指数和Lagrange定理.md",
+      "destination": "docs/课程笔记/大二下/近世代数/陪集、指数和Lagrange定理/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/近世代数/集合、映射与变换.md",
+      "destination": "docs/课程笔记/大二下/近世代数/集合、映射与变换/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/MVC模式.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/MVC模式/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/static修饰符.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/static修饰符/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/多线程.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/多线程/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/对象输入与输出与序列化.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/对象输入与输出与序列化/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/概述.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/概述/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/泛型与反射.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/泛型与反射/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/流家族与输入输出流.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/流家族与输入输出流/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/类和对象.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/类和对象/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/设计模式.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/设计模式/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/软件测试和代码保障.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/软件测试和代码保障/index.md"
+    },
+    {
+      "source": "docs/课程笔记/大二下/面向对象的软件构造导论/集合与策略、迭代器模式.md",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/集合与策略、迭代器模式/index.md"
+    }
+  ],
+  "assets": [
+    {
+      "source": "docs/images/chunithm_0cost-0.png",
+      "destination": "docs/blog/posts/chunithm_0cost/chunithm_0cost-0.png",
+      "sha256": "ea71b626aa8d2f811be381688a2668191c834d48e44155489e0a6834c558df43"
+    },
+    {
+      "source": "docs/images/chunithm_0cost-2.png",
+      "destination": "docs/blog/posts/chunithm_0cost/chunithm_0cost-2.png",
+      "sha256": "0870a5fe5d909de407684b7b8554f4eb29a6f5856e3ad3bd0abd0b8fb11ef978"
+    },
+    {
+      "source": "docs/images/mcm-F.png",
+      "destination": "docs/blog/posts/美赛后的一些感想/mcm-F.png",
+      "sha256": "2f7338e7e084692146bb8f18430aacfaa40ae0a78aeb72525cf238d3065d4f67"
+    },
+    {
+      "source": "docs/Paper/mambaIR/image.png",
+      "destination": "docs/Paper/mambaIR/image.png",
+      "sha256": "6896989775657713dc23143eba3067226c9d1e255b3bbd34a8f875fe7c4d683f"
+    },
+    {
+      "source": "docs/Paper/mambaIR/image-1.png",
+      "destination": "docs/Paper/mambaIR/image-1.png",
+      "sha256": "0fd5c020efdde4f1253a829721430f585fdde60ad86d80f7c3f4be55d97fe2fd"
+    },
+    {
+      "source": "docs/Paper/mambaIR/image-2.png",
+      "destination": "docs/Paper/mambaIR/image-2.png",
+      "sha256": "52b209ae7cbd8b91738cdce94ce9265eba9303a8676fbede63fb99464f623c7d"
+    },
+    {
+      "source": "docs/Paper/VAE/image.png",
+      "destination": "docs/Paper/VAE/i/image.png",
+      "sha256": "8e8a71377660473a4c61e5128abd51c1ed95c22674791f54823d05e7fda6868d"
+    },
+    {
+      "source": "docs/Paper/VAE/image-1.png",
+      "destination": "docs/Paper/VAE/i/image-1.png",
+      "sha256": "317ca4631ae3ace0806f2f356914ac8e872996126f6d83b3ce39d34cf79d72e7"
+    },
+    {
+      "source": "docs/Paper/数学基础/Diffusion model/image.png",
+      "destination": "docs/Paper/数学基础/Diffusion model/i/image.png",
+      "sha256": "9c3247b0ae8368f3a281e612910e9521980522736eaecf1ba58b8d9d32454f14"
+    },
+    {
+      "source": "docs/images/comsol1.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol1.png",
+      "sha256": "ab955530aeefe0b43979e096ed57e76962d0372fa527993189c354b5768e96cc"
+    },
+    {
+      "source": "docs/images/comsol2.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol2.png",
+      "sha256": "cda2b85e4f3baa81b4c646e78e3161bfb14756286f2c1d27e2d6599d7fefbfaf"
+    },
+    {
+      "source": "docs/images/comsol3.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol3.png",
+      "sha256": "c4629ef7aa59a68fdf2f74632b9b8581e99674f661eda3e85142d5651fb2663f"
+    },
+    {
+      "source": "docs/images/comsol4.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol4.png",
+      "sha256": "340a4f4138c9ff3e75e3482d57d814b57bd78583630b2ca2688bc4671cdfcc2b"
+    },
+    {
+      "source": "docs/images/comsol5.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol5.png",
+      "sha256": "9f1eb781832e3f8ca5f5fe808c18ae8c9e8dea5989a08a9bd6dd30babb6094af"
+    },
+    {
+      "source": "docs/images/comsol6.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol6.png",
+      "sha256": "e707d3951a24cf80ae37bc376bdc62e555173868eeb001dbea31a1918289a7d5"
+    },
+    {
+      "source": "docs/images/comsol7.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol7.png",
+      "sha256": "0c244ed2fe781bcb0587886597f8355393b12c793c3f12147637785d27611d0a"
+    },
+    {
+      "source": "docs/images/comsol8.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol8.png",
+      "sha256": "2d231c0497820f20efe27685fc87d98c2563a4e1e01c7f41a358afbae08d0713"
+    },
+    {
+      "source": "docs/images/comsol9.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol9.png",
+      "sha256": "5428d713344f804df48a8c653dfa6cbb462714b4ebd7de2f53f7c2993113ef38"
+    },
+    {
+      "source": "docs/images/comsol10.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol10.png",
+      "sha256": "76376849175045f622afbb4b699f6934a965255c67a406c6e775b7290cea6316"
+    },
+    {
+      "source": "docs/images/comsol11.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol11.png",
+      "sha256": "6f5ac64afc931524eb7b7ed3ac8f5f399da0a5bd887f05cd680883f194b0c4f3"
+    },
+    {
+      "source": "docs/images/comsol12.png",
+      "destination": "docs/比赛/CUPT/COMSOL/comsol12.png",
+      "sha256": "a60b7187d7c32521536e67e2e554f52c76c367bda8e7d0d6495869efa0eb8731"
+    },
+    {
+      "source": "docs/images/feizao1-1.png",
+      "destination": "docs/比赛/CUPT/肥皂螺旋/feizao1-1.png",
+      "sha256": "2976838b9b91e01b68fb1c76afdd7738fd9279314e05eddaf09a1cac45c3801f"
+    },
+    {
+      "source": "docs/images/xxaq1-1.png",
+      "destination": "docs/比赛/信息安全作品赛/scql部署center/xxaq1-1.png",
+      "sha256": "8adf6a175ec0d3f95221d90a68037bf546810296debf5a676fd8e70430d4d925"
+    },
+    {
+      "source": "docs/images/oct-1.png",
+      "destination": "docs/比赛/挑战杯/光学相干断层扫描OCT/oct-1.png",
+      "sha256": "732adead3063720d2936a51ed13be971a8e5cb1db4d1410a62a596251e30a542"
+    },
+    {
+      "source": "docs/images/tzb_basic-1.png",
+      "destination": "docs/比赛/挑战杯/医学相关知识/tzb_basic-1.png",
+      "sha256": "d4227d95ad0889650e38a5eb68a36371d5b013af1c4c9c526fc8ebd92f58da4d"
+    },
+    {
+      "source": "docs/images/2020AQ1-0.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ1/2020AQ1-0.png",
+      "sha256": "dcdbbebb89c62f1e9f44eea70d043fcfba939bacb279c5f523ac9b92d480d835"
+    },
+    {
+      "source": "docs/images/2020AQ1-1.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ1/2020AQ1-1.png",
+      "sha256": "bf4257690696660358148e0b5e6ea0a5870889db432f89384c8f297434717131"
+    },
+    {
+      "source": "docs/images/2020AQ1-2.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ1/2020AQ1-2.png",
+      "sha256": "64e00a5c07f08e8da32ced0c87d9288803f6be6c86e9887ea023ae9fb77422a3"
+    },
+    {
+      "source": "docs/images/2020AQ1-3.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ1/2020AQ1-3.png",
+      "sha256": "06f73705092d96506bc14969a3d4f1f202051b92d227ce8951edf9b974fe62e6"
+    },
+    {
+      "source": "docs/images/2020AQ2-0.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ2/2020AQ2-0.png",
+      "sha256": "a0b69eea45eb7034e45c2cf9a78e81aaec26217e51ed7c8af0d5c42ae2d42c5e"
+    },
+    {
+      "source": "docs/images/2020AQ2-1.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ2/2020AQ2-1.png",
+      "sha256": "4e6d81fadccbf5bcc287f625ef99e9495745bd471968e4516abf8ca8451bf3a3"
+    },
+    {
+      "source": "docs/images/2020AQ2-2.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ2/2020AQ2-2.png",
+      "sha256": "7437a79c74c9253a4c825396eaecb5f446455c34ad970a573256cfb8dac909ad"
+    },
+    {
+      "source": "docs/images/2020AQ2-3.png",
+      "destination": "docs/比赛/数学建模/复现/2020AQ2/2020AQ2-3.png",
+      "sha256": "c8881bb3574d7f44b2f99e57f58dd19a965925e9654e2f79b8b45f2522b46b2b"
+    },
+    {
+      "source": "docs/images/2022mcmb0.png",
+      "destination": "docs/比赛/数学建模/复现/2022mcm/2022mcmb0.png",
+      "sha256": "0a3a4e3b7e3a3cabde534b137ce8392c0b58ac255515b435dfd106d65c529d74"
+    },
+    {
+      "source": "docs/images/2022mcmb1.png",
+      "destination": "docs/比赛/数学建模/复现/2022mcm/2022mcmb1.png",
+      "sha256": "59de75aba89932a8d3a04aca01dc185025072c3ea00d04f9de3331c3b4bf5a89"
+    },
+    {
+      "source": "docs/images/2023mcmq1-0.png",
+      "destination": "docs/比赛/数学建模/复现/2023AQ1/2023mcmq1-0.png",
+      "sha256": "b50b701e1b585adeec9e305084a81ebfe5f3699ffe015ca9d51667c4c082fd90"
+    },
+    {
+      "source": "docs/images/2023mcmq1-1.png",
+      "destination": "docs/比赛/数学建模/复现/2023AQ1/2023mcmq1-1.png",
+      "sha256": "fed2e2f9266725efd683eb6c8091561390d9668c0d3969e38620b9de9e8df2cb"
+    },
+    {
+      "source": "docs/images/2023mcmq2-1.png",
+      "destination": "docs/比赛/数学建模/复现/2023AQ2/2023mcmq2-1.png",
+      "sha256": "7fe02df1756280e56594bb75378527b1d1868f27bbef9f8b38a4cab37b5848e1"
+    },
+    {
+      "source": "docs/images/2023mcmq2-2.png",
+      "destination": "docs/比赛/数学建模/复现/2023AQ2/2023mcmq2-2.png",
+      "sha256": "9fbbe3f5e5ccc886c86eb740be5546f93eb5ac02ec35fdce1dc4a3d3c90d2039"
+    },
+    {
+      "source": "docs/images/2023mcmq3-1.png",
+      "destination": "docs/比赛/数学建模/复现/2023AQ3/2023mcmq3-1.png",
+      "sha256": "9a6dc7b53ee0c4a45dbbed419ebe57a895de64a293719d95589cf7500d5c4855"
+    },
+    {
+      "source": "docs/images/mohu0.png",
+      "destination": "docs/比赛/数学建模/相关基础/模糊问题/mohu0.png",
+      "sha256": "2ef0f5a15353ff6543754a4707e9b1742faa537e6c16ba1959262f1006c65ee5"
+    },
+    {
+      "source": "docs/images/2020AB1-0.png",
+      "destination": "docs/比赛/数学建模/相关基础/粒子群优化/2020AB1-0.png",
+      "sha256": "99f6aeccdb6265c160db6184daf371000c9a0406bd2166ac9c93a8a21582b8ca"
+    },
+    {
+      "source": "docs/images/2020AB1-1.png",
+      "destination": "docs/比赛/数学建模/相关基础/粒子群优化/2020AB1-1.png",
+      "sha256": "217c6d0a17081885b02ae6900c5d7f4e771511e47c67ef1948b63b42aef6f5b4"
+    },
+    {
+      "source": "docs/images/2020AB1-2.png",
+      "destination": "docs/比赛/数学建模/相关基础/遗传算法/2020AB1-2.png",
+      "sha256": "2486cf92f49b15c1cf435de4868e11b1f7bc3b9df87bdb12fce05fd722e33425"
+    },
+    {
+      "source": "docs/images/2020AB1-3.png",
+      "destination": "docs/比赛/数学建模/相关基础/遗传算法/2020AB1-3.png",
+      "sha256": "19432cf03ede569256be4b6464d0c21c543d2adff07818aa50bc3de3ef92b102"
+    },
+    {
+      "source": "docs/images/2020AB1-4.png",
+      "destination": "docs/比赛/数学建模/相关基础/遗传算法/2020AB1-4.png",
+      "sha256": "e3d435a1474d246c96234f521234c9551274235141cd1fc367a12aeaa663ec81"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/image-2.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/序列密码/image-2.png",
+      "sha256": "14703782808fd080efa633e8cc912bde4566bec675bfb27766b63bd43a187cbe"
+    },
+    {
+      "source": "docs/images/enc3-1.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/数据加密标准/enc3-1.png",
+      "sha256": "9828833c648a3dac9f09e20261d65af153b90a19b1cb7c6ca6a3fbed3e391199"
+    },
+    {
+      "source": "docs/images/enc3-2.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/数据加密标准/enc3-2.png",
+      "sha256": "f880b5d3a6d58dd9e04c5cc651bda67607e4df5c2aebabecb774f8084a7b84f4"
+    },
+    {
+      "source": "docs/images/enc4-1.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/有限域/enc4-1.png",
+      "sha256": "51c067f792ae098d7ac49dc280ad51ae62fde2a9ecd674b49b9690d1a50bca4e"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/image.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/椭圆曲线加密ECC/image.png",
+      "sha256": "a0daf9812e956374315d2e0d536bce397203db4dbe4b92ee9d805a282a5df858"
+    },
+    {
+      "source": "docs/课程笔记/大三上/密码学基础/image-1.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/椭圆曲线加密ECC/image-1.png",
+      "sha256": "70b48d5050be0df352f81009825c1348d2ba0cdde9e82e8ad598f063f6017ac0"
+    },
+    {
+      "source": "docs/images/enc5-1.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/高级加密标准/enc5-1.png",
+      "sha256": "35e7758df84450afb6080e22768e130b967d0c594d64d9276e2bce106c32842d"
+    },
+    {
+      "source": "docs/images/enc5-2.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/高级加密标准/enc5-2.png",
+      "sha256": "bcf5c1f555137e3974e42da07c7c8d835501533f7ea0576f25dd4fcff6487ea5"
+    },
+    {
+      "source": "docs/images/enc5-3.png",
+      "destination": "docs/课程笔记/大三上/密码学基础/高级加密标准/enc5-3.png",
+      "sha256": "ed2f54e28a094873823d9c6cd23d59351fa21bb25acdc0514167957996d2d2e2"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/3-1.png",
+      "destination": "docs/课程笔记/大三上/操作系统/线程/3-1.png",
+      "sha256": "759fa9a621bebc72835520cba48c4b2210aa1f724ae03f2afcffc2f7f1b9c2ab"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/3-2.png",
+      "destination": "docs/课程笔记/大三上/操作系统/线程/3-2.png",
+      "sha256": "48800b4de1de404e0a3a82bceb58662383e748a0c80d3df19b16a1c1a5e52eeb"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/3-3.png",
+      "destination": "docs/课程笔记/大三上/操作系统/线程/3-3.png",
+      "sha256": "4aeecda3ac5b785d9c11a1389a0baa9e72dd54728f165525bd4edc8c42019fb6"
+    },
+    {
+      "source": "docs/课程笔记/大三上/操作系统/3-4.png",
+      "destination": "docs/课程笔记/大三上/操作系统/线程/3-4.png",
+      "sha256": "9ce259b358676109436d177eb802fb9548fe88360330d4504a11e17ffec972c8"
+    },
+    {
+      "source": "docs/images/os2-1.png",
+      "destination": "docs/课程笔记/大三上/操作系统/进程/os2-1.png",
+      "sha256": "3865b12c0bf5778d4c84f70dee6f126a139ad1c476c7923d30812d24b46d7061"
+    },
+    {
+      "source": "docs/images/os2-2.png",
+      "destination": "docs/课程笔记/大三上/操作系统/进程/os2-2.png",
+      "sha256": "659ffdfb34f244ebd61668e565f09690378224af29fde09e4c8997574c36beca"
+    },
+    {
+      "source": "docs/images/dbs2-1.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/关系模型与关系运算/dbs2-1.png",
+      "sha256": "29095f81bb54b3ccf9cc7c452af83f9a9b91fff1ce97d6dd08a190f13dfe159c"
+    },
+    {
+      "source": "docs/images/dbs1-1.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库系统基本概念/dbs1-1.png",
+      "sha256": "46be14dac14795bce391a0edd5e4817e61e9fcdcde3af79807463452ef0d9f6b"
+    },
+    {
+      "source": "docs/images/dbs1-2.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库系统基本概念/dbs1-2.png",
+      "sha256": "f8b88c6ad8c97bb2ef27a972d057354220d20222894bb780086f9d886b31f168"
+    },
+    {
+      "source": "docs/images/dbs1-3.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库系统基本概念/dbs1-3.png",
+      "sha256": "aa43487b1b9ee7ab24593113be5239cc6a878db1b4d0252bf4096b9a80f18eba"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/7-1.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库设计和ER模型/7-1.png",
+      "sha256": "066f766f3f4d92426b8f220573c3cfe253e7f72b18750ab2db8a788d133e27de"
+    },
+    {
+      "source": "docs/课程笔记/大三上/数据库系统/7.2.png",
+      "destination": "docs/课程笔记/大三上/数据库系统/数据库设计和ER模型/7.2.png",
+      "sha256": "de3d151420bb9130082360abff5760303a376be684d4d70fdd4b9ebec26301ff"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/0基本概念/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image.png",
+      "sha256": "96c1aecb69d43071a8b5f8ebd6e44ee3d7361daeda5b598c29241b67f741d862"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-1.png",
+      "sha256": "f2f418c4df859ade2f8135cc441de66425561430ccd516fe98842c8d433e9704"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-2.png",
+      "sha256": "e05c291fc4b0fcdeb105753eee3d4a04d0a108216c8486aa03d53ad6f6ed72da"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-3.png",
+      "sha256": "140ed1c1dbd05f1e600b2c5c7a97aaeff13222443a7c30445cd986dcb3159bc8"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image.png",
+      "sha256": "185b8ca850018ad26f6cb606dc60efddf13ef8362d20e3ed5c94d6f4f315297c"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image-1.png",
+      "sha256": "c3829f044d35cbe2d4d4d0625150577e7e74572b64d3664bdb3cb72aa69721d0"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image-2.png",
+      "sha256": "b02471f97660678723d861b52d940732afaf6a5fee554b1b0a0da9f4a40c2e32"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image.png",
+      "sha256": "0d27e0be436a00609b3548c8f49e34834dbdd4a10f65d7f5f7752e4e964b70af"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-1.png",
+      "sha256": "f9a8ac689a8bc2e50425b8a9a7d0e44a7c9784b6fa487667e19dee9e39b7346f"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-2.png",
+      "sha256": "a0a380c1366458dded8965721583dcfd2f5f1907f6ba254abfcb286a8de1fe3e"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-3.png",
+      "sha256": "692e30ec3758b32c9d1498d390a8cbbde7601b87138f5d238a03b377dd03f1b2"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-4.png",
+      "sha256": "8323fcfe572e3f09d22c7e5aac706ccf388566371e59795f817cdb9c8b8054ea"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-5.png",
+      "sha256": "ce0b9354cb9680cc123c68931e4c01b4edc5cfa3c47e96b84e0318a36f4bc861"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image.png",
+      "sha256": "088f7151f86d78a2c1172d4dddf6684a37a902e1ec7b218b18a0549c2de27230"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-1.png",
+      "sha256": "0e4d5e1b50927f490b751c97d6d3adeb04c07a2e54927de53230d689c56fec51"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-2.png",
+      "sha256": "8ba88cbcfb80f40182d18f684f9efc0fab26463421d6026a812b12d44b436add"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-3.png",
+      "sha256": "a59ff9a7eb29b89a37f3612d8b84e8fa73a708f88246a7d0865ff8388487a71e"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-17.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-17.png",
+      "sha256": "33cc9d3801c458ce24358ebb48b9a415535e3a95d0cebee5f6a03781c6924e44"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-4.png",
+      "sha256": "a321dafba31ba7b1891eb730be035611be8ab602e556f7b8dca2f919292f3203"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-5.png",
+      "sha256": "5844d5b236233a13b8084b1932cf0ae4cf049553707d73f3a0c9f2ddbe10bb90"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-6.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-6.png",
+      "sha256": "cf0c6b47968c5fc81fddb3a2e767f6abcc3a56f39a611ef81be193aa5211f3fb"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-7.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-7.png",
+      "sha256": "2da2b8c2e4d9511f55ec59cc8a6cfa331445f95f93571e5e31d671e942b1f78b"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-8.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-8.png",
+      "sha256": "ed437b72631c345672616e0f43fb3d9e5b0afdc685ca314fff56a5740a034950"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-9.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-9.png",
+      "sha256": "24d2f08097d5f9e1845d271be20a72286defc959fdd90670929785e51f71f0d4"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-10.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-10.png",
+      "sha256": "4d2de92d3cf57506ab56d1b770b55149e16bbff07858d0b8ba49e0c50aeba8cf"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-11.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-11.png",
+      "sha256": "5e0813cc59c11fbd86d4e64e7d523707ca6b883944635c1ccae0d8ee83b8054b"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-12.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-12.png",
+      "sha256": "b050f0f16677fd7f1a8465e9211e314ec056fc17db611bdac919d2a276848778"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-13.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-13.png",
+      "sha256": "fbb4eda97b73871afd8bacc2a0b100edb656d485fc9becb14f0615e1ad5067e7"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-14.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-14.png",
+      "sha256": "0ff7b350e99b9f909d84037152b3781cfe1866e6298ea83f1bf9c7ff86ab2a68"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-15.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-15.png",
+      "sha256": "05aec038261672a1c19670b34a7b5d1d05376299149ed9581eee1d5eb1b47162"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-16.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-16.png",
+      "sha256": "d4a55bfc3271d1fa1ed2c41b0bca2da6582935264e1a98cda7cdd00db1aecc6b"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image.png",
+      "sha256": "2062a9278bc92b4100c5bc48083f253c2b86147884551ea771d5e4c50caf4996"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-1.png",
+      "sha256": "14d27a50ec150e54f961b94902d59fcfb5f5f6810973fd39c97f97970dd3a1e3"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-2.png",
+      "sha256": "9bd0ba0948e3ee10be127815c5abb6a9a7509ce2287af607cf01225fd4f1c1d1"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-3.png",
+      "sha256": "a674c94f9c96daed6917a8e8e8743868e123ab6b4bf4d416ccbdbf326f9f7e12"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-4.png",
+      "sha256": "414e014cf4fdb25545aec0c91d655d49533291e9e5157f5157c824e212dbc6a8"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-5.png",
+      "sha256": "e19e68b9cd22340b4f40b4d9d1b088113642c2a6aeedd5568010c8d6ffb3369c"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-6.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-6.png",
+      "sha256": "757fd1dfc57a49056f044bee5df6353acb6b2e52a6dd641f3c3c9aa589131b6a"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-7.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-7.png",
+      "sha256": "8250ac94f285262d6db21831ddd382295bb6df1b6726cabf6e6e16edfb2995ae"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-8.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-8.png",
+      "sha256": "8eb9ed5b5cd5f99aa200c5c3c76534c2d824cee6a663807c4d33fd187e37a026"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-9.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-9.png",
+      "sha256": "7241dfa6f766be68f27c429b059823c0c2421b5fae39c55f05145d374f7bf01e"
+    },
+    {
+      "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-10.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-10.png",
+      "sha256": "fccb04a268377b5b38f8427b46503c1c56d3cb8b2caa0e9916fc5ac5c89eb530"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-29.png",
+      "destination": "docs/课程笔记/大三上/编译原理/FIRST集和FOLLOW集的计算/image-29.png",
+      "sha256": "d968de427b1865c3bdcc3093a98d6b121b294b8fa5faea3d9d2b3285d0d4b3d4"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-5.png",
+      "destination": "docs/课程笔记/大三上/编译原理/LR(0)分析法/7-5.png",
+      "sha256": "236ee55a84f2fbfe0a4ef10bf83f5bf15b769d81137332c555c098112142e844"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-6.png",
+      "destination": "docs/课程笔记/大三上/编译原理/LR(0)分析法/7-6.png",
+      "sha256": "9c164cba01e2bc5d11a2ced764e2d6f2760edfa72c05acc58b36d59577738adc"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-22.png",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/image-22.png",
+      "sha256": "470bd65ffd6711a695c2613a8c4708806164dbedd3c39f272c84b5e050ca07fe"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-23.png",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/image-23.png",
+      "sha256": "a31aea0a2f7554ce477cee35f875dfeb109f9c2e9cc4ec7c28a9311215b8b9af"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-32.png",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/image-32.png",
+      "sha256": "b6dce6d074f74a2040689676b880a43c6ebdc5f1a15582bdcd7fd06d019e55b8"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-33.png",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/image-33.png",
+      "sha256": "0ec2f9b392413d2906cc4d20dee95998dc65eb549ce759619c1018c85973c532"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-34.png",
+      "destination": "docs/课程笔记/大三上/编译原理/句法制导翻译/image-34.png",
+      "sha256": "d95dc31ce834730d9b5b8ffba2d0197388303bde34a436e61dd8a07bb94f18da"
+    },
+    {
+      "source": "docs/images/compile2-1.png",
+      "destination": "docs/课程笔记/大三上/编译原理/文法转换/compile2-1.png",
+      "sha256": "e140dd8a1d366e8b6f4213853bd6be8e5708447b684424d63eae2011ffd65294"
+    },
+    {
+      "source": "docs/images/compile2-2.png",
+      "destination": "docs/课程笔记/大三上/编译原理/文法转换/compile2-2.png",
+      "sha256": "a88b880020c4f805edd83c661856f0b7e0fc81544357dcd3355bf4d5a37f0ce5"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-24.png",
+      "destination": "docs/课程笔记/大三上/编译原理/算符优先分析法/image-24.png",
+      "sha256": "308302272fabb01600f35ef32753d1318eef11f86d0ee97eb2592b392799b5ba"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-25.png",
+      "destination": "docs/课程笔记/大三上/编译原理/算符优先分析法/image-25.png",
+      "sha256": "358ebd0ee87e25b43567e6bb4cf610d968d431ec66bb0fc3743c6f30d1aaea22"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-26.png",
+      "destination": "docs/课程笔记/大三上/编译原理/算符优先分析法/image-26.png",
+      "sha256": "8802aab9cd6f7f7108613dfa30d8bf0499904cc16f9c98f20046684dcfdb651d"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image.png",
+      "sha256": "0ec02a6dc12a4e64fe7edd947f2a80c0cb1475485ebd18ce543b35416b1f88a5"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-1.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-1.png",
+      "sha256": "41d1092ea8db93a57943b116aa13ce539e6c183095ae8b1744e0819ba529e54d"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-2.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-2.png",
+      "sha256": "8258d2e169363c5648702d7a04be35e3c6ead4e48e2e1e27efb7d2c6b5dad387"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-3.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-3.png",
+      "sha256": "60b8a7eaf389d3725c137490a6816ea56dc1ccaba9a0b2c7340b1a5e789d8aa8"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-4.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-4.png",
+      "sha256": "d6623586a8a6e0bc47ca0004104ad3127e7fc2c44018242140d49d4b8bd35ae6"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-5.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-5.png",
+      "sha256": "0b2b137d452e20f893a56735ebeee19f5c154e864165ec7b915b33cac8421101"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-6.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-6.png",
+      "sha256": "0d7a7a749f61981d9272b7a23d5e8c574140ebe16d73a0baeaa2ecd6da4438fb"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-7.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-7.png",
+      "sha256": "15a8bfd2f7c3cdebd44a2c93fee413d68a37982f228101462addbc419d4809cc"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-8.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-8.png",
+      "sha256": "4a34c4ab9be3994cc1d550f67488d908e237601726a7cd980bfafa6a32ecb105"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-9.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-9.png",
+      "sha256": "72c5c14829347837af9e3b407a79bbcdf205b231219ff0f9ebc72c56cc9a41c5"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-10.png",
+      "destination": "docs/课程笔记/大三上/编译原理/类型表达式/image-10.png",
+      "sha256": "6af935decd37be749f5c478b089cc1ce80f6d479c602660bfca7426dcbd5bcd1"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-1.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自底向上分析概述/7-1.png",
+      "sha256": "439996473e9992675e9a44e1a54987699fe0b909662aca2bd4eee782a63b1d00"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-2.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自底向上分析概述/7-2.png",
+      "sha256": "b61bb687fc19acce32873e2a842e836822f5be05651bd2efa369c4d02c75abf4"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-3.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自底向上分析概述/7-3.png",
+      "sha256": "3e1702af707cb75ef6e270b3379570a8a0934a84d2b16ec7967a402932b645b9"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/7-4.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自底向上分析概述/7-4.png",
+      "sha256": "5e1ba144207e12dc9982b2dfc151726f681e57523767c125c74340444a76049c"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-27.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自顶向下分析/image-27.png",
+      "sha256": "456452b73e44d7e02c98b622efd095f689fd4f670eb4e2b28759b2d7c9c37117"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-28.png",
+      "destination": "docs/课程笔记/大三上/编译原理/自顶向下分析/image-28.png",
+      "sha256": "ecd6cc1c57227944331a566b648bc8d646d60920b586d300cd0f1b35dddcacdb"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-11.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-11.png",
+      "sha256": "a3c0c223da38657710b0b76eb92d0a1850d52e8ff983347ddf5a9fa7fbe337c9"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-12.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-12.png",
+      "sha256": "f4e5be2cbedb37e8c734c41791774405b8e32626ff7ed30ae3c5e552b28c06bb"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-13.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-13.png",
+      "sha256": "4aff3fc43b10846c590a324c2a5d393cab52cfc96553c8022f3aec6543312f0f"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-14.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-14.png",
+      "sha256": "ebc198b69a23e9abcf0e70a4eab77a088679a6c14a9fd4fbc5546e3ded9e20b5"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-15.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-15.png",
+      "sha256": "4065a068559fc7150b8c55593bfa36e6d8b00b3a8aae5405d785a532d5955663"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-16.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-16.png",
+      "sha256": "106b2164904064f4aaf850fb2e2825d49b6f5091d33b6c4154e1049550b00b52"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-17.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-17.png",
+      "sha256": "aa404650dc6382935f1bd2685448fa03fe5eab5e5470201cc47886f55a0005c6"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-18.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-18.png",
+      "sha256": "c792f7bfb2982f71da964af6e2faac5e9e06b8a9b26332de778c78d5b1c5d6fd"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-19.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-19.png",
+      "sha256": "c61330bf6af4f54565b0a242f5fdb1772aa426a4d3ce72314cfda4c17e1ed551"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-20.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-20.png",
+      "sha256": "6f183d3dc043aa0a526b45d87b275206ae9c53c2350940578da7fea034d578b2"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-21.png",
+      "destination": "docs/课程笔记/大三上/编译原理/运行存储分配策略/image-21.png",
+      "sha256": "38d4eed4b13804cde9dbd0ee0f722130f942291aac1f4b4842bb3795d63bd7bd"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/6-1.png",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析中的错误处理/6-1.png",
+      "sha256": "40c64effa3dce7f2b712ca8d691e6663562827760d34f0ff3f9cb3c6f3cbabf6"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/6-2.png",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析中的错误处理/6-2.png",
+      "sha256": "785199b2deed2a9566f7c3c15c6f6a8f4ec76bd5c5aeef51bf85440778672aef"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-30.png",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析方法/image-30.png",
+      "sha256": "144bba0ec3a759f536a03ea2dd0c7a5547fba89491a39dd3b3233dce194c5ef4"
+    },
+    {
+      "source": "docs/课程笔记/大三上/编译原理/image-31.png",
+      "destination": "docs/课程笔记/大三上/编译原理/预测分析方法/image-31.png",
+      "sha256": "32761afa2aabb6940ce54d4d7ccde9664762aabfcbf16e3136f69744bcd78752"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-25.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/image-25.png",
+      "sha256": "f0ee01ab7ee6f0a94c85aa8fa421ec689efaec30e969aa6a5aafca081394a6f3"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-26.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/image-26.png",
+      "sha256": "017d45412fe384091f74c0fccb82e9627353c1ccc5596f5fc397b964b37cb863"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-33.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/image-33.png",
+      "sha256": "c35bc1b9abb2024f33ded300487a9e5e90a85348598a5059088d683a1d5991d7"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-34.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/image-34.png",
+      "sha256": "7161cf7011033bf3e2ed332fce0c9dc1440c6799d0696d1abde0480fff3876aa"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-35.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/数据链路层与局域网/image-35.png",
+      "sha256": "fbf6833fe922376ae97430cdee89c71a091d3a44f216c69307d25ee90202e7ea"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-5.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-5.png",
+      "sha256": "15616bcca2c5a75afc16292abe3dd36c06b04ecbf384c472853463400d6d04cb"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-6.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-6.png",
+      "sha256": "73846c378dc353196bda966ace9cd78fec7ae6f550c13ed0f8bcc7a8e866cbb2"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-7.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-7.png",
+      "sha256": "af3d5532718033c8e1c47a4089bbc449e2e28f184e452d0da42a485d04f9b5ac"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-8.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-8.png",
+      "sha256": "6c693cc23fa7647cabdffe5ab7e7d3982d20d7aadd4770b0dfd7523bf2e8df7b"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-9.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-9.png",
+      "sha256": "a00baa9392673f8aed236896221e333005601397977afdec56ac16cbc4763bcb"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-10.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-10.png",
+      "sha256": "c22f7cd11a5ceb100171ff37ae7ae1d0d886802a432c5ee4146d71a8a15a12f6"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-11.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-11.png",
+      "sha256": "8f277ce2816168192d4b5428351b6aab8b40de738e43c4d3fd09950ad35a5f87"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-12.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-12.png",
+      "sha256": "4357f658e41139f72d069e2e25250c3a09c739b61c6dcbe72f7398c172ff8740"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-13.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-13.png",
+      "sha256": "8afbdf72d702224a796592c79ac95d39555999d3f7b09ebd9cf00753b8fb0eb8"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-14.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-14.png",
+      "sha256": "0690d6be2c8f4b1532baca40b12c77a4f382b144b5eb0ff2199e71d73a7ec54e"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-15.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-15.png",
+      "sha256": "c5f0edeb0e3d914a6e0d287ac78efa45030db084bf7c93e0b474828e702862d4"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-16.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-16.png",
+      "sha256": "dc190d324198462e2e241e1e08f6ca83201e59673b9a66b776acb236b4a9e220"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-19.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-19.png",
+      "sha256": "904997d8d74676abbedc041d5b0503a5cc83a08acadd16f23c97be294355624e"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-18.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/物理层/image-18.png",
+      "sha256": "088abde460f7010778d3f9237220a7a4bcc10f3b28dad07c5ba11af4367420e4"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-20.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-20.png",
+      "sha256": "2d377e0fc202f20d3bd8ea280679d7267d16d269c3a18f25cbbebfa579db9a5a"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-21.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-21.png",
+      "sha256": "1ed20e854afea783e1823f26524d763afea9618f6b3fc1f54354118da0a68532"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-22.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-22.png",
+      "sha256": "daddce40a11bfe977725f40a0148ea9922ec99a83a03e1297f06ca841f8401fc"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-23.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-23.png",
+      "sha256": "b35e9e5d5f6608b4138599f7e9a5a5110363a23e85175ae9dce4be9e6441683a"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-24.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-24.png",
+      "sha256": "d601c4b9926220cc3ffee503e04b3c305ba03910a1e471364e15f26db6fd20df"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-27.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-27.png",
+      "sha256": "a8d99c33a6d56b319d9bcae2fd0a0aae27b080e0703fda11deec7ef444c87c9a"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-28.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-28.png",
+      "sha256": "c15db2c7bb4c476163c63e0448577c8470f747b80604edad9b30ba11cdebce03"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-29.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-29.png",
+      "sha256": "9c5fb1cea4cb8e24664e2db831b1b609f9760e405ac833807bac7bd7b260672e"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-30.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-30.png",
+      "sha256": "1e9c5a43f9c74c18159952d1feffc461509b72608e61e542a41040cf9cd8fbd2"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-31.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-31.png",
+      "sha256": "7ddc1096344b95b58a33e10e5fa6fc002871cdfda8cad4f5e7cd14be0c6e757d"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-32.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-32.png",
+      "sha256": "62d92755b69e222bcf975ccec21bda03c45de4252bd46c965ebc5c30665bf803"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-36.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/网络层/image-36.png",
+      "sha256": "5e24d721b12f7ab766ba8729cc2ef597842d690519f8a4969ed95af69afd959c"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/image.png",
+      "sha256": "1408a79454aa130d25798bbd57a7455f20cfaf18bf0a7d71362b3ab1cdf1eabc"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-1.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/image-1.png",
+      "sha256": "9276b41b6a10ca0277d85728dff686544652805922081bdabb350034284ea626"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-2.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/image-2.png",
+      "sha256": "43f292913fde0866a5b53c71d33d4a4f9b806fb17d89228c12161e8a809a27c2"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-3.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/image-3.png",
+      "sha256": "135fd8a1e79a60bc7df0c45660bd5f0b4da686aaa673ebf0131066bef96d15cd"
+    },
+    {
+      "source": "docs/课程笔记/大三下/计算机网络/image-4.png",
+      "destination": "docs/课程笔记/大三下/计算机网络/计算机网络概述/image-4.png",
+      "sha256": "424716a29eef85ef7368230213a020b96c7978012419812b8d2c52f113020bed"
+    },
+    {
+      "source": "docs/images/xsyy5-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/epsilon-NFA/xsyy5-1.png",
+      "sha256": "5da6f5197769e275f6c5d0841be3e27b26985ab78033a965d0495a3f768c545e"
+    },
+    {
+      "source": "docs/images/xsyy5-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/epsilon-NFA/xsyy5-2.png",
+      "sha256": "2cf6d2a10edddbb123b597d4e02a0ba06972e63d9c846df8b30e17832d98703f"
+    },
+    {
+      "source": "docs/images/xsyy9-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/上下文无关文法/xsyy9-1.png",
+      "sha256": "96864e10ddc263ff0985301adf1cac98afec39738d7204e452bda770f68433ed"
+    },
+    {
+      "source": "docs/images/xsyy9-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/上下文无关文法/xsyy9-2.png",
+      "sha256": "61b9f19ddc93c10c263920e5fac65562201091f7dacfd5bd4d6186a423f44c16"
+    },
+    {
+      "source": "docs/images/xsyy10-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-1.png",
+      "sha256": "43ecef348a85d5c5111762c2cd158dc939386dfa593e6eecff0c7a481242b31d"
+    },
+    {
+      "source": "docs/images/xsyy10-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-2.png",
+      "sha256": "d6d7c977d6c4c5f42c6ab57b9fc2f3efe8137c25f02d0d65d897934d229ec423"
+    },
+    {
+      "source": "docs/images/xsyy10-3.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-3.png",
+      "sha256": "0384be0132cddd88321bddf3fbd6b2c88c4a97d9f1ed9b7659d367b6cf918e24"
+    },
+    {
+      "source": "docs/images/xsyy10-4.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-4.png",
+      "sha256": "c9aa34f041fbf2092d890a57f7c68841fd06b871d4bb9692ee7be55813e6f7d8"
+    },
+    {
+      "source": "docs/images/xsyy10-5.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-5.png",
+      "sha256": "9b767becec71d2d4eac524b527274a13c01056dd77846b40fe152296cc04d88d"
+    },
+    {
+      "source": "docs/images/xsyy10-6.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-6.png",
+      "sha256": "02382f29ac100fc903f28f9d8d77c2507f20cc2466675c4137cde11f8af22800"
+    },
+    {
+      "source": "docs/images/xsyy10-7.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/下推自动机/xsyy10-7.png",
+      "sha256": "a7124e4af0db4395e38d7165db05c148b9c8d2253b52e506b5f107f54f013948"
+    },
+    {
+      "source": "docs/images/xsyy2-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/有穷状态和自动机/xsyy2-1.png",
+      "sha256": "a2be592f902f789cd930cef157fa14f2769c5225c182066bbd6956c72deb72fa"
+    },
+    {
+      "source": "docs/images/xsyy8-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/正则语言的性质/xsyy8-1.png",
+      "sha256": "3ef78ccdaedcda69b98cef6d7db529cd07c8811c95e90486a469db4b840e92f6"
+    },
+    {
+      "source": "docs/images/xsyy11-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定型下推自动机/xsyy11-1.png",
+      "sha256": "1e1038dc77ac0ace0fe43c8261f267cdf38061d77c05386a3689024e59d56f84"
+    },
+    {
+      "source": "docs/images/xsyy11-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定型下推自动机/xsyy11-2.png",
+      "sha256": "7b28d31ad2eca8e42a64fa378f0831aec9272cd785c4c18cd0832eaca301c375"
+    },
+    {
+      "source": "docs/images/xsyy2-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/xsyy2-2.png",
+      "sha256": "8b9603135f3de705106951390d6c0e8f2842c22d0c79c3643d35e34a79e0fce8"
+    },
+    {
+      "source": "docs/images/xsyy2-3.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/xsyy2-3.png",
+      "sha256": "42347bc04ccbe26908b31dadbb1755573186203109bceb0fb3091f10330fd2cd"
+    },
+    {
+      "source": "docs/images/xsyy2-4.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/xsyy2-4.png",
+      "sha256": "3f5dc2e9a4fbada7948ead84f897b43052831e49438b39616ad60a4221720985"
+    },
+    {
+      "source": "docs/images/xsyy2-5.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/xsyy2-5.png",
+      "sha256": "60c0d6d51e58176dd594bfd029b2f0047c9e2db60ad85e6d717394734ff8199e"
+    },
+    {
+      "source": "docs/images/xsyy2-6.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/确定的有穷自动机/xsyy2-6.png",
+      "sha256": "20239a500c14889a7c5f998fe73f95282405a10349254684404989968d796e7f"
+    },
+    {
+      "source": "docs/images/xsyy1-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/简介及基础知识/xsyy1-1.png",
+      "sha256": "b4a96d8f552ec225840ba86b3002665290b660fc52f307922d0305853d368fb1"
+    },
+    {
+      "source": "docs/images/xsyy7-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-1.png",
+      "sha256": "233bba517065fb10c023cedb00ac5960104c361b25f64192db4c90095c775653"
+    },
+    {
+      "source": "docs/images/xsyy7-3.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-3.png",
+      "sha256": "e6bb641464e07f729981de56d4b2a4af75d4830f536a305e26384843972fd581"
+    },
+    {
+      "source": "docs/images/xsyy7-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-2.png",
+      "sha256": "3381fb6bbf9fff62817f0d3bf20276fac4db60556018ed89f13cd78070fed50a"
+    },
+    {
+      "source": "docs/images/xsyy7-4.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-4.png",
+      "sha256": "870b7fb849ca3f8e6bb79296a34cb11886e5290344900681267a9be2d957a8c2"
+    },
+    {
+      "source": "docs/images/xsyy7-6.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-6.png",
+      "sha256": "394188c5119d00a05136a6ecf5fa0b7627a9d4c13672a94190ea3b78860832a7"
+    },
+    {
+      "source": "docs/images/xsyy7-5.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-5.png",
+      "sha256": "b46c364eb69164e3d6b30411998091e3a86c8dd52d854d9d7b3cf91047c77260"
+    },
+    {
+      "source": "docs/images/xsyy7-7.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-7.png",
+      "sha256": "7830593f54eeb8c63bea5d41235ef833c0fbf7678a2f63cf925b7eb9f760e7f8"
+    },
+    {
+      "source": "docs/images/xsyy7-8.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/自动机到正则表达式/xsyy7-8.png",
+      "sha256": "fa9df5d46a8bf585d89890b0550817b36860061dbe4fdbfa35ec823365aa9e07"
+    },
+    {
+      "source": "docs/images/xsyy4-1.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机/xsyy4-1.png",
+      "sha256": "739d1b09d59f255e967f1772fc2b7dd2ca5ac8702015eb106d095df0deb2df86"
+    },
+    {
+      "source": "docs/images/xsyy4-2.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机/xsyy4-2.png",
+      "sha256": "e9127fa0c367881acc98b2e84870e0fc69aead7682366cb9f87deebcad5781c1"
+    },
+    {
+      "source": "docs/images/xsyy4-3.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机/xsyy4-3.png",
+      "sha256": "6dda87ad810d1c3d4479f56ae9e9e7ebaf7557249f8a84e9e6d69d2375661c63"
+    },
+    {
+      "source": "docs/images/xsyy4-4.png",
+      "destination": "docs/课程笔记/大二下/形式语言与自动机/非确定有穷自动机/xsyy4-4.png",
+      "sha256": "ed66af1722138324e3453cbeb65c6067c92df250ab2ade9aa0b40a2ecefcbd42"
+    },
+    {
+      "source": "docs/images/jz7-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/RISC-V指令表示/jz7-1.png",
+      "sha256": "c65a35b18a02738e1f04c89c1bae4cac46bc8dc5de99cb65483f14e4bda57d25"
+    },
+    {
+      "source": "docs/images/jz4-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统/jz4-1.png",
+      "sha256": "6353383bffdf9c856b09ff83ac27a73d1736c67125f6b452cbc38537a3cf0f38"
+    },
+    {
+      "source": "docs/images/jz4-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统/jz4-2.png",
+      "sha256": "efd76fdc545c5d6568380f3fe7c6257be5c1c96bac227d9a19f5eb5e25da24e6"
+    },
+    {
+      "source": "docs/images/jz6-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-1.png",
+      "sha256": "2323e5b7b8d18fa0c5ea4071bd5e3f15fda54c0b49b68b0b85e8bcbd135e1bcc"
+    },
+    {
+      "source": "docs/images/jz6-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-2.png",
+      "sha256": "aa3ccc1f39dcd9a9c3ddeaebe0f7a9ecc1d737bbc6a027b0ec2130815c55dec5"
+    },
+    {
+      "source": "docs/images/jz6-3.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-3.png",
+      "sha256": "255e573c2fe8efa28c48dfddb44e9ba60204da336a104014723a948426805f07"
+    },
+    {
+      "source": "docs/images/jz6-4.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-4.png",
+      "sha256": "f4791f13c503306786924a5f02e4038172d9bbf7564d2825222a703036325f2c"
+    },
+    {
+      "source": "docs/images/jz6-5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-5.png",
+      "sha256": "58f44501e8aab60ae2e5fca301cea0f2fa30ac10d9dfb8f6dd4debfa2d2fe687"
+    },
+    {
+      "source": "docs/images/jz6-6.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-6.png",
+      "sha256": "243d862402398a691d488235351a453e500b68f67f62b2cb77160485d944f421"
+    },
+    {
+      "source": "docs/images/jz6-7.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-7.png",
+      "sha256": "2d714a931446ffc1ddbf1fb37f88ea88fc73cf7da0303d11d51f58df04ae1654"
+    },
+    {
+      "source": "docs/images/jz6-8.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-8.png",
+      "sha256": "260c124e884e2003d5e886010f951c854776f0fb8edeab8cf8e6cbac57f5c416"
+    },
+    {
+      "source": "docs/images/jz6-9.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-9.png",
+      "sha256": "2367fe5a555f38006888daa723fd89e6b914f91d7adadc6bd17f8ce3e154fc31"
+    },
+    {
+      "source": "docs/images/jz6-10.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-10.png",
+      "sha256": "e9b306fa680f51f941f3b2ad3e4e23fa3d99ffb9f0648f045ca2223863f74060"
+    },
+    {
+      "source": "docs/images/jz6-11.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-11.png",
+      "sha256": "a14e6691f6bfe25c5ed205bbcb296dc065bfd530a15e83293ec3b2a6ef912c18"
+    },
+    {
+      "source": "docs/images/jz6-12.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-12.png",
+      "sha256": "4dd534a23f2a1288ed0aa482a626a0e4a158b30451312f51f19f53c0cfde29b3"
+    },
+    {
+      "source": "docs/images/jz6-13.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-13.png",
+      "sha256": "9a657638e948f86cfdce4862bd5dc7b6f4ac7f02c06ae1281a6a903628d11898"
+    },
+    {
+      "source": "docs/images/jz6-14.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-14.png",
+      "sha256": "9102bfc4fee9d960b247775208661edfeffcd91a357e9d20ad09ae8c3c3d437a"
+    },
+    {
+      "source": "docs/images/jz6-15.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz6-15.png",
+      "sha256": "9593361a758db7fa8b8992b51cba0c4c8fa4808aa3375247e718caa9a3230897"
+    },
+    {
+      "source": "docs/images/jz7-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/处理器设计/jz7-2.png",
+      "sha256": "96907a5a9d2eb3ecd119998f17d3a9874978c2638226620f50a037fa063adf39"
+    },
+    {
+      "source": "docs/images/jz9-0.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/存储器/jz9-0.png",
+      "sha256": "e3763bc6d4952853ce22ea38d19dfe50d74b8dc8332742c1640870e681ddc422"
+    },
+    {
+      "source": "docs/images/jz9-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/存储器/jz9-1.png",
+      "sha256": "abf12bbb4e44edd7f582b83636453c765e9de93c08b725670d4fa8d3e9c9a178"
+    },
+    {
+      "source": "docs/images/jz9-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/存储器/jz9-2.png",
+      "sha256": "5e8a99bf4f281ebe25cbf301b40ff7661fd02defd3f6fcd3db3d75cfeae2371a"
+    },
+    {
+      "source": "docs/images/jz9-3.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/存储器/jz9-3.png",
+      "sha256": "45b91ee8cc82539adfb8bf47c0a63da9d6135fe75dbffb7250eea1f267495449"
+    },
+    {
+      "source": "docs/images/jz8-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-1.png",
+      "sha256": "cd86c7ad7ebb6770a70f648c1ecd310caef1eaf9099cfdf63037c83bf34a246d"
+    },
+    {
+      "source": "docs/images/jz8-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-2.png",
+      "sha256": "d681bc582b5d63d7178e75496ae2d643ccb03521156807869f94bc4d84565222"
+    },
+    {
+      "source": "docs/images/jz8-3.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-3.png",
+      "sha256": "79ed6a8eaa77a346fdb48e8d4ef16b0d45801560dcf56dab61f7a6524be2b248"
+    },
+    {
+      "source": "docs/images/jz8-4.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-4.png",
+      "sha256": "295e7be4ef1b2bfd8820e467b885cff6d08f9c2b28d2f4e50a6e0f823d386e19"
+    },
+    {
+      "source": "docs/images/jz8-5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-5.png",
+      "sha256": "ab77b3be89bd58373e0c8e4a1465f2d012095fd093e9f40fee3b7be2f2ff644f"
+    },
+    {
+      "source": "docs/images/jz8-6.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/流水线/jz8-6.png",
+      "sha256": "1fa6682e0fe6d2dfc7d6d8abed4b0f43877588c5b745786b67c98f62b9199068"
+    },
+    {
+      "source": "docs/images/jz2-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-1.png",
+      "sha256": "256317e571e408e241beb2b011a5645f8c134c2840630204a7a19064661f7467"
+    },
+    {
+      "source": "docs/images/jz2-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-2.png",
+      "sha256": "ce6db77403d807d9b54befb1aba8975ebbe4539e95d6eefd1a4d48d2908f0065"
+    },
+    {
+      "source": "docs/images/jz2-3.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-3.png",
+      "sha256": "e7d3040a8c64abc65715bcf323087fcb35407acc0c26a531721337578b824db8"
+    },
+    {
+      "source": "docs/images/jz2-4.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-4.png",
+      "sha256": "3c364c0f4ed3a4689d90addb7f7400b57fd07f9c30a26c8bf0a11d1f9e4fc492"
+    },
+    {
+      "source": "docs/images/jz2-5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-5.png",
+      "sha256": "26c61db9c95f429900dba8114aa0092286014f2c6386d0009e2ee5aebb318892"
+    },
+    {
+      "source": "docs/images/jz2-6.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-6.png",
+      "sha256": "00715356ba277a30b23df5c5e36377ec78b6642442d0fb6774fd1e72a06630ce"
+    },
+    {
+      "source": "docs/images/jz2-7.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-7.png",
+      "sha256": "84c6158cd7d77ec10b5432f93f28a6ac1b9df78f36eed367178fd420a4dfecdc"
+    },
+    {
+      "source": "docs/images/jz2-8.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机中数的表示/jz2-8.png",
+      "sha256": "b36f625c0bb3dd9f0c108cc4148b5c29a807385993d7f53b85e79affefbdd428"
+    },
+    {
+      "source": "docs/images/jz1-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/计算机系统概述/jz1-1.png",
+      "sha256": "4d4e3993a870b398958b99a5d95dd76440604504aa70f668dcf8dc0988c8851a"
+    },
+    {
+      "source": "docs/images/jz5-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/过程调用及栈的使用/jz5-1.png",
+      "sha256": "dbbe64a853eba232725c616055f92c08150e0d4f1b1e7b05b6dc94b4487046f7"
+    },
+    {
+      "source": "docs/images/jz3-1.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-1.png",
+      "sha256": "0e6dca19ba8e9bdcdb5424a8cc65546377fc4c117b1e6facd65021a57ac8c94e"
+    },
+    {
+      "source": "docs/images/jz3-3.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-3.png",
+      "sha256": "686712ba75fc72e15fc626276ecb99a17714dbfd4d1ddb3480def08696728c9e"
+    },
+    {
+      "source": "docs/images/jz3-3_5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-3_5.png",
+      "sha256": "476e5e7c75040262373eca506be467e6e235c969ddc64a5a10f02aa3e8aecc2a"
+    },
+    {
+      "source": "docs/images/jz3-6.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-6.png",
+      "sha256": "c000d3278bb4f245c267ec414efe9bb2241976d58e16a6d4d5585b735dfca5b1"
+    },
+    {
+      "source": "docs/images/jz3-2.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-2.png",
+      "sha256": "5397c9f4a0858df3aec9ac13b0817e53d8d1512258999d48d135a41071707ccb"
+    },
+    {
+      "source": "docs/images/jz3-2_5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-2_5.png",
+      "sha256": "6f96868798fd24b2c66c24d8c4eacd87352164f0d3ed2e6228c385214e48e909"
+    },
+    {
+      "source": "docs/images/jz3-3_75.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-3_75.png",
+      "sha256": "9c15cba52165dc72c9fd41f5454476b64fd6316a0482f220eec3fd1fc7ce3ae9"
+    },
+    {
+      "source": "docs/images/jz3-4.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-4.png",
+      "sha256": "14ff821c88efe8dd22b9d15573433dab42c4f1e7ac3e41c0d5e293670c98e3bd"
+    },
+    {
+      "source": "docs/images/jz3-5.png",
+      "destination": "docs/课程笔记/大二下/计算机组成原理/运算方法/jz3-5.png",
+      "sha256": "26ed032536a7a09bc5fa77c3536692ec71c43e92b2cb65d530172e2161664d97"
+    },
+    {
+      "source": "docs/images/cxds12-1.png",
+      "destination": "docs/课程笔记/大二下/近世代数/群的同构定理/cxds12-1.png",
+      "sha256": "88e10b5d3bce31a7d59d0b6738dd5863decb93ac80ce3468448aeadcd58e8bca"
+    },
+    {
+      "source": "docs/images/cxds1-1.png",
+      "destination": "docs/课程笔记/大二下/近世代数/集合、映射与变换/cxds1-1.png",
+      "sha256": "dc2c2c1fb39f41c8c96e5de6195fcf1f72accc32040527d5a415a75791c8e1f7"
+    },
+    {
+      "source": "docs/images/cxds1-2.png",
+      "destination": "docs/课程笔记/大二下/近世代数/集合、映射与变换/cxds1-2.png",
+      "sha256": "5e927d91a5cc226ddd43946ebdb7946b0675aa0b212233ef2bd99499cbdf2423"
+    },
+    {
+      "source": "docs/images/java2-1.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础/java2-1.png",
+      "sha256": "75f3b521030a1c6e69933dd822a43af70018f1a5d953afe4474435a786e3d8b8"
+    },
+    {
+      "source": "docs/images/java2-3.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础/java2-3.png",
+      "sha256": "def0756c68bf468dcbb8314668ad2a85fd8c433084f19e52ef951fe8a0630300"
+    },
+    {
+      "source": "docs/images/java2-2.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础/java2-2.png",
+      "sha256": "eec24f89d8cbf42ec315b79f947bafe5965292bd9f8799d99ced9097525e1f7f"
+    },
+    {
+      "source": "docs/images/java2-4.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/Java语言基础/java2-4.png",
+      "sha256": "af297ca323a060e19c68d73152da0b6d33533f194b5b118581a1aaa624ac707b"
+    },
+    {
+      "source": "docs/images/java6-1.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/多线程/java6-1.png",
+      "sha256": "2df38a3a69c79a0f092044d7ce3d49041eb4740a2c6c5b741454aa3c23b1ef47"
+    },
+    {
+      "source": "docs/images/java1-1.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/概述/java1-1.png",
+      "sha256": "30c264051249cf407260e9859f3470380bb78bad5f880938e8a3ed3ed0be969d"
+    },
+    {
+      "source": "docs/images/java5-1.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/设计模式/java5-1.png",
+      "sha256": "2fb8d0817f8db0f3d8497e9494782b242b2fa7fbdbd512fce8710a1270ef1d93"
+    },
+    {
+      "source": "docs/images/java4-1.png",
+      "destination": "docs/课程笔记/大二下/面向对象的软件构造导论/软件测试和代码保障/java4-1.png",
+      "sha256": "b183a8a46854364da11ffb1a18df7e6e46d6b867b30ba7693dedfa8f742588d1"
+    }
+  ],
+  "unassigned_assets": [
+    "archive/unassigned-assets/images/Basic1-0.png",
+    "archive/unassigned-assets/images/ml0-1.png",
+    "archive/unassigned-assets/images/ml0-10.png",
+    "archive/unassigned-assets/images/ml0-2.png",
+    "archive/unassigned-assets/images/ml0-3.png",
+    "archive/unassigned-assets/images/ml0-4.png",
+    "archive/unassigned-assets/images/ml0-5.png",
+    "archive/unassigned-assets/images/ml0-6.png",
+    "archive/unassigned-assets/images/ml0-7.png",
+    "archive/unassigned-assets/images/ml0-8.png",
+    "archive/unassigned-assets/images/ml0-9.png",
+    "archive/unassigned-assets/images/ml1-1.png",
+    "archive/unassigned-assets/images/ml2-1.png",
+    "archive/unassigned-assets/images/ml2-2.png",
+    "archive/unassigned-assets/images/ml2-3.png",
+    "archive/unassigned-assets/images/tz2-0.png",
+    "archive/unassigned-assets/images/tz2-1.png",
+    "archive/unassigned-assets/images/tz3-0.png",
+    "archive/unassigned-assets/课程笔记/大二下/毛概/毛概串讲.pdf",
+    "archive/unassigned-assets/课程笔记/大三下/计算机网络/image-17.png"
+  ],
+  "missing_references": []
+}
