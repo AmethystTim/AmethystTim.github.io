@@ -1,0 +1,16 @@
+{% macro outline(items) %}
+  <ol>
+    {% for item in items %}
+      <li>
+        <a href="{{ item.url }}">{{ item.title | striptags }}</a>
+        {% if item.children %}{{ outline(item.children) }}{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+{% endmacro %}
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary><span>ON THIS PAGE</span>文章目录</summary>
+    {{ outline(page.toc) }}
+  </details>
+</aside>

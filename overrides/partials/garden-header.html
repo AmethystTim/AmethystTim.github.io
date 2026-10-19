@@ -1,0 +1,30 @@
+<header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="{{ nav.homepage.url | url }}" aria-label="AMETHYST / Tim 首页">
+      <img src="{{ config.theme.logo | url }}" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">{{ page.title if page else config.site_name }}</span>
+        </span>
+      </span>
+    </a>
+    {% set source = page.file.src_uri if page and page.file else "" %}
+    <nav class="garden-nav" aria-label="博客导航">
+      {% for label, target, prefix in [("首页", "", ""), ("文档库", "library/", "library/"), ("随笔", "blog/", "blog/"), ("关于", "about/", "about/")] %}
+        {% set active = source == "index.md" if not prefix else source.startswith(prefix) %}
+        <a class="garden-nav__link{% if active %} garden-nav__link--active{% endif %}" href="{{ target | url }}"{% if active %} aria-current="page"{% endif %}>{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="garden-header__tools">
+      {% if config.theme.palette and not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+        {% include "partials/javascripts/palette.html" %}
+      {% endif %}
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        {% include ".icons/material/magnify.svg" %}
+      </label>
+      {% include "partials/search.html" %}
+    </div>
+  </div>
+</header>

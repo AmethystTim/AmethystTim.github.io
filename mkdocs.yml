@@ -36,12 +36,7 @@ theme:
         name: 切换到日间模式
   features:
     - navigation.indexes
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
     - navigation.tracking
-    - navigation.tabs
-    - navigation.sections
     - navigation.top
     - search.share
     - search.highlight
@@ -62,6 +57,7 @@ extra_javascript:
   - javascripts/library.js
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/navigation.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 markdown_extensions:
   - pymdownx.betterem

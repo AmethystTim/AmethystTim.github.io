@@ -3,6 +3,15 @@
   {{ super() }}
   <meta name="theme-color" content="#7545ef">
 {% endblock %}
+{% block header %}
+  {% include "partials/garden-header.html" %}
+{% endblock %}
+{% block tabs %}{% endblock %}
+{% block site_nav %}
+  {% if page and page.toc and not (page.meta.hide and "toc" in page.meta.hide) %}
+    {% include "partials/garden-outline.html" %}
+  {% endif %}
+{% endblock %}
 {% block content %}
   {% if page.meta.home %}
     {% include "partials/home.html" %}
