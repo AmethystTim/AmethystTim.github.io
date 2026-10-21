@@ -98,7 +98,9 @@ def on_config(config):
 def on_files(files, config):
     global RECORDS
     RECORDS = []
-    for file in files.documentation_pages():
+    # The blog plugin temporarily marks posts as excluded, so include every level;
+    # drafts are still skipped below through their metadata.
+    for file in files.documentation_pages(inclusion=lambda level: True):
         path = file.src_uri
         section = next((key for key, *_ in SECTIONS if path.startswith(key + '/')), None)
         if not section or (section == 'blog' and not path.startswith('blog/posts/')):

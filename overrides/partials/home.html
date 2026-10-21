@@ -1,33 +1,46 @@
 <div class="home-shell">
-  <div class="home-topline"><span>THE PERSONAL WEB OF TIM</span><span>保持好奇，持续生长 <span aria-hidden="true">↗</span></span></div>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> AMETHYST / DIGITAL GARDEN</p>
-      <h1 id="hero-title">把好奇心，<br>写成<span class="hero-accent">坐标。</span></h1>
-      <p class="hero-description">你好，我是 Tim。<br>在代码、论文与生活之间，记录思考留下的轨迹。</p>
-      <div class="hero-actions"><a class="primary-link" href="{{ 'library/' | url }}">探索文档库 <span aria-hidden="true">↗</span></a><a class="secondary-link" href="{{ 'blog/' | url }}">读点随笔 <span aria-hidden="true">→</span></a></div>
-      <div class="hero-footnote"><span>01 — NEVER STOP EXPLORING</span><span aria-hidden="true">↓</span></div>
+      <h1 id="hero-title" class="kinetic" aria-label="把好奇心，写成坐标。"><span aria-hidden="true"><span class="w" style="--i:0">把</span><span class="w" style="--i:1">好奇心，</span><br><span class="w" style="--i:2">写成</span><em class="w hero-accent" style="--i:3">坐标</em><span class="w" style="--i:4">。</span></span></h1>
+      <p class="hero-description cue" style="--d:6">你好，我是 Tim。<br>在代码、论文与生活之间，记录思考留下的轨迹。</p>
+      <div class="hero-actions cue" style="--d:7"><a class="primary-link" href="{{ 'library/' | url }}">探索文档库 <span aria-hidden="true">↗</span></a><a class="secondary-link" href="{{ 'blog/' | url }}">读点随笔 <span aria-hidden="true">→</span></a></div>
     </div>
-    <div class="hero-art" role="img" aria-label="紫晶星体与交错轨道构成的抽象插画">
-      <div class="art-grid"></div><span class="art-label">IDEAS IN ORBIT</span>
-      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
-      <div class="crystal"><div class="crystal-shine"></div></div>
-      <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">+</span><div class="art-moon"></div>
-      <span class="art-coordinate">22° N / ∞ IDEAS</span><span class="art-sticker">STAY<br>CURIOUS.</span>
+    <div class="hero-art cue" style="--d:3" role="img" aria-label="以一颗微光为中心、缓慢转动的线描轨道">
+      <svg class="orbit-art" viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+          <radialGradient id="ember" cx="50%" cy="50%" r="50%"><stop offset="0" stop-opacity=".9"/><stop offset=".35" stop-opacity=".28"/><stop offset="1" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle class="ember-glow" cx="200" cy="200" r="120" fill="url(#ember)"/>
+        <g class="orbits">
+          <ellipse class="draw" cx="200" cy="200" rx="168" ry="64" transform="rotate(-24 200 200)"/>
+          <ellipse class="draw" style="--delay:.25s" cx="200" cy="200" rx="168" ry="64" transform="rotate(36 200 200)"/>
+          <ellipse class="draw faint" style="--delay:.5s" cx="200" cy="200" rx="168" ry="64" transform="rotate(96 200 200)"/>
+          <circle class="draw dashed" style="--delay:.7s" cx="200" cy="200" r="188"/>
+        </g>
+        <g class="nodes">
+          <circle cx="352" cy="132" r="4"/><circle cx="74" cy="292" r="3"/><circle cx="132" cy="54" r="2.5"/><circle cx="318" cy="330" r="3.5"/>
+        </g>
+        <path class="spark" d="M200 168v64M168 200h64M177 177l46 46M223 177l-46 46"/>
+      </svg>
     </div>
   </section>
-  <div class="ticker" aria-hidden="true"><span>THINK</span><b>✳</b><span>BUILD</span><b>✳</b><span>EXPLORE</span><b>✳</b><span>REPEAT</span><b>✳</b><span>THINK</span><b>✳</b><span>BUILD</span></div>
-  <section aria-labelledby="collections-title" class="home-section">
-    <div class="section-heading"><div><p class="eyebrow">THE COLLECTIONS</p><h2 id="collections-title">思考的几个切面<span class="tiny-star">✳</span></h2></div><a href="{{ 'library/' | url }}">全部文档 <span aria-hidden="true">↗</span></a></div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">{% for _ in range(2) %}<span>Think</span><b>✳</b><span>Build</span><b>✳</b><span>Explore</span><b>✳</b><span>Repeat</span><b>✳</b><span>Stay curious</span><b>✳</b>{% endfor %}</div></div>
+  <section aria-labelledby="collections-title" class="home-section" data-reveal>
+    <div class="section-heading"><h2 id="collections-title">思考的几个切面</h2><a href="{{ 'library/' | url }}">全部文档 <span aria-hidden="true">↗</span></a></div>
     <div class="collection-grid">
       {% for item in config.extra.collections %}
-      <a class="collection-card collection-{{ loop.index }}" href="{{ item.url | url }}"><div class="card-top"><span>0{{ loop.index }} / {{ item.en }}</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-symbol" aria-hidden="true">{{ item.symbol }}</div><h3>{{ item.name }}</h3><p>{{ item.description }}</p><div class="card-bottom"><span>{{ item.count }} 篇记录</span><span>继续探索 →</span></div></a>
+      <a class="collection-card collection-{{ loop.index }}" href="{{ item.url | url }}" data-reveal style="--d:{{ loop.index0 }}"><div class="card-numeral" aria-hidden="true">0{{ loop.index }}</div><h3>{{ item.name }}</h3><p>{{ item.description }}</p><div class="card-bottom"><span>{{ item.count }} 篇记录</span><span class="card-arrow" aria-hidden="true">↗</span></div></a>
       {% endfor %}
     </div>
   </section>
-  <section class="home-section recent-section" aria-labelledby="recent-title">
-    <div class="section-heading"><div><p class="eyebrow">FROM THE NOTEBOOK</p><h2 id="recent-title">最近的文字</h2></div><a href="{{ 'blog/' | url }}">进入随笔 <span aria-hidden="true">↗</span></a></div>
-    <div class="recent-list">{% for post in config.extra.recent_posts %}<a class="recent-row" href="{{ post.url | url }}"><span class="recent-number">0{{ loop.index }}</span><div><span class="recent-category">{{ post.category }}</span><h3>{{ post.title }}</h3></div><time datetime="{{ post.date }}">{{ post.date }}</time><span aria-hidden="true">↗</span></a>{% endfor %}</div>
+  <section class="home-section recent-section" aria-labelledby="recent-title" data-reveal>
+    <div class="section-heading"><h2 id="recent-title">最近的文字</h2><a href="{{ 'blog/' | url }}">进入随笔 <span aria-hidden="true">↗</span></a></div>
+    <div class="recent-list">{% for post in config.extra.recent_posts %}<a class="recent-row" href="{{ post.url | url }}" data-reveal style="--d:{{ loop.index0 }}"><span class="recent-number">0{{ loop.index }}</span><div><span class="recent-category">{{ post.category }}</span><h3>{{ post.title }}</h3></div><time datetime="{{ post.date }}">{{ post.date }}</time><span class="recent-arrow" aria-hidden="true">↗</span></a>{% endfor %}</div>
   </section>
-  <section class="home-note"><span class="note-star" aria-hidden="true">✳</span><div><p class="eyebrow">A WORK IN PROGRESS, ALWAYS.</p><h2>知识没有终点，<br>这里也是。</h2><p>一些学过的知识，一些没想明白的问题，和一些值得留下的瞬间。</p></div><a href="{{ 'about/' | url }}">认识一下 <span aria-hidden="true">↗</span></a></section>
+  <section class="home-note" data-reveal>
+    <div class="note-glow" aria-hidden="true"></div>
+    <h2>知识没有终点，<br>这里<em>也是</em>。</h2>
+    <p>一些学过的知识，一些没想明白的问题，和一些值得留下的瞬间。</p>
+    <a class="note-link" href="{{ 'about/' | url }}">认识一下 <span aria-hidden="true">↗</span></a>
+  </section>
 </div>

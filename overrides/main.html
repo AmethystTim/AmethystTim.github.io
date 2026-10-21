@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block extrahead %}
   {{ super() }}
-  <meta name="theme-color" content="#7545ef">
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  {# Web fonts load without blocking render; system serif/sans remain the fallback where Google Fonts is unreachable. #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
 {% endblock %}
 {% block header %}
   {% include "partials/garden-header.html" %}
