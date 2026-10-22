@@ -1,0 +1,785 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/%E7%BE%A4/">
+      
+      
+        <link rel="prev" href="../%E7%AD%89%E4%BB%B7%E5%85%B3%E7%B3%BB%E4%B8%8E%E9%9B%86%E5%90%88%E5%88%86%E7%B1%BB/">
+      
+      
+        <link rel="next" href="../%E5%BE%AA%E7%8E%AF%E7%BE%A4%E3%80%81%E5%8F%98%E6%8D%A2%E7%BE%A4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>群、元素的阶、子群 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">群、元素的阶、子群</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">定义</a>
+        
+      </li>
+    
+      <li>
+        <a href="#abel">交换群（Abel群）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_2">群的阶</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">性质</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#1">定理1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2">定理2</a>
+        
+      </li>
+    
+      <li>
+        <a href="#1_1">推论1</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_4">半群</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_5">性质</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_6">定理</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#3">定理3</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_1">推论2</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_7">群中元素的阶</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">阶</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#1_2">定义1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_2">定义2</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#1_3">定理1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_3">定理2</a>
+        
+      </li>
+    
+      <li>
+        <a href="#3_1">定理3</a>
+        
+      </li>
+    
+      <li>
+        <a href="#4">定理4</a>
+        
+      </li>
+    
+      <li>
+        <a href="#5">定理5</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_9">子群</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#1_4">定义1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#1_5">定理1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_4">定理2</a>
+        
+      </li>
+    
+      <li>
+        <a href="#3_2">定理3</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_5">定义2</a>
+        
+      </li>
+    
+      <li>
+        <a href="#4_1">定理4</a>
+        
+      </li>
+    
+      <li>
+        <a href="#3_3">定义3</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#1_6">推论1</a>
+        
+      </li>
+    
+      <li>
+        <a href="#2_6">推论2</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#5_1">定理5</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/近世代数/群/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>群、元素的阶、子群</h1>
+
+<h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>非空集合G是他的一个代数运算，如果满足以下条件：</p>
+<ul>
+<li>结合律成立</li>
+</ul>
+<div class="arithmatex">\[(a\circ b)\circ c=a\circ(b\circ c)\]</div>
+<ul>
+<li>G中有元素e，叫做G的左单位元，它对G中的每个元素a都有</li>
+</ul>
+<div class="arithmatex">\[e\circ a=a\]</div>
+<ul>
+<li>对G中每个元素a，在G中都有元素<span class="arithmatex">\(a^{-1}\)</span>叫做a的左逆元，使得</li>
+</ul>
+<div class="arithmatex">\[a^{-1}\circ a=e\]</div>
+<h2 id="abel">交换群（Abel群）<a class="headerlink" href="#abel" title="Permanent link">&para;</a></h2>
+<p>定义：如果对G中任意两个元素a，b有</p>
+<div class="arithmatex">\[a\circ b=b\circ a\]</div>
+<p>即G的代数运算满足交换律，则称G为交换群（可换群）或Abel群；否则称其为非交换群（非可换群）或非Abel群</p>
+<blockquote>
+<p>整数集<span class="arithmatex">\(Z\)</span>对于数的普通加法显然做成了一个交换群0是它的单位元，整数-a是整数a的左逆元</p>
+</blockquote>
+<p>例：设G为整数集，问：G对运算<span class="arithmatex">\(a\circ b=a+b+4\)</span>是否成群？</p>
+<blockquote>
+<p>一般来说：对于一个集合，要考察它是否成群，不仅要注意它的元素是什么，更应该注意它的<strong>代数运算</strong>是什么，同一个集合，对这个代数运算可能作成群，但是对另外一个代数运算却不一定，即使对两个不同的代数运算都可以作成群，一般来说都被认为是两个不同的群</p>
+</blockquote>
+<h2 id="_2">群的阶<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>定义：一个群G中包含元素的个数为n，则称n为群G的阶，记为<span class="arithmatex">\(|G|=n\)</span>，无限群的阶称为无限，被认为是大于任意的正数</p>
+<blockquote>
+<p>如<span class="arithmatex">\(|G|&gt;1\)</span>，G既可能是阶大于1的有限群，也有可能是无限群</p>
+</blockquote>
+<p>例：全体n次单位根，对于数的普通乘法作成一个群，这个群记作<span class="arithmatex">\(U_n\)</span>，并称作n次单位根群</p>
+<blockquote>
+<p>n次单位根：n次单位根是复数域上的特殊数，它们是满足以下方程的复数解：<br>
+<span class="arithmatex">\(z^n=1\)</span><br>
+其中，n是正整数。解这个方程得到的复数就是n次单位根。解通常以极坐标形式表示，即<br>
+<span class="arithmatex">\(z^k=e^{2\pi i k/n}\)</span></p>
+</blockquote>
+<h2 id="_3">性质<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">定理1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>群G的左单位元也是右单位元，并且是唯一的</p>
+<h3 id="2">定理2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>群G中任意元素a的左逆元<span class="arithmatex">\(a^{-1}\)</span>也是右逆元，并且唯一</p>
+<h3 id="1_1">推论1<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>在群中消去律成立，即</p>
+<div class="arithmatex">\[ab=ac\Rightarrow b=c\]</div>
+<div class="arithmatex">\[ba=ca\Rightarrow b=c\]</div>
+<blockquote>
+<p>两边分别左乘、右乘<span class="arithmatex">\(a^-1\)</span>即可证明</p>
+</blockquote>
+<h2 id="_4">半群<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>定义：设<span class="arithmatex">\(S\)</span>是一个非空集合，如果他有一个代数运算<strong>满足结合律</strong>，则称S是一个<strong>半群</strong></p>
+<p>如果半群<span class="arithmatex">\(S\)</span>中有元素<span class="arithmatex">\(e\)</span>，它对<span class="arithmatex">\(S\)</span>中的任意元素a都有</p>
+<div class="arithmatex">\[ea=a\]</div>
+<p>则称<span class="arithmatex">\(e\)</span>为半群的一个<strong>左单位元</strong>；如果在<span class="arithmatex">\(S\)</span>中有元素<span class="arithmatex">\(e'\)</span>，它对<span class="arithmatex">\(S\)</span>中的任意元素a都有</p>
+<div class="arithmatex">\[ae'=a\]</div>
+<p>则称<span class="arithmatex">\(e'\)</span>为半群的一个<strong>右单位元</strong></p>
+<p>如果一个半群<span class="arithmatex">\(S\)</span>有单位元（既是左单位元又是右单位元），则称<span class="arithmatex">\(S\)</span>为有单位元的半群，或简称为<strong>幺半群（monoid）</strong></p>
+<h3 id="_5">性质<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>在一个半群中，可能既没有左单位元，也没有右单位元；可能只有左单位元，而没有右单位元；也可能只有右单位元，而没有左单位元。但是，如果既有左单位元又有右单位元，则二者必相等，它就是半群的<strong>唯一的单位元</strong></li>
+</ol>
+<blockquote>
+<p>如正整数集对普通乘法作成一个半群，而且是一个幺半群，1是单位元</p>
+</blockquote>
+<h2 id="_6">定理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="3">定理3<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>设G是一个半群，则G作成群的充要条件是，对G中任意元素a，b方程</p>
+<div class="arithmatex">\[ax=b\quad ya=b\]</div>
+<p>在G中都有解</p>
+<p>证明：必要性：若G作成群则任意元素都有逆元存在，故有方程解</p>
+<div class="arithmatex">\[x=a^{-1}b\quad y=ba^{-1}\]</div>
+<p>充分性：首先，对任意的固定元素<span class="arithmatex">\(b\in G\)</span>，由于上述两个方程总有解，则存在<span class="arithmatex">\(e\)</span>使得<span class="arithmatex">\(eb=b\)</span>，而对于<span class="arithmatex">\(\forall a\in G\)</span>，有<span class="arithmatex">\(bx=a\)</span>总有解<span class="arithmatex">\(c\)</span>，于是<span class="arithmatex">\(bc=a\)</span></p>
+<div class="arithmatex">\[ea=e(bc)=(eb)c=bc=a\]</div>
+<p>即，<span class="arithmatex">\(e\)</span>是G的左单位元</p>
+<p>而<span class="arithmatex">\(ya=e\)</span>对于<span class="arithmatex">\(\forall a\in G\)</span>均有解，则解即为a的左逆元。即任意G中元素有<strong>左逆元</strong></p>
+<h3 id="2_1">推论2<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>有限半群G作成群的充要条件是，在G中两个消去律成立</p>
+<p>证明：必要性：消去律为</p>
+<div class="arithmatex">\[ab=ac\Rightarrow b=c\]</div>
+<div class="arithmatex">\[ba=ca\Rightarrow b=c\]</div>
+<p>若G作成群，则上下式分别左乘和右乘一个$a^{-1}即可自然得到结论成立</p>
+<p>充分性：设<span class="arithmatex">\(|G|=n\)</span>且<span class="arithmatex">\(G=\{a_1,a_2,\dots\}\)</span>，在G中任取两个元素a，b，若半群满足消去律必有</p>
+<div class="arithmatex">\[b\in G=\{aa_1,aa_2,\dots,aa_n\}\]</div>
+<p>即方程<span class="arithmatex">\(ax=b\)</span>在G中总是有解的，同理可证<span class="arithmatex">\(ya=b\)</span>在G中也是有解的，根据<strong>定理3</strong>可以证明有限半群G作成群</p>
+<blockquote>
+<p>充分利用“有限”和“消去律”；要求<strong>群G是有限的是必要的</strong>，如正整数集对乘法作成半群，满足消去律，但是它是无限集，不能作成群。</p>
+</blockquote>
+<p>注：</p>
+<ul>
+<li>如果一个交换群的代数运算用加号“+”表示，常称其为一个加群。单位元用0表示，并称为G的零元；元素a的逆元用-a表示，并称为a的负元。</li>
+<li>例如：整数加群、有理数加群…</li>
+<li>以后的讨论中不管群是否可交换，都常用乘号或者省略这个乘号，并仍称
+为乘法</li>
+</ul>
+<h2 id="_7">群中元素的阶<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>任取<span class="arithmatex">\(a\in G\)</span>，n是一个正整数</p>
+<div class="arithmatex">\[a^0=e,a^n=aa\dots a\]</div>
+<div class="arithmatex">\[a^{-n}=(a^{-1})^n=a^{-1}a^{-1}\dots a^{-1}\]</div>
+<p>则不难推出常见的运算规则在群中也成立，其中m，n为任意整数</p>
+<div class="arithmatex">\[a^ma^n=a^{m+n}\quad (a^m)^n=a^{mn}\]</div>
+<h3 id="_8">阶<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">定义1<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<p>设a为群G的一个元素，使<span class="arithmatex">\(a^n=e\)</span>的最小<strong>正整数</strong>n，叫做元素a的阶</p>
+<p>如果这样的阶不存在，称a的阶为无限。元素a的阶常用<span class="arithmatex">\(|a|\)</span>来表示</p>
+<blockquote>
+<p><span class="arithmatex">\(G=\{1,-1,i,-i\}\)</span>（i是虚数单位），关于数的普通乘法做成一个群，即4次单位根群，其中1的阶是1，-1的阶是2，i和-i的阶都是4<br>
+正有理数乘群<span class="arithmatex">\(Q^+\)</span>中，除了单位元的阶是1外，其余元素的阶均为无限</p>
+</blockquote>
+<h4 id="2_2">定义2<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<p>若群G中每个元素的阶都有限，则称G为<strong>周期群</strong>；若G中除单位元e外，其余元素的阶均无限，则称G为<strong>无扭群</strong>；既不是周期群又不是无扭群的群称为<strong>混合群</strong></p>
+<h3 id="1_3">定理1<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>有限群中的每个元素的阶均有限</p>
+<p>证明：设G为n阶有限群，任取<span class="arithmatex">\(a\in G\)</span>，则<span class="arithmatex">\(a,a^2,\dots,a^n,a^{n+1}\)</span>中必有相等的。设<span class="arithmatex">\(a^s=a^t(1≤t&lt;s≤n+1)\)</span>，则<span class="arithmatex">\(a^{s-t}=e\)</span>，从而a的阶有限</p>
+<blockquote>
+<p>无限群中元素的阶可能无限，也可能有限，甚至每个元素的阶都有限</p>
+</blockquote>
+<p>例：设<span class="arithmatex">\(U_i\)</span>（i是正整数）是全体i次单位根对普通乘法作成的群，即i次单位根群。现在令</p>
+<div class="arithmatex">\[U=\bigcup_{i=1}^{\infty}U_i\]</div>
+<p>则由于m次单位根与一个n次单位根的乘积必定是mn次单位根，故<span class="arithmatex">\(U\)</span>对普通乘法作成群，且是一个无限可交换群</p>
+<h3 id="2_3">定理2<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<p>设群G中的元素的阶是n，则</p>
+<div class="arithmatex">\[a^m=e\Leftrightarrow n|m\]</div>
+<p>证明：设<span class="arithmatex">\(a^m=e\)</span>，并令<span class="arithmatex">\(m=nq+r\)</span>，<span class="arithmatex">\(0≤r&lt;n\)</span>，由上式可得：</p>
+<div class="arithmatex">\[e=a^m=a^{nq+r}=(a^n)^qa^r=a^r\]</div>
+<p>但是因为<span class="arithmatex">\(|a|=n\)</span>不存在更小的正整数使得<span class="arithmatex">\(a^r=e\)</span>，所以<span class="arithmatex">\(r=0\)</span>，也得<span class="arithmatex">\(n|m\)</span></p>
+<p>反之，若<span class="arithmatex">\(n|m\)</span>，令<span class="arithmatex">\(m=nq\)</span>，因a的阶为n，则有</p>
+<div class="arithmatex">\[a^m=a^{nq}=(a^n)^q=e\]</div>
+<p>总结：群G中有元素a，有</p>
+<div class="arithmatex">\[|a|=n\Leftrightarrow a^n=e并且当a^m=e\Leftrightarrow n|m\]</div>
+<h3 id="3_1">定理3<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>若群中元素a的阶是n，则</p>
+<div class="arithmatex">\[|a^k|=\frac{n}{(k,n)}\]</div>
+<blockquote>
+<p>其中k为任意整数，<span class="arithmatex">\((k,n)\)</span>为k与n的正的最公因数</p>
+</blockquote>
+<p>证明：设<span class="arithmatex">\((k,n)=d\)</span>，有<span class="arithmatex">\(n=dn_1,k=dk_1\)</span>，<span class="arithmatex">\((n_1,k_1)=1\)</span>，则由于<span class="arithmatex">\(|a|=n\)</span>，有</p>
+<div class="arithmatex">\[(a^k)^{n_1}=a^{kn_1}=a^{k_1n}=(a^{n})^{k_1}=e\]</div>
+<p>推论1：若群中<span class="arithmatex">\(|a|=st\)</span>，则<span class="arithmatex">\(|a^s|=t\)</span>，其中s，t是正整数</p>
+<p>推论2：若群中<span class="arithmatex">\(|a|=n\)</span>，则<span class="arithmatex">\(|a^k|=n\Leftrightarrow (k,n)=1\)</span></p>
+<h3 id="4">定理4<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>群中a的阶为m，b的阶为n，当<span class="arithmatex">\(ab=ba\)</span>，且<span class="arithmatex">\((m,n)=1\)</span>时，有<span class="arithmatex">\(|ab|=mn\)</span>，即：</p>
+<div class="arithmatex">\[|ab|=|a|\cdot|b|\]</div>
+<p>证明：由已知条件<span class="arithmatex">\((ab)^{mn}=a^{mn}b^{mn}=e\)</span></p>
+<p>其次，若有正整数s使得<span class="arithmatex">\((ab)^s=e\)</span>，则有</p>
+<div class="arithmatex">\[e=(ab)^{sm}=(a^m)^sb^{sm}=b^{sm}\]</div>
+<p>又因为<span class="arithmatex">\(|b|=n\)</span>所以<span class="arithmatex">\(n|sm\)</span>，又因为<span class="arithmatex">\((m,n)=1\)</span>，所以<span class="arithmatex">\(n|s\)</span>，同理有<span class="arithmatex">\(m|s\)</span>，所以<span class="arithmatex">\(mn|s\)</span>，得<span class="arithmatex">\(|ab|=mn\)</span>，即<span class="arithmatex">\(|ab|=|a|\cdot|b|\)</span></p>
+<blockquote>
+<p><span class="arithmatex">\(ab=ba\)</span>这个条件不可或缺，如在有理数域的二阶线性群<span class="arithmatex">\(GL_2(Q)\)</span>，有</p>
+<p><span class="arithmatex">\(a=(\begin{matrix}0&amp;-1\\1&amp;0\end{matrix})\quad b=(\begin{matrix}0&amp;1\\-1&amp;-1\end{matrix})\)</span></p>
+<p>两个元素阶均有限，分别为4,3，但是乘积<span class="arithmatex">\(ab=(\begin{matrix}1&amp;1\\0&amp;1\end{matrix})的阶无限\)</span></p>
+</blockquote>
+<h3 id="5">定理5<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>设G为交换群，且G中所有元素有最大阶m，则G总每个元素必然是m的因数，从而G中每个元素均满足方程<span class="arithmatex">\(x^m=e\)</span></p>
+<blockquote>
+<p>证明：(借助Zsigmondy定理)</p>
+</blockquote>
+<h2 id="_9">子群<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="1_4">定义1<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<p>设G是一个群，H是G的一个非空子集，如果H本身对G的乘法也做成一个群，则称H为群G的一个<strong>子群</strong></p>
+<p>如果|G|&gt;1，则群G至少有两个子群，一个只由单位元e做成的子群{e}，另一个是G本身。这两个子群称为群G的平凡子群。别的子群，如果存在的话，叫做G的<strong>非平凡子群</strong>或者<strong>真子群</strong></p>
+<div class="arithmatex">\[H≤G\quad H&lt;G\]</div>
+<blockquote>
+<p>如正有理数乘群是非零有理数乘群的一个子群，正实数乘群是非零实数乘群的子群</p>
+</blockquote>
+<h3 id="1_5">定理1<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
+<p>设G是群，<span class="arithmatex">\(H≤G\)</span>。则子群H的单位元就是群G的单位元，H中元素a在H中的逆元就是a在群G中的逆元</p>
+<p>证明：设e'是H中的单位元，e是G中的单位元，则</p>
+<div class="arithmatex">\[e'e'=e'=ee'\]</div>
+<p>由消去律得到<span class="arithmatex">\(e'=e\)</span></p>
+<p>同样若a'是a在H中的逆元，<span class="arithmatex">\(a^{-1}\)</span>是a在G中的逆元，则</p>
+<div class="arithmatex">\[a'a=e=a^{-1}a\]</div>
+<p>在群中由消去律得到<span class="arithmatex">\(a'=a^{-1}\)</span></p>
+<h3 id="2_4">定理2<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<p>群G的一个非空子集H作成子群的充要条件是</p>
+<ol>
+<li><span class="arithmatex">\(a,b\in H\Rightarrow ab\in M\)</span></li>
+<li><span class="arithmatex">\(a\in M\Rightarrow a^{-1}\in M\)</span></li>
+</ol>
+<h3 id="3_2">定理3<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<p>群G的一个非空子集H作成子群的充要条件是</p>
+<div class="arithmatex">\[a,b\in H\Rightarrow ab^{-1}\in H\]</div>
+<blockquote>
+<p>这个充要条件也可以改写成<span class="arithmatex">\(a,b\in H\Rightarrow a^{-1}b\in H\)</span><br>
+群G的有限子集H作成子群的充要条件是，H对G的乘法封闭，即：<br>
+<span class="arithmatex">\(a,b\in H\Rightarrow ab\in H\)</span><br>
+利用了有限半群成群的充要条件</p>
+</blockquote>
+<p>例：令H为数域F上行列式等于1的全体n阶方阵作成的集合，由于</p>
+<div class="arithmatex">\[|A|=|B|=1\Rightarrow|AB^{-1}|=1\]</div>
+<p>有<span class="arithmatex">\(A,B\in H\)</span>，有<span class="arithmatex">\(AB^{-1}\in H\)</span>，由定理2可知H作成数域F上的一般线性群<span class="arithmatex">\(GL_n(F)\)</span>的一个子群，这个子群常记作<span class="arithmatex">\(SL_n(F)\)</span>并称为F上的<strong>特殊线性群</strong></p>
+<h3 id="2_5">定义2<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h3>
+<p>令G是一个群，G中元素a如果同G中的每个元素可换，则称a是群G的一个<strong>中心元素</strong></p>
+<p>群G的单位元e总是群G的中心元素，除了e之外可能还有其他中心元素。若群G的中心元素只有e，则称G为<strong>无中心群</strong></p>
+<p>交换群的每个元素都是中心元素</p>
+<p><span class="arithmatex">\(GL_n(F)\)</span>除去单位元还有别的中心元素（如纯量矩阵）</p>
+<blockquote>
+<p>纯量矩阵是指对角线上的元素都相等，而非对角线上的元素都为零的矩阵</p>
+</blockquote>
+<h3 id="4_1">定理4<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>群G的中心元素作成的集合<span class="arithmatex">\(C(G)\)</span>是G的一个子群，称为群G的<strong>中心</strong></p>
+<p>证明：因为<span class="arithmatex">\(e\in C(G)\)</span>，所以<span class="arithmatex">\(C(G)\)</span>非空，对于<span class="arithmatex">\(\forall a,b\in C(G)\)</span>，对于群G中任意的元素x都有</p>
+<div class="arithmatex">\[ax=xa\quad bx=xb\]</div>
+<p>由此</p>
+<div class="arithmatex">\[(ab)x=x(ab)\quad a^{-1}x=xa^{-1}\]</div>
+<blockquote>
+<p>群G的中心明显是群G的一个交换子群，并且显然有G是交换群当且仅当<span class="arithmatex">\(C(G)=G\)</span></p>
+</blockquote>
+<h3 id="3_3">定义3<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<p>设A，B是群G的任意两个非空子集，规定</p>
+<div class="arithmatex">\[AB=\{ab|a\in A,b\in B\}\]</div>
+<div class="arithmatex">\[A^{-1}=\{a^{-1}|a\in A\}\]</div>
+<p>分别称AB为A与B的乘积，<span class="arithmatex">\(A^{-1}为A的逆\)</span></p>
+<p>由此可得对群的任意三个非空子集A，B，C均有</p>
+<div class="arithmatex">\[(AB)C=A(BC)\quad A(B\cup C)=(AB)\cup(AC)\]</div>
+<div class="arithmatex">\[(AB)^{-1}=B^{-1}A^{-1}\]</div>
+<div class="arithmatex">\[(A^{-1})^{-1}=A\]</div>
+<h4 id="1_6">推论1<a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
+<p>设H是群G的一个非空子集，则</p>
+<div class="arithmatex">\[H≤G\Leftrightarrow HH=H\quad \&amp; \quad H^{-1}=H\]</div>
+<h4 id="2_6">推论2<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
+<p>设H是G的一个非空子集，则</p>
+<div class="arithmatex">\[H≤G\Leftrightarrow HH^{-1}=H\]</div>
+<p>特别地，若H是G的一个非空有限子集，则</p>
+<div class="arithmatex">\[H≤G\Leftrightarrow HH=H\]</div>
+<h3 id="5_1">定理5<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>设H，K是群G的两个子群，则</p>
+<div class="arithmatex">\[HK≤G\Leftrightarrow HK=KH\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%AD%89%E4%BB%B7%E5%85%B3%E7%B3%BB%E4%B8%8E%E9%9B%86%E5%90%88%E5%88%86%E7%B1%BB/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 等价关系与集合分类">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                等价关系与集合分类
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E5%BE%AA%E7%8E%AF%E7%BE%A4%E3%80%81%E5%8F%98%E6%8D%A2%E7%BE%A4/" class="md-footer__link md-footer__link--next" aria-label="下一页: 循环群、变换群">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                循环群、变换群
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

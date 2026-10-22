@@ -1,0 +1,1134 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB/3%E7%BB%9F%E8%AE%A1%E5%88%86%E7%B1%BB%E5%99%A8%E5%8F%8A%E5%85%B6%E5%AD%A6%E4%B9%A0/">
+      
+      
+        <link rel="prev" href="../2%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="next" href="../5%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>统计分类器及其学习 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">统计分类器及其学习</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">概率论与统计学习</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">推理</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">贝叶斯公式</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_4">贝叶斯分类器原理</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">贝叶斯分类示例</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">贝叶斯分类器的特点</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_7">贝叶斯决策理论</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">基于最小错误率的贝叶斯决策</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_9">两类问题的错误率</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_10">多类问题的最小错误率</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_11">贝叶斯最小错误率准则</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_12">基于最小风险的贝叶斯决策</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_13">最小平均风险准则的贝叶斯分类器</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_14">示例</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_15">贝叶斯分类中的类条件概率</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_16">朴素贝叶斯分类器</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_17">估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_18">类的先验概率估计</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_19">类条件概率估计</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_20">概率密度的估计思路</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_21">非参数估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_22">区域选定</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#parzen">Parzen窗方法</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_23">识别方法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_24">高斯窗函数</a>
+        
+      </li>
+    
+      <li>
+        <a href="#k">K近邻估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_25">识别方法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_26">参数估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_27">最大似然估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_28">似然函数</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_29">最大似然估计</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_30">示例</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_31">贝叶斯估计</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_32">过程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_33">示例</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_34">最大似然估计与贝叶斯估计的差别</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#gmm">混合高斯模型(GMM)</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_35">高斯混合模型参数估计</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#hmm">隐马尔可夫模型(HMM)</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_36">以序列形式出现的模式</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_37">马尔科夫模型</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_38">离散时间有限状态一阶马尔可夫模型</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_39">隐马尔可夫模型</a>
+        
+      </li>
+    
+      <li>
+        <a href="#hmm_1">HMM的三个基本问题</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_40">估值问题</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_41">前向算法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_42">解码问题</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#viterbi">Viterbi算法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_43">学习问题</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#baum-welch">Baum-Welch算法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#hmm_2">HMM的其他问题</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三上/模式识别/3统计分类器及其学习/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>统计分类器及其学习</h1>
+
+<h2 id="_1">概率论与统计学习<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>判别式模型：<ul>
+<li>将x看做特征空间中的点</li>
+<li>构建判别函数g(x)来决定x属于哪个类别</li>
+<li>关键在于计算x与训练样本<span class="arithmatex">\(x_i\)</span>的内积关系</li>
+</ul>
+</li>
+<li>产生式模型<ul>
+<li>将x看做随机变量</li>
+<li>根据x属于各类别<span class="arithmatex">\(\omega_i\)</span>的概率分布<span class="arithmatex">\(p(x|\omega_i)\)</span>来决定其类别</li>
+<li>关键在于计算不同类别产生“待识别模式”的概率<span class="arithmatex">\(P(x|\omega_i)\)</span></li>
+</ul>
+</li>
+</ul>
+<h3 id="_2">推理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="image.png" width="500px" /></p>
+<p>解决这种逆概率推理问题的理论就是贝叶斯理论</p>
+<h3 id="_3">贝叶斯公式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>条件概率公式为：<span class="arithmatex">\(P(B|A)=\frac{P(AB)}{P(A)}\)</span></p>
+<div class="arithmatex">\[P(B|A)=\frac{P(A|B)P(B)}{P(A)}\]</div>
+<blockquote>
+<p>链式法则：<span class="arithmatex">\(P(a,b,c)=P(a|(b, c))P(b,c)=P(a|(b,c))*P(b|c)*P(c)\)</span></p>
+</blockquote>
+<p>贝叶斯公式的数学表述为：设试验E的样本空间为<span class="arithmatex">\(\Omega\)</span>，A为E的事件，<span class="arithmatex">\(B_1,B_2,\cdots,B_C\)</span>为<span class="arithmatex">\(\Omega\)</span>的一个划分，且<span class="arithmatex">\(P(A)&gt;0\)</span>，<span class="arithmatex">\(P(B_i)&gt;0\)</span>，那么</p>
+<div class="arithmatex">\[P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum_{j=1}^C P(A|B_j)P(B_j)}=\frac{P(A|B_i)P(B_i)}{P(A)}\]</div>
+<h3 id="_4">贝叶斯分类器原理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>统计分类是依据样本在各个维度上的特征值分布来进行分类决策的模式识别算法，如果把样本真实所属的类别作为条件，样本的特征值作为结果，则有</p>
+<ul>
+<li>样本真实类别——条件B</li>
+<li>样本特征值——结果A</li>
+<li>分类决策——逆推理，最终根据概率的大小来做出分类决策</li>
+</ul>
+<p>对于不确定的统计分类，我们已知每个类别的样本取得不同特征向量的概率，现在需要依据某个待识样本的特征向量，计算出该样本属于每一个类的概率</p>
+<ul>
+<li>先验概率<span class="arithmatex">\(P(\omega_i)\)</span>：</li>
+<li>类条件概率<span class="arithmatex">\(P(P(x|\omega_i))\)</span></li>
+<li>后验概率<span class="arithmatex">\(P(\omega_i|x)\)</span></li>
+</ul>
+<p>则可以得到后验概率为<span class="arithmatex">\(\frac{P(x|\omega_i)P(\omega_i)}{P(x)}\)</span></p>
+<h3 id="_5">贝叶斯分类示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>假设目前要确定该照片中的人的性别</p>
+<p><img alt="alt text" src="image-1.png" width="300px" /></p>
+<p>我们可以将“长发”作为一个样本所具有的特征值，我们需要计算的是后验概率<span class="arithmatex">\(P(男|长发)\)</span>和<span class="arithmatex">\(P(女|长发)\)</span></p>
+<p>已知先验概率<span class="arithmatex">\(P(男)=0.5,P(女)=0.5\)</span></p>
+<p>类条件概率：</p>
+<ul>
+<li><span class="arithmatex">\(P(长发|男)=0.05\)</span></li>
+<li><span class="arithmatex">\(P(长发|女)=0.7\)</span></li>
+<li>假设<span class="arithmatex">\(P(男)=0.5,P(女)=0.5\)</span></li>
+</ul>
+<p>那么我们得到后验概率<span class="arithmatex">\(P(男|长发)=\frac{0.05*0.5}{0.05*0.5+0.7*0.5}=0.067\)</span>，<span class="arithmatex">\(P(女|长发)=\frac{0.7*0.5}{0.05*0.5+0.7*0.5}=0.933\)</span></p>
+<blockquote>
+<p>无论选择哪一类都有可能犯错，在各类别先验概率不相等时，后验概率也会发生较大变化</p>
+</blockquote>
+<h3 id="_6">贝叶斯分类器的特点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>先验概率<strong>必须已知</strong></li>
+<li>以新获得的信息对先验概率进行修正</li>
+<li>分类决策<strong>存在错误率</strong></li>
+</ol>
+<h2 id="_7">贝叶斯决策理论<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">基于最小错误率的贝叶斯决策<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">两类问题的错误率<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>观察特征x做出判别的错误率</p>
+<div class="arithmatex">\[P(error|x)=\begin{cases}
+    P(\omega_1|x)&amp;判定\omega_2\\
+    P(\omega_2|x)&amp;判定\omega_1
+\end{cases}\]</div>
+<p>选择其中错误率最小的作为决策</p>
+<h4 id="_10">多类问题的最小错误率<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>判断x属于<span class="arithmatex">\(\omega_i\)</span>的错误率</p>
+<div class="arithmatex">\[P(error|x)=\sum_{j\neq i}^C P(\omega_j|x)=1-P(\omega_i|x)\]</div>
+<p>判断准则为<span class="arithmatex">\(i=\argmin_{1\leq j\leq c}P(\omega_j|x)\)</span></p>
+<h4 id="_11">贝叶斯最小错误率准则<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[g_j(x)=p(x|\omega_j)P(\omega_j)\]</div>
+<p>有<span class="arithmatex">\(i=\argmin_{1\leq j\leq c}g_j(x)\)</span>，则<span class="arithmatex">\(x\in \omega_i\)</span></p>
+<h3 id="_12">基于最小风险的贝叶斯决策<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>判断某人是正常(ω正)还是患者(ω患),将出现以下情况</p>
+<p><img alt="alt text" src="image-2.png" /></p>
+<p>确定决策风险最小：</p>
+<p>做出正常判决的风险：<span class="arithmatex">\(R_正(x)=\lambda_{正\to 正}P(\omega_正|x)+\lambda_{患\to 正}P(\omega_患|x)\)</span></p>
+<p>做出患病判决的风险：<span class="arithmatex">\(R_患(x)=\lambda_{正\to 患}P(\omega_正|x)+\lambda_{患\to 患}P(\omega_患|x)\)</span></p>
+<blockquote>
+<p>计算各类决策风险后，选择风险最小的作为决策</p>
+</blockquote>
+<h4 id="_13">最小平均风险准则的贝叶斯分类器<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>有c个类别<span class="arithmatex">\(\omega_1,\omega_2,\cdots,\omega_c\)</span>，将<span class="arithmatex">\(\omega_i\)</span>类样本判别为<span class="arithmatex">\(\omega_j\)</span>类的代价为<span class="arithmatex">\(\lambda_{ij}\)</span></p>
+<p>则将未知模式判别为<span class="arithmatex">\(\omega_j\)</span>的平均风险为</p>
+<div class="arithmatex">\[\gamma_j(x)=\sum_{i=1}^c\lambda_{ij}P(x|\omega_i)P(\omega_i)\]</div>
+<p>构造判别函数<span class="arithmatex">\(g_j(x)=-\gamma_j(x)\)</span></p>
+<h4 id="_14">示例<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>决策问题：</p>
+<ul>
+<li>判别类别<span class="arithmatex">\(\{\omega_1,\omega_2,\dots,\omega_c\}\)</span>，正常人、癌症早期、癌症晚期</li>
+<li>治疗行为<span class="arithmatex">\(\{\alpha_1,\alpha_2,\dots,\alpha_c\}\)</span>，不治疗、保守治疗、手术、化疗</li>
+</ul>
+<p>风险函数：在类别状态<span class="arithmatex">\(\omega_j\)</span>时，采取行动<span class="arithmatex">\(\alpha_i\)</span>的平均风险为</p>
+<div class="arithmatex">\[\lambda_{手术，癌症早期}=\lambda(\alpha_{手术}|\omega_{癌症早期})\]</div>
+<p>条件风险：观察到某人体特征x，采取行动<span class="arithmatex">\(\alpha_{手术}\)</span>的损失期望为</p>
+<div class="arithmatex">\[\begin{align}
+    R(\alpha_{手术}|x)=\lambda(\alpha_{手术}|\omega_{正常})P(\omega_{正常}|x)\\
+    +\lambda(\alpha_{手术}|\omega_{癌症早期})P(\omega_{癌症早期}|x)\\
+    +\lambda(\alpha_{手术}|\omega_{癌症晚期})P(\omega_{癌症晚期}|x)
+\end{align}\]</div>
+<p>贝叶斯决策论的基本思想是<strong>使统计意义上由于误判而蒙受的损失最小</strong></p>
+<p>贝叶斯风险：对所有x做出决策时，均进行条件风险最小化，总的期望风险R最小，即贝叶斯风险，记作<span class="arithmatex">\(R*\)</span></p>
+<h4 id="_15">贝叶斯分类中的类条件概率<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p><img alt="alt text" src="image-3.png" /></p>
+<h3 id="_16">朴素贝叶斯分类器<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>解决<strong>多特征少样本</strong>贝叶斯分类的一种有效办法是采用朴素贝叶斯分类器</p>
+<p>朴素贝叶斯的一个基本假设是所有特征在类别一致的条件下是<strong>相互独立</strong>的</p>
+<div class="arithmatex">\[p(x|\omega_i)=p(x_1,\dots, x_d|\omega_i)=\prod_{j=1}^d p(x_j|\omega_i)\]</div>
+<h2 id="_17">估计<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="alt text" src="image-17.png" /></p>
+</figure>
+<h3 id="_18">类的先验概率估计<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li>相对比较容易<ul>
+<li>依靠经验</li>
+<li>用训练数据中各类出现的频率来估计</li>
+</ul>
+</li>
+</ul>
+<h3 id="_19">类条件概率估计<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>可以表述为已知c个类别的训练样本集合<span class="arithmatex">\(D_1,D_2,\cdots,D_c\)</span>，估计类条件概率<span class="arithmatex">\(P(x|\omega_i)\)</span></p>
+<ul>
+<li>非常困难<ul>
+<li>概率密度函数包含了一个随机变量的全部信息</li>
+<li>概率密度函数可以是满足下面条件的任何函数</li>
+</ul>
+</li>
+</ul>
+<div class="arithmatex">\[p(x)\geq 0, \quad \int_{-\infty}^{\infty}p(x)dx=1\]</div>
+<h3 id="_20">概率密度的估计思路<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<ol>
+<li>参数估计：根据对问题的一般性认识，假设随机变量服从某种分布，分布函数的参数通过训练数据来估计（如，假设x服从正态分布，要估计的参数就是<span class="arithmatex">\(\mu、\Sigma\)</span>）</li>
+<li>非参数估计：不用模型，只用训练数据本身对概率密度进行估计</li>
+</ol>
+<h2 id="_21">非参数估计<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<p>现在已知训练样本的特征值分布，如何利用直方图统计来计算样本x的概率密度<span class="arithmatex">\(p(x)\)</span>？</p>
+<p><img alt="alt text" src="image-4.png" /></p>
+<p>假设R是d维空间中包含样本x的一个小区域，n个训练样本有k个落入R的范围内，则有</p>
+<div class="arithmatex">\[P(x\in R)\approx \frac{k}{n}\]</div>
+<p>假设R中每一点的概率密度是相等的，则有<span class="arithmatex">\(P(x\in R)=\int_{R}p(x)dx=p(x)\times Vol\)</span>，即</p>
+<div class="arithmatex">\[p_n(x)=\frac{k_n/n}{V_n}\]</div>
+<blockquote>
+<p>非参数估计相当于使用R区域的平均性质来作为一点x的估计，是一种数据的平滑</p>
+</blockquote>
+<h3 id="_22">区域选定<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>当n固定时，V的大小对估计的效果影响很大：过大则平滑过多，不够精确；过小则可能导致在此区域内无样本点，k=0。</p>
+<ol>
+<li>Parzen窗法：区域体积V是样本数n的函数，如：<span class="arithmatex">\(V_n=\frac{1}{\sqrt{n}}\)</span>（显式估计类条件概率密度）</li>
+<li>K-近邻法：落在区域内的样本数k是总样本数n的函数，如<span class="arithmatex">\(k_n=\sqrt{n}\)</span>（估计后验概率，再计算条件概率密度）</li>
+</ol>
+<h4 id="parzen">Parzen窗方法<a class="headerlink" href="#parzen" title="Permanent link">&para;</a></h4>
+<p>定义窗函数</p>
+<div class="arithmatex">\[\phi(x)=\begin{cases}
+    1&amp;|x_j|\leq 1/2\\
+    0&amp;else
+\end{cases}\]</div>
+<figure>
+<p><img alt="alt text" src="image-5.png" width="300px" /></p>
+</figure>
+<div class="arithmatex">\[\phi(\frac{x-x_i}{h_n})=\begin{cases}
+    1&amp;|x_j-x_{ij}|\leq h_n/2&amp; j=1,\dots,d\\
+    0&amp;else
+\end{cases}\]</div>
+<blockquote>
+<p><span class="arithmatex">\(h_n\)</span>为窗的宽度</p>
+</blockquote>
+<p>则超立方体中的样本数<span class="arithmatex">\(k_n=\sum_{i=1}^n\phi(\frac{x_i-x}{h_n})\quad V_n=h^d_n\)</span></p>
+<h5 id="_23">识别方法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h5>
+<p>根据每个类别训练样本计算待识别样本x的类条件概率密度</p>
+<div class="arithmatex">\[p_n(x|\omega_i)=\frac{1}{n_i}\sum_{j=1}^{n_i}\frac{1}{V_n}\phi\left(\frac{x-x_j^i}{h}\right)\]</div>
+<h4 id="_24">高斯窗函数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>方形的窗函数是不连续的，在有限样本条件下得到的概率密度是阶梯型的函数，存在很多不连续点</p>
+<div class="arithmatex">\[\phi(\frac{x-x_i}{h_n})=\frac{1}{(h_n\sqrt{2\pi})}\exp\left(-\frac{(x-x_i)^2}{2h_n^2}\right)\]</div>
+<blockquote>
+<p>高斯窗函数是连续的，在有限样本条件下得到的概率密度是高斯分布的函数，不存在不连续点</p>
+</blockquote>
+<h4 id="k">K近邻估计<a class="headerlink" href="#k" title="Permanent link">&para;</a></h4>
+<p>将一个体积为V的区域放到待识别样本x周围，包含k个训练样本点，其中<span class="arithmatex">\(k_i\)</span>属于<span class="arithmatex">\(\omega_i\)</span>类，总的训练样本数为n，则有：<span class="arithmatex">\(p_n(x,\omega_i)=\frac{k_i}{nV}\)</span></p>
+<h5 id="_25">识别方法<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h5>
+<p>计算与x距离最小的前k个样本，统计其中包含的各类别数目<span class="arithmatex">\(k_i\)</span>，有<span class="arithmatex">\(class=\argmax_{1\leq i\leq c}k_i\)</span></p>
+<h2 id="_26">参数估计<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>预先假设每一个类别的<strong>概率密度函数形式已知</strong>，具体参数未知</p>
+<ol>
+<li>最大似然估计（MLE）</li>
+<li>贝叶斯估计</li>
+</ol>
+<h3 id="_27">最大似然估计<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>假设类条件概率密度形式已知，参数可以表示为参数矢量θ</p>
+<p>为了强调类条件概率密度依赖于<span class="arithmatex">\(\theta\)</span>，记作<span class="arithmatex">\(p(x|\omega_i,\theta_i)\)</span>或者<span class="arithmatex">\(p(x|\theta)\)</span></p>
+<p>最大似然估计的目标是通过求解合适的参数<span class="arithmatex">\(\theta\)</span>，使得样本数据出现的概率最大（最大程度解释观测到的数据）</p>
+<h4 id="_28">似然函数<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>问题：已知样本集D，包含n个样本<span class="arithmatex">\(x_1,x_2,\cdots,x_n\)</span>，每个样本根据分布独立抽取，求似然函数<span class="arithmatex">\(L(\theta|D)\)</span></p>
+<p>假设独立同分布，样本集出现的概率为</p>
+<div class="arithmatex">\[L(\theta)=p(D|\theta)=p(x_1,x_2,\cdots,x_n|\theta)=\prod_{i=1}^n p(x_i|\theta)\]</div>
+<p>定义<span class="arithmatex">\(l(\theta)=\ln p(D|\theta)=\sum_{i=1}^n\ln p(x_i|\theta)\)</span></p>
+<h4 id="_29">最大似然估计<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>寻找一个最优矢量<span class="arithmatex">\(\hat{\theta}\)</span>，使得似然函数<span class="arithmatex">\(l(\theta)\)</span>最大</p>
+<p>即<span class="arithmatex">\(\nabla_{\theta}l=0\)</span></p>
+<h4 id="_30">示例<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>假设样本集<span class="arithmatex">\(D=\{x_1,\dots,x_n\}\)</span>，满足均值为<span class="arithmatex">\(\mu\)</span>，方差为<span class="arithmatex">\(\sigma^2\)</span>的正态分布，推导单变量高斯正态分布参数的最大似然估计</p>
+<p><span class="arithmatex">\(p(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\)</span></p>
+<p>似然函数为</p>
+<p>有<span class="arithmatex">\(l(\theta)=\sum_{i=1}^n\ln p(x_i|\theta)=\sum_{i=1}^n\ln\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x_i-\mu)^2}{2\sigma^2}\right)\)</span></p>
+<div class="arithmatex">\[\frac{\partial l(\theta)}{\partial \mu}=\frac{1}{\sigma^2}\sum_{i=1}^n(x_i-\mu)=\frac{1}{\sigma^2}\sum_{i=1}^nx_i-\frac{n}{\sigma^2}\mu=0\]</div>
+<p>得<span class="arithmatex">\(\mu=\frac{1}{n}\sum_{i=1}^nx_i\)</span>，<span class="arithmatex">\(\sigma^2=\frac{1}{n}\sum_{i=1}^n(x_i-\mu)^2\)</span></p>
+<h3 id="_31">贝叶斯估计<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<h4 id="_32">过程<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<ul>
+<li>已知独立同分布训练样本集D</li>
+<li>已知类条件概率密度函数<span class="arithmatex">\(p(x|\theta)\)</span>的形式，但是<span class="arithmatex">\(\theta\)</span>未知</li>
+<li>已知参数<span class="arithmatex">\(\theta\)</span>的先验概率密度函数<span class="arithmatex">\(p(\theta)\)</span></li>
+</ul>
+<p>求在已知数据集<span class="arithmatex">\(D\)</span>条件下，类条件概率密度函数<span class="arithmatex">\(p(x|D)\)</span></p>
+<ol>
+<li>确定<span class="arithmatex">\(\theta\)</span>的先验分布</li>
+<li>计算样本联合分布<span class="arithmatex">\(p(D|\theta)\)</span></li>
+<li>利用贝叶斯公式求<span class="arithmatex">\(\theta\)</span>的后验分布<span class="arithmatex">\(p(\theta|D)=\frac{p(D|\theta)p(\theta)}{p(D)}\)</span></li>
+<li>求出贝叶斯估计值<span class="arithmatex">\(\hat{\theta}=\int_{\theta}\theta p(\theta|D)d\theta\)</span></li>
+</ol>
+<p><span class="arithmatex">\(\theta\)</span>是一个随机变量，<span class="arithmatex">\(\theta\)</span>以一定的概率分布<span class="arithmatex">\(p(\theta)\)</span>所有可能的值</p>
+<ul>
+<li>学习过程：估计<span class="arithmatex">\(p(\theta|D)\)</span></li>
+<li>计算过程：计算<span class="arithmatex">\(p(x|D)\)</span></li>
+</ul>
+<p>根据参数<span class="arithmatex">\(\theta\)</span>的后验分布，计算x的概率密度函数</p>
+<blockquote>
+<p>贝叶斯估计的本质：通过贝叶斯决策得到参数θ的最优估计，使得总期望风险最小</p>
+</blockquote>
+<div class="arithmatex">\[\begin{align}
+    p(x|D)=\int p(x,\theta|D)d\theta\\
+    =\int p(x|\theta,D)p(\theta|D)d\theta\\
+    =\int p(x|\theta)p(\theta|D)d\theta
+\end{align}\]</div>
+<h4 id="_33">示例<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>已知概率密度函数满足正态分布，其中方差<span class="arithmatex">\(\sigma^2\)</span>已知，均值<span class="arithmatex">\(\mu\)</span>未知，假设<span class="arithmatex">\(\mu\)</span>的先验概率满足正态分布，即</p>
+<div class="arithmatex">\[p(x|\mu)\sim N(\mu,\sigma^2)\quad p(\mu)\sim N(\mu_0,\sigma_0^2)\]</div>
+<p>估计x的概率密度函数</p>
+<div class="arithmatex">\[p(x|D)=\int p(x|\mu)p(\mu|D)d\mu\]</div>
+<blockquote>
+<p>其中<span class="arithmatex">\(p(\mu |D)=\frac{p(D|\mu)p(\mu)}{\int p(D|\mu)p(\mu)d\mu}\)</span></p>
+</blockquote>
+<h3 id="_34">最大似然估计与贝叶斯估计的差别<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<ul>
+<li>最大似然估计：<span class="arithmatex">\(\theta\)</span>是一个确定未知矢量</li>
+<li>贝叶斯估计：<span class="arithmatex">\(\theta\)</span>是一个随机变量，<span class="arithmatex">\(\theta\)</span>以一定的概率分布<span class="arithmatex">\(p(\theta)\)</span>所有可能的值</li>
+</ul>
+<h2 id="gmm">混合高斯模型(GMM)<a class="headerlink" href="#gmm" title="Permanent link">&para;</a></h2>
+<p>复杂的概率密度模型：可以由多个简单的密度函数混合而成</p>
+<div class="arithmatex">\[p(x|\theta)=\sum_{k=1}^K a_kp_k(x|\theta_k)\quad a_k&gt;0,\sum_{k=1}^K a_k=1\]</div>
+<p>高斯混合模型（GMM）：由多个高斯密度函数混合，用于<strong>逼近复杂的概率密度</strong></p>
+<div class="arithmatex">\[p(x)=\sum_{k=1}^Ka_kN(x;\mu_k,\Sigma_k)\]</div>
+<h3 id="_35">高斯混合模型参数估计<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<ol>
+<li>使用最大似然法估计。可写出GMM的对数似然函数l(θ) 并求出l(θ) 关于θ中每一个参数
+的偏导数；但直接令偏导数等于0求极值会导致一个复杂多元超越方程组，很难得到解析解</li>
+<li>使用<strong>期望最大化算法</strong>(EM)估计</li>
+</ol>
+<p>参数估计中存在两组未知信息</p>
+<ol>
+<li>GMM的参数<span class="arithmatex">\(\theta\)</span></li>
+<li>每个样本<span class="arithmatex">\(x_i\)</span>产生自哪一个分量高斯分布？用<span class="arithmatex">\(Y=\{y_1,\dots,y_n\}\)</span>表示这一组待估计信息，其中<span class="arithmatex">\(y_i\)</span>表示第i个样本由第<span class="arithmatex">\(y_i\)</span>个分量高斯分布生成</li>
+</ol>
+<figure>
+<p><img alt="alt text" src="image-6.png" width="500px" /></p>
+<p><img alt="alt text" src="image-7.png" width="500px" /></p>
+<p><img alt="alt text" src="image-8.png" width="500px" /></p>
+<p><img alt="alt text" src="image-9.png" width="500px" /></p>
+</figure>
+<h2 id="hmm">隐马尔可夫模型(HMM)<a class="headerlink" href="#hmm" title="Permanent link">&para;</a></h2>
+<h3 id="_36">以序列形式出现的模式<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>在很多问题中，模式以序列形式出现的，例如视频、语音、基因序列等。如将这序列信号采用特征矢量的方式描述，会损失信号的先后次序变化信息。</p>
+<figure>
+<p><img alt="alt text" src="image-10.png" width="500px" /></p>
+</figure>
+<p>以序列出现的模式可以表示为</p>
+<div class="arithmatex">\[V^T=\{v_1,v_2,\cdots,v_T\}\]</div>
+<blockquote>
+<p>其中T表示序列长度，序列中的元素<span class="arithmatex">\(v_i\)</span>称为时刻i的观察值</p>
+</blockquote>
+<p>如果希望采用贝叶斯分类器识别以序列形式出现的模式，就需要构建<strong>描述序列的概率密度函数</strong>，计算每个类别产生出需要识别序列的概率密度</p>
+<h3 id="_37">马尔科夫模型<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p>由若干状态构成，模型当前状态只依赖于前一时刻的状态，与之后的状态无关</p>
+<p>马尔科夫过程：由马尔科夫模型所产生的一类状态转移过程</p>
+<h3 id="_38">离散时间有限状态一阶马尔可夫模型<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p>一阶马尔科夫模型由<strong>M个状态</strong><span class="arithmatex">\(W=\{w_1,w_2,\cdots,w_M\}\)</span>构成，在每个时刻t，模型处于某个状态<span class="arithmatex">\(w(t)\in W\)</span>，经过<strong>T个时刻</strong>，产生出一个长度为T的状态序列<span class="arithmatex">\(W^T=w(1),w(2),\cdots,w(T)\)</span></p>
+<ul>
+<li>状态转移概率<span class="arithmatex">\(a_{ij}\)</span>，模型在t-1时刻状态为<span class="arithmatex">\(w_i\)</span>，而在时刻t状态为<span class="arithmatex">\(w_j\)</span>的概率</li>
+</ul>
+<div class="arithmatex">\[a_{ij}=P(w(t)=w_j|w(t-1)=w_i)\]</div>
+<ul>
+<li>一阶马尔科夫模型中，<span class="arithmatex">\(a_{ij}\)</span>完全由t-1时刻的状态决定，而与时刻t无关</li>
+</ul>
+<p>定义模型初始于状态<span class="arithmatex">\(w_i\)</span>的概率为<span class="arithmatex">\(\pi_i\)</span></p>
+<p>完整的一阶马尔科夫模型可以用参数<span class="arithmatex">\(\theta=(\pi,\{a_{ij}\})\)</span>表示</p>
+<div class="arithmatex">\[\pi=\pi_1,\dots \pi_M,\quad A=\left[\begin{matrix}
+    a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1M}\\
+    a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2M}\\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+    a_{M1} &amp; a_{M2} &amp; \cdots &amp; a_{MM}
+\end{matrix}\right]\]</div>
+<p>且参数应该满足<span class="arithmatex">\(\sum_{i=1}^M\pi_i=1,\quad, \sum_{j=1}^Ma_{ij}=1\)</span></p>
+<p>模型输出状态序列的概率可以由<strong>初始状态概率与各次状态转移概率相乘</strong>得到</p>
+<figure>
+<p><img alt="alt text" src="image-11.png" width="500px" /></p>
+</figure>
+<h3 id="_39">隐马尔可夫模型<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p>HMM的内部是一个马尔科夫模型，每一时刻都依据概率发生状态转移。但状态转移的过程是<strong>观察不到的</strong>，所能够观察到的是每一时刻模型根据所处的状态<strong>产生</strong>的一个**“观察值”序列**<span class="arithmatex">\(V^T=v(1),v(2),\cdots,v(T)\)</span></p>
+<p>HMM是一个双重随机过程，由两个随机过程组成：</p>
+<ol>
+<li>隐状态序列：由初始状态<span class="arithmatex">\(w_i\)</span>和状态转移概率<span class="arithmatex">\(\{a_{ij}\}\)</span>决定，<span class="arithmatex">\(W^T=w(1),w(2),\cdots,w(T)\)</span></li>
+<li>观察值序列：由状态<span class="arithmatex">\(w_i\)</span>和观察概率<span class="arithmatex">\(\{b_{ij}\}\)</span>决定，<span class="arithmatex">\(V^T=v(1),v(2),\cdots,v(T)\)</span></li>
+</ol>
+<blockquote>
+<p>隐状态输出的观察值可以是离散值，连续值，也可以是一个矢量</p>
+</blockquote>
+<p>以离散HMM为例，隐状态可能输出的观察集合为<span class="arithmatex">\(v(t)\in V=\{v_1,v_2,\cdots,v_K\}\)</span>，第i个状态输出第j个观察值的概率为<span class="arithmatex">\(b_{ij}=P(v_j|w_i)\)</span></p>
+<p>HMM的完整参数为<span class="arithmatex">\(\theta=(\pi,\{a_{ij}\},\{b_{ij}\})\)</span>，其中<span class="arithmatex">\(\{b_{ij}\}\)</span>为<span class="arithmatex">\(M\times K\)</span>的矩阵，表示第i个状态输出第j个观察值的条件概率</p>
+<h3 id="hmm_1">HMM的三个基本问题<a class="headerlink" href="#hmm_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>估值问题：已知一个HMM，其参数已知，计算模型输出特定观察序列<span class="arithmatex">\(V^T\)</span>的概率</li>
+<li>解码问题：已知一个HMM，其参数已知，计算模型最有可能输出观察序列<span class="arithmatex">\(V^T\)</span>的隐状态转移序列<span class="arithmatex">\(W^{T}\)</span></li>
+<li>学习问题：已知一个观察序列<span class="arithmatex">\(V^T\)</span>，估计HMM的参数<span class="arithmatex">\(\theta\)</span></li>
+</ol>
+<h3 id="_40">估值问题<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>一个HMM产生观察序列<span class="arithmatex">\(V^T\)</span>可由下式计算</p>
+<div class="arithmatex">\[\begin{align*}
+    P(V^T|\theta)=\sum_{r=1}^{r_{max}}P(V^T,W_r^T|\theta)\\
+    =\sum_{r=1}^{r_{max}}P(V^T|W_r^T,\theta)P(W_r^T|\theta)\\
+    \\
+    P(V^T|W_r^T,\theta)=\prod_{t=1}^T b_{w_r(t)v(t)}\\
+    P(W^T_r|\theta)=\pi_{w_r(1)}\prod_{t=1}^{T-1}a_{w_r(t)w_r(t+1)}
+\end{align*}\]</div>
+<blockquote>
+<p><span class="arithmatex">\(r_{max}\)</span>表示HMM所有可能的状态转移序列数</p>
+</blockquote>
+<h4 id="_41">前向算法<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>估值问题的计算复杂度为<span class="arithmatex">\(O(M^T ×T)\)</span>。当状态数M较多，序列的长度T较长时，计算量大。随着序列长度的增加，计算复杂度呈指数增长</p>
+<p>事实上，计算过程中有很多重复项只需要计算1 次即可，这样就可以有效地减小计算量</p>
+<p>在每个节点上定义<span class="arithmatex">\(\alpha_i(t)\)</span>值，表示HMM在第t时刻处于第i个状态，并且输出序列是<span class="arithmatex">\(v(1),\dots, v(t)\)</span>的概率</p>
+<figure>
+<p><img alt="" src="image-12.png" width="300px" /></p>
+</figure>
+<blockquote>
+<p><span class="arithmatex">\(\alpha_i(1)=\pi_ib_{iv(1)}\)</span>
+<span class="arithmatex">\(\alpha_i(2)=\left[\sum_{j=1}^M\alpha_j(1)a_{ji}\right]b_{iv(2)}\)</span><br>
+<span class="arithmatex">\(\alpha_i(3)=\left[\sum_{j=1}^M\alpha_j(2)a_{ji}\right]b_{iv(3)}\)</span><br>
+<span class="arithmatex">\(\vdots\)</span></p>
+</blockquote>
+<p>那么根据以上迭代算式，得到最终的<span class="arithmatex">\(P(V^T|\theta)=\sum_{i=1}^M\alpha_i(T)\)</span></p>
+<h3 id="_42">解码问题<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<p>一个例子：如果知道此人连续<strong>三天的活动</strong>分别为<strong>散步、做家务和购物</strong>，推测这三天中该城市最有可能的<strong>天气状况</strong></p>
+<blockquote>
+<p>解码问题实际上关心的是如何根据模型输出的结果（观察序列）来推测产生出该结果的内部机理（状态转移序列）的问题</p>
+</blockquote>
+<p>需要求解如下优化问题</p>
+<div class="arithmatex">\[W*=\argmax_{W^T} P(W^T|V^T,\theta)\]</div>
+<p>根据贝叶斯公式：<span class="arithmatex">\(P(W^T|V^T,\theta)\frac{P(V^T|W^T,\theta)P(W^T|\theta)}{P(V^T|\theta)}\)</span></p>
+<p>解码问题可以被转化为求解如下优化问题</p>
+<div class="arithmatex">\[\argmax_{W^T} P(V^T|W_r^T,\theta)P(W_r^T|\theta)\]</div>
+<h4 id="viterbi">Viterbi算法<a class="headerlink" href="#viterbi" title="Permanent link">&para;</a></h4>
+<p>在每个节点上定义<span class="arithmatex">\(\delta_i(t)\)</span>值，表示HMM在第t时刻处于第i个状态，并且输出序列是<span class="arithmatex">\(v(1),\dots, v(t)\)</span>最优路径的概率值</p>
+<figure>
+<p><img alt="alt text" src="image-13.png" width="300px" /></p>
+</figure>
+<blockquote>
+<p><span class="arithmatex">\(\delta_i(1)=\pi_i b_{iv(1)}\)</span><br>
+<span class="arithmatex">\(\delta_i(t+1)=\max_{1\leq j\leq M}\left[\delta_j(t)a_{ji}b_{iv(t+1)}\right]\)</span><br></p>
+</blockquote>
+<h3 id="_43">学习问题<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<p>如何根据一组训练模式的观察序列集和V学习HMM参数<span class="arithmatex">\(\theta\)</span></p>
+<p>HMM描述的是观察序列发生的概率，所以对其的学习仍然是一个<strong>参数估计问题</strong>，采用最大似然估计方法求解</p>
+<div class="arithmatex">\[\theta*=\argmax_{\theta} P(V|\theta)\]</div>
+<blockquote>
+<p>由于状态转移序列是隐含的，所以HMM的参数需要采用EM算法进行迭代估计</p>
+</blockquote>
+<h4 id="baum-welch">Baum-Welch算法<a class="headerlink" href="#baum-welch" title="Permanent link">&para;</a></h4>
+<p>也称为前向后向算法，先设定一个转移概率的初值，然后获得对该初值的一个修正，反复迭代直至收敛</p>
+<p>为计算<span class="arithmatex">\(\theta=(\pi,A,B)\)</span>，定义变量<span class="arithmatex">\(\alpha,\beta,\gamma\)</span></p>
+<ul>
+<li><span class="arithmatex">\(\alpha\)</span>：<span class="arithmatex">\(\alpha_i(t-1)\)</span>表示第t-1时刻HMM处于状态<span class="arithmatex">\(w_i\)</span>的观察序列，并在<span class="arithmatex">\(1\to t-1\)</span>期间产生出观察序列<span class="arithmatex">\(V^{1\to t-1}\)</span>的概率</li>
+<li>
+<p><span class="arithmatex">\(\beta\)</span>：<span class="arithmatex">\(\beta_j(t)\)</span>表示第t时刻HMM处于状态<span class="arithmatex">\(w_j\)</span>的观察序列，并在<span class="arithmatex">\(t+1\to T\)</span>期间产生出观察序列<span class="arithmatex">\(V^{t+1\to T}\)</span>的概率</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\alpha\)</span>值的计算同前向算法，由第一列向最后一列迭代</p>
+</li>
+</ul>
+<div class="arithmatex">\[\begin{align*}
+    \alpha_i(1)=\pi_i b_{iv(1)}\\
+    \alpha_t(t+1)=\left[\sum_{j=1}^M\alpha_j(t)a_{ji}\right]b_{iv(t+1)}
+\end{align*}\]</div>
+<ul>
+<li><span class="arithmatex">\(\beta\)</span>值的计算与<span class="arithmatex">\(\alpha\)</span>值类似，但是是由最后一列向第一列迭代</li>
+</ul>
+<div class="arithmatex">\[\begin{align*}
+    \beta_j(T)=1\\
+    \beta_j(t)=\sum_{i=1}^M\beta_i(t+1)a_{ij}b_{jv(t+1)}
+\end{align*}\]</div>
+<ul>
+<li><span class="arithmatex">\(\gamma\)</span>值表示相邻两列任意两个节点之间：<span class="arithmatex">\(\gamma_{ij}(t)\)</span>表示当HMM输出观察序列<span class="arithmatex">\(V^T\)</span>时，在<span class="arithmatex">\(t-1\)</span>时刻处于<span class="arithmatex">\(w_i\)</span>，在<span class="arithmatex">\(t\)</span>时刻处于<span class="arithmatex">\(w_j\)</span>的概率</li>
+</ul>
+<div class="arithmatex">\[\begin{align*}
+    \gamma_{ij}(t)=P[w(t-1)=w_i,w(t)=w_j|V^T,\theta]\\
+    =\frac{P[w(t-1)=w_i,w(t)=w_j,V^T|\theta]}{P(V^T|\theta)}\\
+    =\frac{\alpha_i(t-1)a_{ij}b_{jv(t)}\beta_j(t)}{P(V^T|\theta)}
+\end{align*}\]</div>
+<figure>
+<p><img alt="alt text" src="image-14.png" width="400px" /></p>
+</figure>
+<ul>
+<li>
+<p>当t=1，有<span class="arithmatex">\(\gamma_j(1)=\frac{\pi_jb_{jv(1)}\beta_j(1)}{P(V^T|\theta)}\)</span></p>
+</li>
+<li>
+<p>有了<span class="arithmatex">\(\gamma\)</span>值，就可以计算<span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>和<span class="arithmatex">\(\pi\)</span>的值</p>
+</li>
+</ul>
+<div class="arithmatex">\[\pi_i=P[w(1)=w_i|V^T,\theta]=\gamma_i(1)\]</div>
+<ul>
+<li>从1到T时刻，HMM由状态<span class="arithmatex">\(w_i\)</span>转移到状态<span class="arithmatex">\(w_j\)</span>的期望次数为<span class="arithmatex">\(\sum_{t=2}^T\gamma_{ij}(t)\)</span>，而由状态<span class="arithmatex">\(w_i\)</span>转移到任意一个状态的期望次数<span class="arithmatex">\(\sum_{t=2}^T\sum_{k=1}^M\gamma_{ik}(t)\)</span>，<span class="arithmatex">\(a_{ij}\)</span>的迭代公式为</li>
+</ul>
+<div class="arithmatex">\[a_{ij}=\frac{\sum_{t=2}^T\gamma_{ij}(t)}{\sum_{t=2}^T\sum_{k=1}^M\gamma_{ik}(t)}\]</div>
+<ul>
+<li>在1到T时刻，HMM在状态<span class="arithmatex">\(w_i\)</span>输出观察值<span class="arithmatex">\(v_k\)</span>的期望次数为<span class="arithmatex">\(\sum_{t=1,v(t)=v_k}^T\sum_{l=1}^M\gamma_{li}(t)\)</span>，而在状态<span class="arithmatex">\(w_i\)</span>输出任意一个观察值的期望次数<span class="arithmatex">\(\sum_{t=1}^T\sum_{l=1}^M\gamma_{li}(t)\)</span>，<span class="arithmatex">\(b_{ij}\)</span>的迭代公式为</li>
+</ul>
+<div class="arithmatex">\[b_{ij}=\frac{\sum_{t=1,v(t)=v_k}^T\sum_{l=1}^M\gamma_{li}(t)}{\sum_{t=1}^T\sum_{l=1}^M\gamma_{li}(t)}\]</div>
+<figure>
+<p><img alt="alt text" src="image-15.png" width="400px" /></p>
+</figure>
+<h3 id="hmm_2">HMM的其他问题<a class="headerlink" href="#hmm_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>连续HMM：在观察序列中每个观察值是一个特征矢量，相应的模型中输出概率就需要用一个概率密度函数描述，其函数形式需要假设，通常使用GMM</li>
+<li>模型的拓扑结构</li>
+</ul>
+<p><img alt="alt text" src="image-16.png" width="500px" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../2%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 模式识别系统">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                模式识别系统
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/" class="md-footer__link md-footer__link--next" aria-label="下一页: 特征提取">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                特征提取
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,642 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E5%8F%8A%E6%A0%88%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      
+      
+        <link rel="prev" href="../RISC-V%E6%B1%87%E7%BC%96%26%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="next" href="../RISC-V%E6%8C%87%E4%BB%A4%E8%A1%A8%E7%A4%BA/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>过程调用及栈的使用 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">过程调用及栈的使用</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">过程调用的步骤</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_2">过程调用指令</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">过程调用相关的寄存器</a>
+        
+      </li>
+    
+      <li>
+        <a href="#risc-v">RISC-V过程调用（人为设置返回地址）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_4">栈的概念</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">栈的使用</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">过程调用时栈的变化</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">用栈实现递归</a>
+        
+      </li>
+    
+      <li>
+        <a href="#sort">实现sort过程（非叶过程）</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#rv">外层循环RV实现</a>
+        
+      </li>
+    
+      <li>
+        <a href="#rv_1">内层循环RV实现</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/计算机组成原理/过程调用及栈的使用/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>过程调用及栈的使用</h1>
+
+<h2 id="_1">过程调用的步骤<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>调用者caller vs. 被调用者callee</li>
+<li>Caller将参数放在过程可以访问的寄存器x10~x17/a0-a7</li>
+<li>Caller将控制权交给过程(Callee)</li>
+<li>(Callee)获取过程所需的存储资源</li>
+<li>(Callee)执行过程中的操作</li>
+<li>(Callee)将结果值放在调用程序可以访问到的寄存器s0~s11</li>
+<li>(Callee)返回调用位置(x1/ra中的地址)，控制权交还调用者</li>
+</ul>
+<h2 id="_2">过程调用指令<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>过程调用<ul>
+<li><code>jal x1, ProcedureAddress</code><ul>
+<li>讲下一条指令的地址保存在x1/ra中</li>
+<li>跳转到目标地址ProcedureAddress</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过程返回<ul>
+<li><code>jalr x0, 0(x1)</code><ul>
+<li>类似<code>jal</code>，但是跳转到0+x1中保存的地址</li>
+<li>把x0用作目的寄存器（实际x0不会被改变）</li>
+<li>同样可用于跳转到计算出的位置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_3">过程调用相关的寄存器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>RISC-V实现过程调用的的相关寄存器<ul>
+<li>返回地址寄存器 <code>x1(ra)</code></li>
+<li>参数寄存器 <code>x10-x17(a0-a7)</code></li>
+<li>返回值寄存器 <code>x10-x11(a0-a1)</code></li>
+<li>保存寄存器 <code>x8,x9,x18-x27(s0,s1,s2-s11)</code></li>
+<li>临时寄存器 <code>x5-x7,x28-x31(t0-t2,t3-t6)</code></li>
+<li>栈指针 <code>x2(sp)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="risc-v">RISC-V过程调用（人为设置返回地址）<a class="headerlink" href="#risc-v" title="Permanent link">&para;</a></h2>
+<p>C语言函数调用</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="kt">int</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">){</span>
+</span><span id="__span-0-2"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1">1000|mv a0, s0
+</span><span id="__span-1-2">1004|mv a1, s1
+</span><span id="__span-1-3">1008|addi ra, zero, 1016 # ra=1016
+</span><span id="__span-1-4">1012|j sum # jump to sum
+</span><span id="__span-1-5">1016|...  # 跳转返回下条指令
+</span><span id="__span-1-6">... |
+</span><span id="__span-1-7">2000|sum: add a0, a0, a1
+</span><span id="__span-1-8">2004|jr ra  # jalr x0, ra, 0
+</span></code></pre></div>
+<blockquote>
+<p>伪指令j跳转到给定的地址</p>
+</blockquote>
+<p>例：过程嵌套问题</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="kt">int</span><span class="w"> </span><span class="nf">numSquare</span><span class="p">(){</span>
+</span><span id="__span-2-2"><span class="w">    </span><span class="n">x</span><span class="o">=</span><span class="n">mult</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-2-3"><span class="w">    </span><span class="p">...;</span><span class="w">    </span><span class="c1">//5000</span>
+</span><span id="__span-2-4"><span class="p">}</span>
+</span><span id="__span-2-5">
+</span><span id="__span-2-6"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-2-7"><span class="w">    </span><span class="p">...;</span>
+</span><span id="__span-2-8"><span class="w">    </span><span class="n">numSqaure</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-2-9"><span class="w">    </span><span class="p">...;</span><span class="w">    </span><span class="c1">//4080</span>
+</span><span id="__span-2-10"><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>main调用过程numSquare，寄存器ra保存返回地址4080</li>
+<li>过程numSquare调用过程mult，寄存器ra需要保存返回地址5000，4080被覆盖</li>
+<li>调用mult前需提前保存寄存器ra中的返回地址4080</li>
+</ul>
+<p>RISC-V过程调用时对需要保护现场的寄存器有如下约定</p>
+<ul>
+<li>保存 x1(ra), sp, gp, tp, x8-x9(s0-s1),x18-x27(s2-s11)</li>
+<li>不保存 x10-x17(a0-a7), x5-x7(t0-t2), x28-x31(t3-t6)</li>
+</ul>
+<h2 id="_4">栈的概念<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>客栈：货栈都指的是临时“保存”人或物的地方</p>
+</li>
+<li>
+<p>在计算机中，是一种数据结构，满足LIFO后进先出原则，在调用函数的时候可以保存寄存器的旧值（主存中），在调用返回时并还原到寄存器中</p>
+</li>
+<li>具有<strong>压栈</strong>和<strong>弹栈</strong>两个操作</li>
+</ul>
+<h2 id="_5">栈的使用<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>x86指令集有压栈和出栈命令</li>
+<li>RISC-V没有对应指令</li>
+<li><code>sp(x2)</code>是RISC-V中的栈指针寄存器，用来保存<strong>栈顶地址</strong></li>
+<li>按照惯例，RISC-V中的栈按照从高到低的地址顺序增长（栈底高地址，栈顶低地址）<ul>
+<li>压栈，指针向下移动，sp减少</li>
+<li>弹栈，指针向上移动，sp增加</li>
+</ul>
+</li>
+<li>栈指针寄存器sp总是<strong>指向栈中最后使用的空间</strong></li>
+<li><strong>首先将栈指针减少所需的空间量，然后用需要保存的信息填充相应的存储空间</strong></li>
+</ul>
+<h2 id="_6">过程调用时栈的变化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>压栈</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1">addi sp, sp, -24 //预留栈空间
+</span><span id="__span-3-2">sd x5, 16(sp)   //先压入x5保存的值
+</span><span id="__span-3-3">sd x6, 8(sp)    //先压入x6保存的值
+</span><span id="__span-3-4">sd x20,0(sp)
+</span></code></pre></div>
+<ul>
+<li>出栈</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1">ld x20,0(sp)
+</span><span id="__span-4-2">ld x6, 8(sp)
+</span><span id="__span-4-3">ld x5, 16(sp)
+</span><span id="__span-4-4">addi sp, sp, 24 //回复栈指针
+</span></code></pre></div>
+<p>例：过程嵌套</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="kt">int</span><span class="w"> </span><span class="nf">numSquare</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">){</span>
+</span><span id="__span-5-2"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mult</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-5-3"><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1">numSquare:  # a0=x,a1=y
+</span><span id="__span-6-2">    addi sp,sp,-8   # 预留栈空间
+</span><span id="__span-6-3">    sw ra, 4(sp)    # ra寄存器入栈
+</span><span id="__span-6-4">    sw al, 0(sp)    # 参数寄存器al值y入栈
+</span><span id="__span-6-5">
+</span><span id="__span-6-6">    mv al, a0       # al=a0=x，为mult(x, x)准备参数
+</span><span id="__span-6-7">    jal mult        # 调用mult计算x*x
+</span><span id="__span-6-8">    lw al, 0(sp)    #  出栈，恢复a1的值y
+</span><span id="__span-6-9">
+</span><span id="__span-6-10">    add a0, a0, a1 # x*x+y
+</span><span id="__span-6-11">
+</span><span id="__span-6-12">    lw ra, 4(sp) # 返回地址出栈
+</span><span id="__span-6-13">    addi sp, sp, 8 # 恢复栈指针
+</span><span id="__span-6-14">    jr ra
+</span><span id="__span-6-15">mult:…
+</span></code></pre></div>
+<h2 id="_7">用栈实现递归<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">fact</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+</span><span id="__span-7-2"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-4"><span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fafact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-7-6"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-7"><span class="p">}</span>
+</span></code></pre></div>
+<p>设定：参数n在<code>x10</code>中，结果在<code>x10</code>中</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1">fact:
+</span><span id="__span-8-2">    addi sp, sp, -16
+</span><span id="__span-8-3">    sd x1, 8(sp) # 返回地址存在栈中
+</span><span id="__span-8-4">    sd x10, 0(sp)
+</span><span id="__span-8-5">    addi x5 , x10, -1
+</span><span id="__span-8-6">
+</span><span id="__span-8-7">    bge x5, x0, L1 # 判断参数n-1是否≥0,如果是，跳转至L1
+</span><span id="__span-8-8">    addi x10, x0, 1 返回值1并且存入寄存器
+</span><span id="__span-8-9">    addi sp, sp, 16 # 释放2个双字空间
+</span><span id="__span-8-10">    jalr x0, 0(x1) # 返回fact调用者
+</span><span id="__span-8-11">
+</span><span id="__span-8-12">L1:
+</span><span id="__span-8-13">    addi x10, x10, -1
+</span><span id="__span-8-14">    jal x1, fact    # 调用fact(n-1)，重复直到fact(0)
+</span><span id="__span-8-15">
+</span><span id="__span-8-16">Calc: 
+</span><span id="__span-8-17">    addi t1, a0, 0 # 将fact()计算得到的值存入t1
+</span><span id="__span-8-18">    ld a0, 0(sp)    # 恢复调用者的参数
+</span><span id="__span-8-19">    ld ra, 8(sp)    # 恢复调用者的返回地址
+</span><span id="__span-8-20">    addi sp,sp ,16  # 释放两个双字栈空间
+</span><span id="__span-8-21">    mul a0, a0, t1
+</span><span id="__span-8-22">    jalr x0, 0(ra)  # 返回主程序
+</span></code></pre></div>
+<!-- ![img](jz5-1.png){width=600} -->
+
+<h2 id="sort">实现sort过程（非叶过程）<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h2>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><span class="kt">void</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">[],</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+</span><span id="__span-9-2"><span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+</span><span id="__span-9-3"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+</span><span id="__span-9-5"><span class="w">            </span><span class="n">swap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
+</span><span id="__span-9-6"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-7"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-8"><span class="p">}</span>
+</span></code></pre></div>
+<p>假设v保存在x10，n保存在x11，i保存在x19，j保存在x20</p>
+<h3 id="rv">外层循环RV实现<a class="headerlink" href="#rv" title="Permanent link">&para;</a></h3>
+<p><code>for (i = 1; i &lt; n; i += 1){...}</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1">li x19,0
+</span><span id="__span-10-2">for1tst:
+</span><span id="__span-10-3">    bge x19,x11,exit1
+</span><span id="__span-10-4">    ... # 外层循环包围的函数体
+</span><span id="__span-10-5">    addi x19,x19,1
+</span><span id="__span-10-6">    j for1st
+</span><span id="__span-10-7">exit1:
+</span></code></pre></div>
+<h3 id="rv_1">内层循环RV实现<a class="headerlink" href="#rv_1" title="Permanent link">&para;</a></h3>
+<p><code>for (j (j = i − 1; j &gt;= 0 &amp;&amp; v[j] &gt; v[j + 1]; j − = 1) { ...}</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1">for2tst:
+</span><span id="__span-11-2">    blt x20,x0,exit2 # 如果j &lt; 0，跳转到exit2
+</span><span id="__span-11-3">    slli x5,x20,3 # x5 = j * 8
+</span><span id="__span-11-4">    add x5,x10,x5 # x5 = v + (j * 8)
+</span><span id="__span-11-5">    ld x6,0(x5) # x6 = v[j][j]
+</span><span id="__span-11-6">    ld x7,8(x5) # x7 = v[j][j + 1]
+</span><span id="__span-11-7">    ble x6,x7,exit2 # 如果x6 ≤ x7，转exit2
+</span><span id="__span-11-8">    mv x21, x10 # 将参数x10复制到x21
+</span><span id="__span-11-9">    mv x22, x11 # 将参数x11复制到x22
+</span><span id="__span-11-10">    mv x10, x21 # swap的第一个参数是v
+</span><span id="__span-11-11">    mv x11, x20 # swap的第二个参数是j是j
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../RISC-V%E6%B1%87%E7%BC%96%26%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: RISC-V汇编&amp;指令系统">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                RISC-V汇编&指令系统
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../RISC-V%E6%8C%87%E4%BB%A4%E8%A1%A8%E7%A4%BA/" class="md-footer__link md-footer__link--next" aria-label="下一页: RISC-V指令表示">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                RISC-V指令表示
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

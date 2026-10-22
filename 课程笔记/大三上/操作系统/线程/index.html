@@ -1,0 +1,714 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BA%BF%E7%A8%8B/">
+      
+      
+        <link rel="prev" href="../%E8%BF%9B%E7%A8%8B/">
+      
+      
+        <link rel="next" href="../%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%90%8C%E6%AD%A5%EF%BC%9A%E4%BF%A1%E5%8F%B7%E9%87%8F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>线程 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">线程</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">线程引入</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">线程概念</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_3">传统概念下的进程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_4">另一种角度的进程</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_5">单线程进程与多线程进程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">多线程与进程的关系</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">主线程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_8">线程池</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_9">并发线程</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_10">多线程模型</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">并发线程的执行</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">线程支持</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_13">用户级线程与内核级线程的关系</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#posix">Posix线程</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_14">创建线程</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_15">向线程传递参数</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_16">终止线程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_17">结合/分离线程</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三上/操作系统/线程/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>线程</h1>
+
+<h2 id="_1">线程引入<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>现在有一情形：数据库服务器如何同时处理来自多个客户端的数据查询请求，这些请求都是针对同一数据库的数据的</p>
+<p>解决方法：</p>
+<ol>
+<li>设置<strong>一个进程顺序处理</strong>所有请求；</li>
+<li>设置<strong>多个进程分别处理</strong>多个请求；</li>
+</ol>
+<p>存在的问题：</p>
+<ol>
+<li>进程同步复杂</li>
+<li>进程切换的系统开销大</li>
+</ol>
+<h3 id="_2">线程概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>定义</p>
+<ul>
+<li>线程是进程内一个相对独立的<strong>可调度的执行单元</strong></li>
+</ul>
+<p>线程属性</p>
+<ol>
+<li>轻型实体：TCB+堆栈+一组寄存器</li>
+<li>独立调度和分派的基本单位</li>
+<li>可并发执行</li>
+<li>共享线程资源</li>
+<li>线程有生命周期，在生命其中有状态变化</li>
+</ol>
+<p>线程基本状态</p>
+<ul>
+<li>就绪态</li>
+<li>运行态</li>
+<li>阻塞态</li>
+</ul>
+<h4 id="_3">传统概念下的进程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>进程 = 进程上下文+ code,data,and stack</p>
+<h4 id="_4">另一种角度的进程<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>进程 = 线程 + code, data, and kernel context</p>
+<ol>
+<li><strong>基本的CPU执行单元</strong></li>
+<li>并<strong>不单独拥有系统资源</strong>，只拥有其在运行中必不可少的资源，如线程ID、程序计数器、寄存器集合和堆栈</li>
+<li>但<strong>同一进程下的不同线程共享进程拥有的全部资源</strong></li>
+<li>也有<strong>就绪、阻塞、运行</strong>三种状态</li>
+</ol>
+<h3 id="_5">单线程进程与多线程进程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="3-1.png" /></p>
+<h3 id="_6">多线程与进程的关系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>一个进程可以关联多个线程</p>
+<ol>
+<li>每个线程有着自己的控制流 </li>
+<li>属于同一个进程下的线程<strong>共享所属进程的地址空间</strong></li>
+<li>每个线程有着自己的<strong>局部变量的堆栈</strong>（但对于其他线程来说并不是被保护的）</li>
+<li>每个线程有着自己的<strong>线程id</strong> (thread ID, TID)</li>
+</ol>
+<blockquote>
+<p>建立进程的概念是为了<strong>保护独立的地址空间</strong><br>
+而建立线程的概念是为了<strong>更好地支持并发</strong>(线程切换的开销更小)</p>
+</blockquote>
+<h3 id="_7">主线程<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>每个进程都是作为一个单一线程启动的，也被称为<strong>主线程</strong></li>
+<li>在之后的某个时间点，主线程创建了对等线程，然后两个线程并发的执行</li>
+<li>并发线程执行</li>
+</ul>
+<h3 id="_8">线程池<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>与进程关联的线程</strong>形成一个线程池，并不像进程一样有一个树状的继承关系</p>
+<p><img alt="" src="3-2.png" width="400" /></p>
+<h3 id="_9">并发线程<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>在<strong>时间线上控制流有重叠</strong>的线程是并发的</p>
+<p><img alt="" src="3-3.png" /></p>
+<blockquote>
+<p>上图中：A线程与B线程、A线程与C线程并发，B线程与C线程顺序执行</p>
+</blockquote>
+<h2 id="_10">多线程模型<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">并发线程的执行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>单核处理器通过时间片模拟执行</li>
+<li>多核处理器可以实现真正的并行</li>
+</ul>
+<p><img alt="" src="3-4.png" /></p>
+<h3 id="_12">线程支持<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>用户层的用户级线程<ul>
+<li>用户级线程位于内核之上，它的管理<strong>无需内核支持</strong></li>
+</ul>
+</li>
+<li>内核层的内核级线程<ul>
+<li>内核级线程由<strong>操作系统</strong>来直接支持与管理</li>
+</ul>
+</li>
+</ul>
+<h4 id="_13">用户级线程与内核级线程的关系<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>多对一模型</li>
+<li>一对一模型</li>
+<li>多对多模型</li>
+</ul>
+<h2 id="posix">Posix线程<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h2>
+<p>POSIX简介链接 <a href="https://linux.cn/article-14201-1.html">https://linux.cn/article-14201-1.html</a></p>
+<p>与其说 POSIX 是一个东西，不如说是一个标签。想象一下，有一个盒子，上面贴着标签：POSIX，而盒子里是一个标准。该标准由 POSIX 所关注的<strong>规则和指令集</strong>组成。</p>
+<p>POSIX 是可移植操作系统接口(Portable Operating System Interface)的缩写，其定义了应用程序（以及命令行 Shell 和实用程序接口）和 UNIX 操作系统之间的<strong>语言接口</strong></p>
+<p>Pthreads 约60个函数的标准接口，这些函数可操纵C程序中的线程</p>
+<h3 id="_14">创建线程<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>int pthread_create(pthread_t* tid, pthread_attr_t* attr, func* f, void* arg)</code></p>
+<ul>
+<li>当一个程序创建了多个线程以后，其在多核机和单核机上面运行会产生不同效果</li>
+<li>多线程的执行速度并不一定比顺序执行快（如在单核机上运行时）</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">ID</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Task %ld started</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+</span><span id="__span-0-4">
+</span><span id="__span-0-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-0-7"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10000000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tan</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-0-9"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-10">
+</span><span id="__span-0-11"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Task %ld completed with result %e</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-0-12"><span class="p">}</span>
+</span><span id="__span-0-13">
+</span><span id="__span-0-14"><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">print_usage</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Usage: %s serial|parallel num_tasks</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-0-16"><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-17"><span class="p">}</span>
+</span><span id="__span-0-18">
+</span><span id="__span-0-19"><span class="c1">// 并行执行</span>
+</span><span id="__span-0-20"><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">parallel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num_tasks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-21"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_threads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num_tasks</span><span class="p">;</span>
+</span><span id="__span-0-22"><span class="w">    </span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">[</span><span class="n">num_threads</span><span class="p">];</span>
+</span><span id="__span-0-23"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="p">;</span>
+</span><span id="__span-0-24"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+</span><span id="__span-0-25">
+</span><span id="__span-0-26"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_threads</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-27"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Creating thread %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-28"><span class="w">        </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="kr">thread</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-0-29"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-30"><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"ERROR: return code from pthread_create() is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">rc</span><span class="p">);</span>
+</span><span id="__span-0-31"><span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-0-32"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-33"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-34"><span class="p">}</span>
+</span><span id="__span-0-35">
+</span><span id="__span-0-36"><span class="c1">// 顺序执行</span>
+</span><span id="__span-0-37"><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">serial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num_tasks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-38"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-0-39"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_tasks</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-40"><span class="w">        </span><span class="n">task</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-0-41"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-42"><span class="p">}</span>
+</span><span id="__span-0-43">
+</span><span id="__span-0-44"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-45"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-0-46"><span class="w">        </span><span class="n">print_usage</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-0-47"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-48">
+</span><span id="__span-0-49"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span><span id="__span-0-50">
+</span><span id="__span-0-51"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s">"serial"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-52"><span class="w">        </span><span class="n">serial</span><span class="p">(</span><span class="n">num_tasks</span><span class="p">);</span>
+</span><span id="__span-0-53"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s">"parallel"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-54"><span class="w">        </span><span class="n">parallel</span><span class="p">(</span><span class="n">num_tasks</span><span class="p">);</span>
+</span><span id="__span-0-55"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-56"><span class="w">        </span><span class="n">print_usage</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+</span><span id="__span-0-57"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-58">
+</span><span id="__span-0-59"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Main completed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</span><span id="__span-0-60"><span class="w">    </span><span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-0-61"><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="_15">向线程传递参数<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p><code>pthread_create()</code>允许程序员将一个参数传递给线程并启动例程。</p>
+<p>对于必须<strong>传递多个参数</strong>的情况，可以创建一个<strong>包含所有参数的结构体</strong>，然后在<code>pthread_create()</code>中传递一个<strong>指向该结构体的指针</strong>，可克服此限制</p>
+<blockquote>
+<p>所有参数必须通过引用传递并强制转换为<code>(void *)</code></p>
+</blockquote>
+<h3 id="_16">终止线程<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><code>void pthread_exit(void* thread_return)</code></p>
+<ul>
+<li>当比他更高一级的进程返回时线程<strong>隐式终止</strong>；</li>
+<li>当调用<code>pthread_exit</code>时线程<strong>显式终止</strong>；</li>
+<li>如果主线程调用了<code>pthread_exit</code>，会等待所有其他线程终止后终止主线程，整个进程将<code>thread_return</code>作为返回值；</li>
+<li>当调用<code>exit</code>时，<strong>整个进程</strong>都会被终止。</li>
+</ul>
+<p><code>int pthread_cancel(pthread_t tid</code></p>
+<ul>
+<li>调用<code>pthread_cancel</code>并<strong>不等于线程终止</strong>，它只提出请求。线程在取消请求发出后会继续运行；</li>
+<li>直到到达某个<strong>取消点</strong>。取消点是线程检查是否被取消并按照请求进行动作的一个位置</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="c1">// 线程终止与取消实例</span>
+</span><span id="__span-1-2"><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">PrintHello</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">threadid</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-3"><span class="p">{</span>
+</span><span id="__span-1-4"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">tid</span><span class="p">;</span>
+</span><span id="__span-1-5"><span class="w">    </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">threadid</span><span class="p">;</span>
+</span><span id="__span-1-6"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello World! It's me, thread #%ld!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">tid</span><span class="p">);</span>
+</span><span id="__span-1-7"><span class="w">    </span><span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-1-8"><span class="p">}</span>
+</span><span id="__span-1-9">
+</span><span id="__span-1-10"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+</span><span id="__span-1-11"><span class="w">    </span><span class="n">pthread_t</span><span class="w"> </span><span class="n">threads</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span><span class="w"> </span><span class="cm">/* NUM_THREADS = 5 */</span>
+</span><span id="__span-1-12"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">taskids</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>
+</span><span id="__span-1-13"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="p">;</span>
+</span><span id="__span-1-14"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+</span><span id="__span-1-15"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_THREADS</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-16"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"In main: creating thread %ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-1-17"><span class="w">        </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">PrintHello</span><span class="p">,</span><span class="w"> </span><span class="n">taskids</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-1-18"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"ERROR; return code from pthread_create() is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">rc</span><span class="p">);</span>
+</span><span id="__span-1-20"><span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-1-21"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-22"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-23"><span class="w">    </span><span class="cm">/* Last thing that main() should do */</span>
+</span><span id="__span-1-24"><span class="w">    </span><span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-1-25"><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="_17">结合/分离线程<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>一个线程的结束有两种途径，一种是函数结束，调用它的线程也就结束，另一种方式是通过函数<code>pthread_exit</code>来实现</p>
+<p><code>pthread</code>有两种状态<code>joinable</code>状态(默认)和<code>unjoinable</code>状态。如果线程是<code>joinable</code>状态，当
+线程函数自己返回退出时或<code>pthread_exit</code>时都不会释放线程所占用堆栈和线程描述符。</p>
+<p>只有调用了<code>pthread_join</code>之后这些资源才会被释放。若是<code>unjoinable</code>状态的线程，这些资源在线程函数退出时或<code>pthread_exit</code>时自动会被释放</p>
+<p><code>int pthread_join(pthread_t tid, void** thread_return)</code></p>
+<ul>
+<li>连接是线程之间同步的一种方法</li>
+<li>pthread_join 阻塞线程直到tid线程终止</li>
+<li>与linux中的<code>wait</code>函数不同，<code>pthread_join</code>函数可以只等候特定的线程终止</li>
+<li>一个线程只能响应一个<code>pthread_join()</code>请求。对同一个线程尝试多个<code>join</code>操作会发生逻辑错误</li>
+</ul>
+<p><code>int pthread_detach(pthread_t tid)</code></p>
+<ul>
+<li><code>pthread_detach</code> 函数将线程tid分离出来</li>
+<li>默认情况下，线程创建时为可连接的 </li>
+<li>每个可连接线程应由另一个线程显式获取，或通过调用<code>pthread_detach</code>函数来分离。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E8%BF%9B%E7%A8%8B/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 进程">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                进程
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%90%8C%E6%AD%A5%EF%BC%9A%E4%BF%A1%E5%8F%B7%E9%87%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 并发与同步：信号量">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                并发与同步：信号量
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

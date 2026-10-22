@@ -1,0 +1,717 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86/">
+      
+      
+        <link rel="prev" href="../%E4%BC%A0%E7%BB%9F%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/">
+      
+      
+        <link rel="next" href="../%E6%9C%89%E9%99%90%E5%9F%9F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>数据加密标准 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">数据加密标准</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">分组密码</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">分组密码要求</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">分组密码要求——关于置换</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_4">乘积密码</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#spn">乘积密码——SPN</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_5">分组密码结构——子密钥生成</a>
+        
+      </li>
+    
+      <li>
+        <a href="#des">DES</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#des_1">DES由来</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">基本参数</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">加密流程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#f">轮函数F实现流程</a>
+        
+      </li>
+    
+      <li>
+        <a href="#e">选择扩展置换E</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_8">压缩运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#s-">S-盒的构造方法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#des-">DES解密-解析表达</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#des_2">DES分析</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_9">互补性</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_10">弱密钥</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">半弱密钥</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_12">差分分析</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">线性分析</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#des_3">多重DES</a>
+        
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三上/密码学基础/数据加密标准/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>数据加密标准</h1>
+
+<h2 id="_1">分组密码<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>分组密码分为对称分组密码与非对称分组密码，习惯上多指的是对称分组密码</p>
+<p>分组密码主要任务是提供数据保密性，也可以用于构造<strong>伪随机数生成器</strong>、<strong>哈希函数</strong>、<strong>序列密码</strong>等</p>
+<p>特点：分组密码加解密速度较快，安全性好，得到了许多密码芯片的支持</p>
+<h3 id="_2">分组密码要求<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>分组长度足够大<ul>
+<li>分组长度小，攻击者可以通过穷举法进行暴力破解</li>
+</ul>
+</li>
+<li>密钥量足够大</li>
+<li>密码变换足够复杂</li>
+<li>加密和解密运算简单</li>
+<li>无数据扩展或压缩</li>
+</ul>
+<blockquote>
+<p>分组密码的设计思想中有扩散与混淆两个重要概念，即雪崩效应和关系复杂化</p>
+</blockquote>
+<h3 id="_3">分组密码要求——关于置换<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>对于一个分组长度为n的分组密码，不同密钥对应不同的加密解密变换，对于给定的密钥k，加密变换<span class="arithmatex">\(E_k\)</span>是<span class="arithmatex">\(GF(2)^n\)</span>上的一个变换</p>
+<p>为了方便密钥管理，通常密钥长度t不能太大</p>
+<h2 id="_4">乘积密码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>原理：依次使用两个或两个以上的基本密码，所得密码强度强于单个密码的强度</p>
+<p>实现方法：通常使用混淆、扩散两种基本密码操作组合变换实现</p>
+<p>效果：利用少量软硬件资源实现混淆、扩散</p>
+<h3 id="spn">乘积密码——SPN<a class="headerlink" href="#spn" title="Permanent link">&para;</a></h3>
+<p>SPN是乘积密码的一种由多重S变换和P变换组合成的变换网络，其基本操作是S变换（代换）与P变换（置换），前者称为“S盒”，后者称为“P盒”。</p>
+<p>S盒起到混淆作用，P盒起到扩散作用</p>
+<h2 id="_5">分组密码结构——子密钥生成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>子密钥生成算法定位<ul>
+<li>从初始密钥产生各轮迭代使用的子密钥，轮函数F的功能是在子密钥的参与和控制下实现</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>轮函数基本准则：非线性、体现安全性；保证基本的加解密实现；高性能；</p>
+<p>分组密码一般采用简单、安全性弱的密码函数进行多轮迭代</p>
+</blockquote>
+<h2 id="des">DES<a class="headerlink" href="#des" title="Permanent link">&para;</a></h2>
+<h3 id="des_1">DES由来<a class="headerlink" href="#des_1" title="Permanent link">&para;</a></h3>
+<p>1973年，美国国家标准局在美国征集国家加密标准，经过海选、初选、决赛，最后IBM公司的Lucifer加密系统获得了胜利，1977年1月15日NBS决定利用这个算法，并更名为Data Encryption Standard，简称DES</p>
+<h3 id="_6">基本参数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>分组加密算法：明文和密文为64位分组长度</li>
+<li>密码算法：加密和解密除了子密钥编排不同之外，使用同一算法</li>
+<li>密钥长度：56位，但存在弱密钥</li>
+<li>采用混淆和扩散的组合：每个组合先代换后置换，共16轮</li>
+<li>只使用了简单的逻辑运算</li>
+</ul>
+<h3 id="_7">加密流程<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[\begin{cases}
+    L_0R_0\leftarrow IP(&lt;64bit明文&gt;)\\
+    L_i\leftarrow R_{i-1} &amp; i=1,2,\dots ,16\\
+    R_i\leftarrow L_{i-1}\oplus F(R_{i-1},k_i) &amp; i=1,2,\dots ,16\\
+    &lt;64bit密文&gt;\leftarrow IP^{-1}(R_{16}L_{16})
+\end{cases}\]</div>
+<h3 id="f">轮函数F实现流程<a class="headerlink" href="#f" title="Permanent link">&para;</a></h3>
+<p>对于<span class="arithmatex">\(R_{i-1}\rightarrow R_i\)</span>：选择<strong>扩展运算E</strong>，将32bit扩展为48bit与子密钥<span class="arithmatex">\(K_i\)</span>进行异或运算，再使用<strong>压缩运算S</strong>将48bit压缩至32bit，使用<strong>置换运算P</strong>后，再与<span class="arithmatex">\(L_{i-1}\)</span>异或得到<span class="arithmatex">\(R_i\)</span></p>
+<p>对于<span class="arithmatex">\(L_{i}\)</span>，直接使用<span class="arithmatex">\(R_{i-1}\)</span>作为<span class="arithmatex">\(L_{i}\)</span></p>
+<h3 id="e">选择扩展置换E<a class="headerlink" href="#e" title="Permanent link">&para;</a></h3>
+<p>8个4位分组，将每个分组扩展为6位，32个输入位正好有16个输入位在输出中出现了两次。但是任意一个输入位都不会在同一个6位的输出分组出现两次。</p>
+<p>扩展盒（E-盒）增加了DES的扩散行为，因为某些输入位会影响两个不同的输出位置。</p>
+<figure>
+<p><img alt="img" src="enc3-1.png" width="500" /></p>
+<figcaption></figcaption>
+</figure>
+<h3 id="_8">压缩运算<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="img" src="enc3-2.png" width="500" /></p>
+<figcaption>压缩算法示意图</figcaption>
+</figure>
+<h4 id="s-">S-盒的构造方法<a class="headerlink" href="#s-" title="Permanent link">&para;</a></h4>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>0</b></td>
+<td>12</td>
+<td>1</td>
+<td>10</td>
+<td>15</td>
+<td>9</td>
+<td>2</td>
+<td>6</td>
+<td>7</td>
+<td>0</td>
+<td>13</td>
+<td>3</td>
+<td>4</td>
+<td>14</td>
+<td>7</td>
+<td>5</td>
+<td>11</td>
+</tr>
+<tr>
+<td><b>1</b></td>
+<td>10</td>
+<td>15</td>
+<td>4</td>
+<td>2</td>
+<td>7</td>
+<td>12</td>
+<td>3</td>
+<td>7</td>
+<td>0</td>
+<td>4</td>
+<td>10</td>
+<td>1</td>
+<td>13</td>
+<td>11</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td><b>2</b></td>
+<td>9</td>
+<td>14</td>
+<td>15</td>
+<td>5</td>
+<td>2</td>
+<td>8</td>
+<td>12</td>
+<td>3</td>
+<td>7</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>10</td>
+<td>1</td>
+<td>13</td>
+<td>11</td>
+</tr>
+<tr>
+<td><b>3</b></td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>12</td>
+<td>9</td>
+<td>5</td>
+<td>15</td>
+<td>10</td>
+<td>11</td>
+<td>14</td>
+<td>1</td>
+<td>7</td>
+<td>6</td>
+<td>0</td>
+<td>8</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<p>现在有6bit数据<span class="arithmatex">\(b_1b_2b_3b_4b_5b_6\)</span>，将其拆分为<span class="arithmatex">\(b_1b_6\)</span>与<span class="arithmatex">\(b_2b_3b_4b_5\)</span>d带入S盒进行计算，有：</p>
+<div class="arithmatex">\[\frac{b_1b_2b_3b_4b_5b_6}{110011}\Rightarrow\frac{行：b_1b_6=11_2=3}{列：b_2b_3b_4b_4b_5=1001=9}\Rightarrow\frac{S-盒3行9列}{值：14_{10}=1100}\]</div>
+<h3 id="des-">DES解密-解析表达<a class="headerlink" href="#des-" title="Permanent link">&para;</a></h3>
+<p>密文<span class="arithmatex">\(C\leftarrow IP^{-1}(L_{16}R_{16})\)</span></p>
+<p><span class="arithmatex">\(\begin{cases}
+    L_i\leftarrow R_{i-1}\\
+    R_i\leftarrow L_{i-1}\oplus F(R_{i-1},k_i)
+\end{cases}\)</span></p>
+<p>明文<span class="arithmatex">\(M\leftarrow IP(L_0R_0)\)</span></p>
+<h2 id="des_2">DES分析<a class="headerlink" href="#des_2" title="Permanent link">&para;</a></h2>
+<h3 id="_9">互补性<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>使得DES在选择明文攻击下所需工作量<strong>减半</strong></p>
+<p>对明文m逐位取补，记为<span class="arithmatex">\(\bar{m}\)</span>，密钥<span class="arithmatex">\(k\)</span>逐位取补，记为<span class="arithmatex">\(\bar{k}\)</span>，若<span class="arithmatex">\(c=E_k(m)\)</span>，则有<span class="arithmatex">\(\bar{c}=E_{\bar{k}}(\bar{m})\)</span></p>
+<blockquote>
+<p>这种特性被称为<strong>算法上的互补性</strong>，是由算法中的<strong>两次异或运算</strong>的配置所决定的。两次异或运算一次在S盒之前，一次在P盒置换之后。若对DES输入的明文和密钥同时取补，则选择扩展运算E的输出和子密钥产生器的输出也都取补，因而经异或运算后的输出和明文及密钥未取补时的输出一样，这使得到达S盒的输入数据未变，其输出自然也不会变，但经第二个异或运算时，由于左边的数据已取补，因而输出也就取补了。</p>
+</blockquote>
+<h3 id="_10">弱密钥<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>如果给定初始密钥k，经过子密钥产生器产生的各个子密钥相同，即有<span class="arithmatex">\(k_1=k_2\dots k_{16}\)</span>，则称给定的初始密钥k为弱密钥</p>
+<h4 id="_11">半弱密钥<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>若给定初始密钥k，产生的16个子密钥只有两种，且每种都出现8次，则称k为半弱密钥。</p>
+<p>半弱密钥的特点是成对出现，且具有下述性质：
+若k1和k2为一对半弱密钥，m为明文组，则有：<span class="arithmatex">\(Ek2(Ek1(m))=Ek1(Ek2(m))=m\)</span></p>
+<blockquote>
+<p>由此类推，可以得到四分之一弱密钥和八分之一弱密钥</p>
+<p>但是这种弱密钥在DES的<span class="arithmatex">\(2^{56}\)</span>个密钥中占的比例极小，而且极易避开，所以弱密钥的存在对DES安全性威胁不大</p>
+</blockquote>
+<h3 id="_12">差分分析<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>差分分析是一种攻击迭代密码体制的选择明文攻击方法，与一般统计分析法的不同之处是，它不是直接分析密文或密钥和明文的统计相关性，而是分析一对给定明文的<strong>异或</strong>（对应位不同的个数称为差分）与对应密文对的异或之间的统计相关性。差分分析的基本思想是在攻击的迭代密码系统中找出某些<strong>高概率的明文差分和密文差分对</strong>来推算密钥。利用此法攻击DES，需要用<span class="arithmatex">\(2^47\)</span>个选择明文和<span class="arithmatex">\(2^47\)</span>次加密运算，比穷举搜索的工作量大大减少。然而找到<span class="arithmatex">\(2^47\)</span>个选择明文的要求使这种攻击只有理论上的意义。</p>
+<h3 id="_13">线性分析<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>该方法是日本密码学家松井充(Mitsuru Matsui)于1993年公开的另一种对分组密码进行分析攻击的方法，这种方法试图通过大量的“明-密文对”找出分组密码算法中与密钥有关的线性方程，然后试着得到大量的这类关系从而确定密钥。其基本思想是以最佳的线性函数逼近DES的非线性变换S盒，这是一种已知明文攻击方法，可以在有<span class="arithmatex">\(2^43\)</span>个已知明-密文对的情况下破译DES。虽然获得已知明文比选择明文更容易，但线性分析作为一种攻击手段针对DES在实际上仍然不可行</p>
+<h2 id="des_3">多重DES<a class="headerlink" href="#des_3" title="Permanent link">&para;</a></h2>
+<p>为了提高DES的安全性，并充分利用已有DES的软件和硬件资源，可以使用多重DES。多重DES就是<strong>使用多个密钥利用DES对明文进行多次加解密</strong>，使用多重DES可以增加密钥量，从而大大提高抵抗对密钥的穷举搜索攻击的能力</p>
+<p>二重DES指的是取两个独立的密钥<span class="arithmatex">\(k_1, k_2\)</span></p>
+<p>加密：<span class="arithmatex">\(C=DES_{k_2}(DES_{k_1}(m))\)</span></p>
+<p>解密：<span class="arithmatex">\(m=DES^{-1}_{k_1}(DES^{-1}_{k_2}(C))\)</span></p>
+<blockquote>
+<p>得到<span class="arithmatex">\(DES_{k_1}(m) = DES_{k_2}^{-1}(C)\)</span></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E4%BC%A0%E7%BB%9F%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 传统密码技术">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                传统密码技术
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E6%9C%89%E9%99%90%E5%9F%9F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 有限域">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                有限域
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,753 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/">
+      
+      
+        <link rel="prev" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+      
+      
+        <link rel="next" href="../RISC-V%E6%B1%87%E7%BC%96%26%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>计算机中数的运算方法 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">计算机中数的运算方法</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">算数移位与逻辑移位</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">算数移位</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_3">算数移位规则</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_4">算数移位和逻辑移位的区别</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_5">定点运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_6">定点加减法运算（补码）</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_7">一位符号位判定溢出</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_8">两位符号位判断溢出</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_9">乘法运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_10">原码一位乘法运算规则</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_11">补码一位乘法运算规则（小数）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">补码一位乘法运算规则（整数）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#booth">booth算法（小数，被乘数、乘数符号任意）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#booth_1">booth算法（整数，被乘数、乘数符号任意）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">乘法器硬件示意图</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_14">除法运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_15">分析笔算除法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_16">恢复余数法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_17">不恢复余数法（加减交替）</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_18">浮点运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_19">浮点四则运算（对阶、尾数求和、规格化、舍入）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_20">左规和右规</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/计算机组成原理/运算方法/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>计算机中数的运算方法</h1>
+
+<h2 id="_1">算数移位与逻辑移位<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">算数移位<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">算数移位规则<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>符号位不变</li>
+<li><mark>机器数的移位与真值移位一致</mark></li>
+</ul>
+<p><img alt="img" src="jz3-1.png" width="400" /></p>
+<blockquote>
+<p>正数移位均补0，负数原码均补0，负数补码高位补1，反码都补1</p>
+</blockquote>
+<h4 id="_4">算数移位和逻辑移位的区别<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>算数移位：有符号数的移位</li>
+<li>逻辑移位：无符号数的移位<ul>
+<li><mark>逻辑左移：低位添0，高位丢弃</mark></li>
+<li><mark>逻辑右移，高位添0，低位丢弃</mark></li>
+</ul>
+</li>
+</ul>
+<p>例：补码表示的机器数10110010</p>
+<table>
+<thead>
+<tr>
+<th>逻辑左移：01100100</th>
+<th>逻辑右移：01011001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算数左移：11100100</td>
+<td>算术右移：11011001</td>
+</tr>
+</tbody>
+</table>
+<p>例：设机器数字长8位（含1为符号位），当A=+26时，三种机器数左、右移一位和两位后的表示形式以及对应的真值</p>
+<div class="arithmatex">\[A=+26=+11010\]</div>
+<p>则<span class="arithmatex">\([A]_原=[A]_补=[A]_反=0,0011010\)</span></p>
+<table>
+<thead>
+<tr>
+<th>移位操作</th>
+<th>机器数</th>
+<th>对应的真值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>0,0011010</td>
+<td>+26</td>
+</tr>
+<tr>
+<td>左移一位</td>
+<td>0,0110100</td>
+<td></td>
+</tr>
+<tr>
+<td>右移一位</td>
+<td>0,0001101</td>
+<td></td>
+</tr>
+<tr>
+<td>左移两位</td>
+<td>0,1101000</td>
+<td></td>
+</tr>
+<tr>
+<td>右移两位</td>
+<td>0,1100110</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">定点运算<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">定点加减法运算（补码）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>加法<ul>
+<li>整数：<span class="arithmatex">\([A]_补+[B]_补=[A+B]_补\)</span></li>
+<li>小数：<span class="arithmatex">\([A]_补+[B]_补=[A+B]_补\)</span></li>
+</ul>
+</li>
+<li>减法：<span class="arithmatex">\(A-B=A+(-B)\)</span><ul>
+<li>整数：<span class="arithmatex">\([A-B]_补=[A+(-B)_补]=[A_补]+[-B]_补\)</span></li>
+<li>小数：<span class="arithmatex">\([A-B]_补=[A+(-B)_补]=[A_补]+[-B]_补\)</span></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><mark>连同符号位一起相加</mark>，符号位产生的进位自然丢掉</p>
+</blockquote>
+<p>例：设A=0.1011，B=-0.0101，用<strong>补码运算</strong>求A+B=？</p>
+<details>
+    <summary>解答</summary>
+
+<img style="width:500px" src="jz3-2.png">
+
+</details>
+
+<blockquote>
+<p>已知<span class="arithmatex">\([X]_补\)</span>，可以通过：包括符号位在内，每位取反，末位加1求出<span class="arithmatex">\([-X]_补\)</span></p>
+</blockquote>
+<p>例：已知机器数长为8位（包含1位符号位），设A=15，B=24，用补码求解A-B</p>
+<details>
+    <summary>解答</summary>
+
+<img style="width:500px" src="jz3-2_5.png">
+
+</details>
+
+<p>例：已知机器数长为8位（包含1位符号位），设A=-97，B=41，用补码求解A-B</p>
+<details>
+    <summary>解答</summary>
+有$[A]_补+[-B]_补=10,1110110=[A-B]_补$，有$A-B=+118$（溢出）
+
+</details>
+
+<h4 id="_7">一位符号位判定溢出<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>参加加法的两个数（减法时+减数相反数的补码）<ul>
+<li>如果符号不同，不会溢出</li>
+<li><mark>如果符号相同，其结果的符号与原操作数的符号不同，即为溢出</mark></li>
+</ul>
+</li>
+</ul>
+<div class="arithmatex">\[\begin{cases}最高有效位进位\oplus 符号位进位=1&amp;溢出\\最高有效位进位\oplus 符号位进位=0&amp;不溢出\end{cases}\]</div>
+<h4 id="_8">两位符号位判断溢出<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>小数变形补码</li>
+<li>
+<p>整数变形补码 </p>
+</li>
+<li>
+<p>最高符号位代表其<strong>真正的符号</strong></p>
+</li>
+<li>结果的双符号位<strong>相同</strong> <strong>未溢出</strong></li>
+<li>结果的双符号位<strong>不同</strong> <strong>溢出</strong></li>
+</ul>
+<p>设机器数字为9位（含2位符号位），且<span class="arithmatex">\(A=-97，B=41\)</span>，用补码求<span class="arithmatex">\(A-B\)</span></p>
+<details>
+    <summary>解答</summary>
+
+<img style="width:500px" src="jz3-3_75.png">
+
+</details>
+
+<h3 id="_9">乘法运算<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">原码一位乘法运算规则<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li>整数：设<span class="arithmatex">\([X]_原=X_nX_{n-1}\dots X_1X_0,[Y]_{原}=Y_nY_{n-1}\dots Y_1Y_0\)</span></li>
+</ul>
+<div class="arithmatex">\[[X\times Y]_原=(X_n\oplus Y_n)(0X_{n-1}\dots X_1X_0\times 0Y_{n-1}\dots Y_1Y_0)=(X_n\oplus Y_n)(|X|\times |Y|)\]</div>
+<ul>
+<li>小数：设<span class="arithmatex">\([x]_原=x_0\cdot x_1x_2\dots x_n,[y]_原=y_0\cdot y_1y_2\dots y_n\)</span></li>
+</ul>
+<div class="arithmatex">\[[x\times y]_原=(x_0\oplus y_0)\cdot(0.x_1x_2\dots x_n\times 0.y_1y_2\dots y_n)=(x_0\oplus y_0)(|x|\times|y|)\]</div>
+<blockquote>
+<p><strong>乘积的符号位单独处理</strong>，<strong>数值部分</strong>为<strong>绝对值相乘</strong></p>
+</blockquote>
+<h4 id="_11">补码一位乘法运算规则（小数）<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>设被乘数<span class="arithmatex">\([x]_补=x_0\cdot x_1x_2\dots x_n\)</span>，乘数<span class="arithmatex">\([y]_补=y_0\cdot y_1y_2\dots y_n\)</span></p>
+<ul>
+<li>被乘数任意，乘数为正（类似原码乘）<ul>
+<li>但加和移位按补码规则运算，积的符号自然形成</li>
+</ul>
+</li>
+<li>被乘数任意，乘数为负<ul>
+<li>乘数<span class="arithmatex">\([y]_补\)</span>，去掉符号位，操作同上，最后加上<span class="arithmatex">\([-x]_补\)</span>，校正</li>
+</ul>
+</li>
+</ul>
+<div class="arithmatex">\[\begin{split}[x]_补\times [y]_补=[x]_补\times(1.0_1\dots 0_n + 0.y_1y_2\dots y_n)_补 \\ =[x]_补\times[0.y_1y_2\dots y_n]_补-[x]_补\\ =[x]_补\times [0.y_1y_2\dots y_n]_补+[-x]_补 \end{split}\]</div>
+<h4 id="_12">补码一位乘法运算规则（整数）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>设被乘数<span class="arithmatex">\([X]_补=X_n\dots X_1X_0\)</span>,乘数<span class="arithmatex">\([Y]_补=Y_n\dots Y_1Y_0\)</span></p>
+<ul>
+<li>被乘数任意，乘数为正（类似原码乘），但加和移位按补码规则运算，积的符号自然形成</li>
+<li>被乘数任意，乘数为负，乘数<span class="arithmatex">\([y]_补\)</span>，去掉符号位，操作同上，最后加<span class="arithmatex">\([–x]_补\)</span>，校正</li>
+</ul>
+<div class="arithmatex">\[\begin{align*}&amp;[X]_补\times [Y]_补=[X]_补\times [10_1\dots 0_n+0Y_{n-1}\dots Y_1Y_0]_补 \\ &amp;=[X]_补\times [0Y_{n-1}\dots Y_1Y_0]_补+(-2^n)[X]_补 \\ &amp;=[X]_补\times [0Y_{n-1}\dots Y_1Y_0]_补+2^n[-X]_补 \end{align*}\]</div>
+<h4 id="booth">booth算法（小数，被乘数、乘数符号任意）<a class="headerlink" href="#booth" title="Permanent link">&para;</a></h4>
+<p>设x和y的补码表示分别为<span class="arithmatex">\([x]_补=x_0.x_1x_2\dots x_n,[y]_补=y_0.y_1y_2\dots y_n\)</span></p>
+<div class="arithmatex">\[\begin{align*}&amp;[x\times y]_补=[x]_补\times[0.y_1y_2\dots y_n+y_0.0_10_2\dots 0_n]_补 \\ &amp;=[x]_补(0.y_1y_2\dots y_n)+ [x]_补\times (-y_0)\\&amp;=[x]_补[-y_0+(y_1 2^0-y_1 2^{-1})+(y_2 2^{-1}- y_2 2^{-2})+\dots+(y_n2^{-(n-1)}-y_n2^{-n})] \\&amp;=[x]_补[(y_1-y_0)+(y_2-y_1)2^{-1}+\dots+(y_n-y_{n-1})2^{-(n-1)}+(y_{n+1}-y_{n})2^{-n}]\\&amp;=(y_1-y_0)[x]_补+2^{-1}\{(y_2-y_1)[x]_补+2^{-1}\{(y_3-y_2)[x]_补\dots+2^{-1}\{y_{n+1}-y_n\}\dots\}[x]_补+0\}\}\end{align*}\]</div>
+<p>booth小数算法递推公式</p>
+<p><img alt="img" src="jz3-3.png" width="600" /></p>
+<h4 id="booth_1">booth算法（整数，被乘数、乘数符号任意）<a class="headerlink" href="#booth_1" title="Permanent link">&para;</a></h4>
+<p>设X和Y的补码表示分别为<span class="arithmatex">\([X]_补=X_n,X_{n-1}\dots X_0,[Y]_补=Y,Y_{n-1}\dots Y_0\)</span></p>
+<div class="arithmatex">\[\begin{align*}&amp; [X\times Y]_补=[X]_补[0Y_{n-1}\dots Y_0+Y_n0_{n-1}0_{n-2}\dots 0_0]_补\\ &amp; =[X]_补(0Y_{n-1}\dots Y_0)+[X]_补\times [Y_n0_{n-1}0_{n-2}\dots 0_0]_补 \\ &amp; =2^n*([X]_补(Y_{n-1}2^{-1}+Y_{n-2}2^{-2}+\dots +Y_02^{-n})+[X]_补\times[Y_n0_{n-1}0_{n-2}\dots 0_0]_补)\\&amp;=2^n*(Y_{n-1}-Y_n)[X]_补+2^{-1}\{2^n*(Y_{n-2}-Y_{n-1})[X]_补+2^{-1}\{2^n(Y_{n-3}-Y_{n-2})[X]_补\dots + 2^{-1}\{2^n*(Y_{-1}-Y_0)[X]_补+0\}\dots \}\}\end{align*}\]</div>
+<p>booth整数递推公式</p>
+<p><img alt="img" src="jz3-3_5.png" width="600" /></p>
+<h4 id="_13">乘法器硬件示意图<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<details>
+    <summary>展开</summary>
+
+<img style="width:500px" src="jz3-4.png">
+
+<img style="width:500px" src="jz3-5.png">
+
+</details>
+
+<h3 id="_14">除法运算<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><img align="right" alt="img" src="jz3-6.png" width="280" /></p>
+<h4 id="_15">分析笔算除法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li>商符单独处理</li>
+<li>心算上商</li>
+<li>部分余数不动低位补0</li>
+<li>如果部分余数大于除数，则减右移的除数</li>
+<li>上商位置不固定</li>
+</ul>
+<h4 id="_16">恢复余数法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>符号位单独处理，取除数和被除数绝对值进行运算</p>
+<ol>
+<li>余数（被除数）减去除数<span class="arithmatex">\([y^*]_补(+[-y^*]_补)\to 余数\)</span></li>
+<li>if 余数为负（不够减）<ul>
+<li>then 商上0，余数+[y*]补（恢复余数）</li>
+<li>else (够减) 商上1</li>
+</ul>
+</li>
+<li>if 循环次数&lt;数据位数n <ul>
+<li>then 余数<strong>逻辑左移</strong>一位，加[-y*]补 ；重复步骤2</li>
+</ul>
+</li>
+</ol>
+<h4 id="_17">不恢复余数法（加减交替）<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li>余数为正，上商1，逻辑左移1位，+[– y*]补</li>
+<li>余数为负，上商0，逻辑左移1位，+[ y*]补</li>
+</ul>
+<h2 id="_18">浮点运算<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">浮点四则运算（对阶、尾数求和、规格化、舍入）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(x=S_x\cdot 2^{j_x}\quad y=S_y\cdot 2^{j_y}\)</span></p>
+<ul>
+<li>对阶：使两个浮点数的阶码相同<ul>
+<li>求阶差</li>
+<li>对齐原则：小阶向大阶看齐</li>
+</ul>
+</li>
+</ul>
+<h3 id="_20">左规和右规<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<ul>
+<li>原码规格化判断方法：不论正数、负数，第一数位为1</li>
+<li>补码规格化判断方法：符号位和第一数位不同</li>
+<li>补码左规:尾数每左移1位，阶码减1，直到数符与第一数位不同</li>
+<li>右规：当（小数）尾数溢出（ &gt;1）时，需 右规</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 计算机中数的表示">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                计算机中数的表示
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../RISC-V%E6%B1%87%E7%BC%96%26%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--next" aria-label="下一页: RISC-V汇编&amp;指令系统">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                RISC-V汇编&指令系统
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

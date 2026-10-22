@@ -1,0 +1,712 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/%E8%BF%90%E8%A1%8C%E5%AD%98%E5%82%A8%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/">
+      
+      
+        <link rel="prev" href="../%E7%B1%BB%E5%9E%8B%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+      
+      
+        <link rel="next" href="../../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>运行存储分配策略 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">运行存储分配策略</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">运行存储分配策略</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">活动记录</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_3">静态存储分配策略</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_4">常用方法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_5">栈式存储分配</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_6">活动树</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_7">调用序列和返回序列</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">调用序列</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_9">返回序列</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_10">非局部数据的访问</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">有过程嵌套声明的数据访问</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">访问链</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">访问链的建立</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_14">参数传递方式</a>
+        
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三上/编译原理/运行存储分配策略/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>运行存储分配策略</h1>
+
+<h2 id="_1">运行存储分配策略<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>编译器在工作过程中，必须为源程序中出现的一些数据对象分配运行时的存储空间</p>
+<p>对于那些在编译时刻就<strong>可以确定大小及存放位置</strong>的数据对象，可以在编译时刻就为它们分配存储空间，这样的分配策略称为<strong>静态存储分配</strong></p>
+<p>反之，如果不能在编译时完全确定数据对象的大小或存放位置，就要采用<strong>动态存储分配</strong>的策略。动态分配策略又分为<strong>栈式存储分配</strong>和<strong>堆式存储分配</strong></p>
+<p><img alt="alt text" src="image-11.png" width="300" /></p>
+<blockquote>
+<p>运行时的内存划分</p>
+</blockquote>
+<p>例：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
+</span><span id="__span-0-2"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-0-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+</span><span id="__span-0-4"><span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-0-5"><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span><span id="__span-0-7"><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">"do nothing"</span><span class="p">);</span>
+</span><span id="__span-0-8"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-9"><span class="p">}</span>
+</span><span id="__span-0-10"><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">){</span>
+</span><span id="__span-0-11"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-0-12"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+</span><span id="__span-0-13"><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>静态数据区: <code>arr</code>,</li>
+<li>stack: <code>a</code>,<code>b</code>,<code>c</code>,<code>z</code>,<code>x</code>,<code>y</code>,<code>str</code></li>
+<li>heap: <code>malloc</code></li>
+</ul>
+<h3 id="_2">活动记录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>使用过程(或函数、方法)作为用户自定义动作的单元的语言，其编译器通常以过程为单位分配存储空间</p>
+<h2 id="_3">静态存储分配策略<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>适合静态存储分配的语言必须满足：</p>
+<ol>
+<li>数组上下界必须确定</li>
+<li>不允许过程的<strong>递归调用</strong></li>
+<li>不允许动态建立数据实体</li>
+</ol>
+<blockquote>
+<p>对于2条件，递归的深度无法确定（例如斐波拉契数列的递归实现，不同的参数会导致不同的递归深度）</p>
+</blockquote>
+<h3 id="_4">常用方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>顺序分配法</li>
+</ul>
+<p>按照过程<strong>出现的先后顺序</strong>逐段分配存储空间</p>
+<p>各过程的活动记录占用<strong>互不相交</strong>的存储空间 </p>
+<p><img alt="" src="image-12.png" width="300" /></p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>存储区域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0~21</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22~36</td>
+</tr>
+<tr>
+<td>3</td>
+<td>37~54</td>
+</tr>
+<tr>
+<td>4</td>
+<td>55~71</td>
+</tr>
+<tr>
+<td>5</td>
+<td>72~94</td>
+</tr>
+<tr>
+<td>6</td>
+<td>95~104</td>
+</tr>
+</tbody>
+</table>
+<p>优点：处理上简单</p>
+<p>缺点：对内存的空间使用不够经济合理</p>
+<ul>
+<li>层次分配法</li>
+</ul>
+<p>通过对过程间的调用关系进行分析，凡属无相互调用关系的并列过程，尽量使其局部数据共享存储空间</p>
+<p><img alt="" src="image-13.png" width="350" /></p>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>存储区域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0~21</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22~36</td>
+</tr>
+<tr>
+<td>4</td>
+<td>37~54</td>
+</tr>
+<tr>
+<td>6</td>
+<td>37~46</td>
+</tr>
+<tr>
+<td>3</td>
+<td>22~39</td>
+</tr>
+<tr>
+<td>6</td>
+<td>40~49</td>
+</tr>
+<tr>
+<td>5</td>
+<td>40~62</td>
+</tr>
+<tr>
+<td>7</td>
+<td>22~101</td>
+</tr>
+<tr>
+<td>5</td>
+<td>102~124</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">栈式存储分配<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>当一个过程被调用时，该过程的<strong>活动记录被压入栈</strong>；当过程结束时，该活动记录<strong>被弹出栈</strong></p>
+<p>这种安排不仅允许活跃时段不交叠的多个过程调用之间共享空间，而且允许以如下方式为一个过程编译代码：它的非局部变量的相对地址总是固定的，和过程调用序列无关</p>
+<h3 id="_6">活动树<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>用来描述程序运行期间控制进入和离开各个活动的情况的树称为活动树</p>
+<p>树中的<strong>每个结点对应于一个活动</strong>。根结点是启动程序执行的<code>main</code>过程的活动</p>
+<p>在表示过程p的某个活动的结点上，其子结点对应于被p的这次活动调用的各个过程的活动。按照这些活动被调用的顺序，<strong>自左向右</strong>地显示它们。一个子结点必须在其右兄弟结点的活动开始之前结束</p>
+<p>例：快速排序</p>
+<p><img alt="" src="image-14.png" /></p>
+<p><img alt="" src="image-15.png" /></p>
+<p><img alt="" src="image-16.png" /></p>
+<p><img alt="" src="image-17.png" /></p>
+<h2 id="_7">调用序列和返回序列<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>过程调用和过程返回都需要执行一些代码来管理活动记录栈，保存或恢复机器状态等</p>
+<ul>
+<li>调用序列<ul>
+<li>实现过程调用的代码段。为一个活动记录在栈中分配空间，并在此记录的字段中填写信息</li>
+</ul>
+</li>
+<li>返回序列<ul>
+<li>恢复机器状态，使得调用过程能够在调用结束之后继续执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">调用序列<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>调用者计算实际参数的值</p>
+<p>调用者将返回地址（程序计数器的值）放到被调用者的机器状态字段中。将原来的top-sp值放到被调用者的控制链中。然后，增加top-sp的值，使其指向被调用者局部数据开始的位置</p>
+<p>被调用者保存寄存器值和其它状态信息</p>
+<p>被调用者初始化其局部数据并开始执行</p>
+<h3 id="_9">返回序列<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>被调用者将返回值放到与参数相邻的位置</p>
+<p>使用机器状态字段中的信息，被调用者恢复top-sp和其它寄存器，然后跳转到由调用者放在机器状态字段中的返回地址</p>
+<p>尽管top-sp已经被减小，但调用者仍然知道返回值相对于当前top-sp值的位置。因此，调用者可以使用那个返回值</p>
+<h2 id="_10">非局部数据的访问<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>一个过程除了可以使用过程自身定义的局部数据以外，还可以使用过程外定义的<strong>非局部数据</strong></p>
+<p>语言可以分为两种类型</p>
+<ul>
+<li>支持<strong>过程嵌套声明</strong>的语言<ul>
+<li>可以在一个过程中声明另一个过程，例: Pascal</li>
+</ul>
+</li>
+<li>不支持过程嵌套声明的语言<ul>
+<li>不可以在一个过程中声明另一个过程，例：C</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">有过程嵌套声明的数据访问<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>嵌套深度<ul>
+<li>过程的嵌套深度<ul>
+<li>不内嵌在任何其他过程中的过程，设其嵌套深度为1</li>
+<li>如果一个过程p在一个嵌套深度为i的过程中定义，则设定p的嵌套深度为i +1</li>
+</ul>
+</li>
+<li>变量的嵌套深度<ul>
+<li>将变量声明所在过程的嵌套深度作为该变量的嵌套深度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>例：</p>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-1-1"><span class="k">program</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">input</span><span class="o">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-2"><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">a</span><span class="o">:</span><span class="w"> </span><span class="k">array</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span><span class="w"> </span>
+</span><span id="__span-1-3"><span class="w">           </span><span class="n">x</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-4"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">readarray</span><span class="o">;</span>
+</span><span id="__span-1-5"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span><span class="w"> </span>
+</span><span id="__span-1-6"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{readarray}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-1-7"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">exchange</span><span class="p">(</span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-8"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">;</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="o">;</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{exchange}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-1-9"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">quicksort</span><span class="p">(</span><span class="n">m</span><span class="o">,</span><span class="w"> </span><span class="n">n</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-1-10"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-11"><span class="w">        </span><span class="k">function</span><span class="w"> </span><span class="nf">partition</span><span class="p">(</span><span class="n">y</span><span class="o">,</span><span class="w"> </span><span class="n">z</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">:</span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-12"><span class="w">            </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-1-13"><span class="w">            </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">exchange</span><span class="p">(</span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{partition}</span><span class="o">;</span>
+</span><span id="__span-1-14"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">partition</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">quicksort</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{quicksort}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-1-15"><span class="w">    </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">readarray</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">quicksort</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{sort}</span><span class="err">；</span>
+</span></code></pre></div>
+<p><img alt="" src="image-18.png" width="300" /></p>
+<h3 id="_12">访问链<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><strong>静态作用域规则</strong>：只要过程b的声明嵌套在过程a的声明中，过程b就可以访问过程a中声明的对象</p>
+<p>可以在相互嵌套的过程的活动记录之间建立一种称为<strong>访问链</strong>(Access link)的指针，使得内嵌的过程可以访问外层过程中声明的对象</p>
+<p>如果过程b在源代码中<strong>直接嵌套</strong>在过程a中(b的嵌套深度比a的嵌套深度多1)，那么b的任何活动中的访问链都指向<strong>最近的a的活动</strong></p>
+<p>例：快速排序</p>
+<div class="language-pascal highlight"><pre><span></span><code><span id="__span-2-1"><span class="k">program</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">input</span><span class="o">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-2"><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">a</span><span class="o">:</span><span class="w"> </span><span class="k">array</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span><span class="w"> </span>
+</span><span id="__span-2-3"><span class="w">           </span><span class="n">x</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-2-4"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">readarray</span><span class="o">;</span>
+</span><span id="__span-2-5"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span><span class="w"> </span>
+</span><span id="__span-2-6"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{readarray}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-2-7"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">exchange</span><span class="p">(</span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-8"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">;</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="o">;</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{exchange}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-2-9"><span class="w">    </span><span class="k">procedure</span><span class="w"> </span><span class="nf">quicksort</span><span class="p">(</span><span class="n">m</span><span class="o">,</span><span class="w"> </span><span class="n">n</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">;</span>
+</span><span id="__span-2-10"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">k</span><span class="o">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-2-11"><span class="w">        </span><span class="k">function</span><span class="w"> </span><span class="nf">partition</span><span class="p">(</span><span class="n">y</span><span class="o">,</span><span class="w"> </span><span class="n">z</span><span class="o">:</span><span class="kt">integer</span><span class="p">)</span><span class="o">:</span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-2-12"><span class="w">            </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="o">;</span>
+</span><span id="__span-2-13"><span class="w">            </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">exchange</span><span class="p">(</span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{partition}</span><span class="o">;</span>
+</span><span id="__span-2-14"><span class="w">        </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">partition</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">quicksort</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{quicksort}</span><span class="w"> </span><span class="err">；</span>
+</span><span id="__span-2-15"><span class="w">    </span><span class="k">begin</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">readarray</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="n">quicksort</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cm">{sort}</span><span class="err">；</span>
+</span></code></pre></div>
+<p><img alt="" src="image-19.png" width="400" /></p>
+<p><img alt="" src="image-20.png" width="400" /></p>
+<p><code>readarray</code>函数嵌套在sort函数中，指向最近的一次sort</p>
+<p><img alt="" src="image-21.png" width="400" /></p>
+<p><code>exchange</code>函数嵌套在sort函数中，指向最近的一次sort</p>
+<h3 id="_13">访问链的建立<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>建立访问链的代码属于调用序列的一部分</p>
+<p>假设嵌套深度为<span class="arithmatex">\(n_x\)</span>的过程<span class="arithmatex">\(x\)</span>调用嵌套深度为<span class="arithmatex">\(n_y\)</span>的过程<span class="arithmatex">\(y\)</span> <span class="arithmatex">\((x→y)\)</span></p>
+<ol>
+<li><span class="arithmatex">\(n_x &lt; n_y\)</span>的情况(外层调用内层)<ul>
+<li>y一定是直接在x中定义的 (例如：s→q,  q→p) ，因此，<span class="arithmatex">\(n_y=n_x +1\)</span></li>
+<li>在调用代码序列中增加一个步骤：在y的访问链中放置一个指向x的活动记录的指针</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(n_x &gt; n_y\)</span>的情况(内层调用外层)</li>
+<li><span class="arithmatex">\(n_x=n_y\)</span>的情况</li>
+</ol>
+<h2 id="_14">参数传递方式<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%B1%BB%E5%9E%8B%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 类型表达式">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                类型表达式
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="md-footer__link md-footer__link--next" aria-label="下一页: 数据库系统基本概念">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                数据库系统基本概念
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

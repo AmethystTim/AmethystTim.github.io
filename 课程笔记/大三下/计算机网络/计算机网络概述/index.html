@@ -1,0 +1,735 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">
+      
+      
+        <link rel="prev" href="../../../%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB/5%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+      
+      
+        <link rel="next" href="../%E7%89%A9%E7%90%86%E5%B1%82/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>计算机网络概述 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">计算机网络概述</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">计算机网络基本概念</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">协议三要素</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">计算机网络的分类</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_4">计算机网络的结构</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_5">网络边缘</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">接入网络</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">接入网络：电缆网络</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_8">无线接入网络</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_9">网络核心</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_10">数据交换</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">为什么需要数据交换？</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">数据交换的类型</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_13">电路交换</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_14">报文交换</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_15">分组交换</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_16">分组交换：统计多路复用</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_17">分组交换：传输延迟</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_18">报文交换与分组交换的比较</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_19">计算机网络性能</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_20">计算机网络体系结构</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#osi">OSI参考模型</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_21">为什么需要数据封装？</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三下/计算机网络/计算机网络概述/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>计算机网络概述</h1>
+
+<h2 id="_1">计算机网络基本概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[信源\to 发送设备\to 信道\to 接收设备\to 信宿\]</div>
+<p>计算机网络就是一种<strong>通信网络</strong></p>
+<p>定义：计算机网络是<strong>互连的，自洽的计算机集合</strong></p>
+<ul>
+<li>自洽-无主从关系</li>
+<li>互连-互联互通</li>
+</ul>
+<p>如何互连主机？</p>
+<ul>
+<li>通过交换网络互连主机</li>
+<li>交换网络中包含大量的<strong>交换节点</strong>（交换机或者路由器）</li>
+</ul>
+<p>什么是Internet？</p>
+<ul>
+<li>全球最大的互联网络<ul>
+<li>ISP网络称之为网络之网络</li>
+</ul>
+</li>
+<li>是数以百万计的互连的计算设备集合<ul>
+<li>主机=端系统</li>
+<li>运行各种网络应用</li>
+</ul>
+</li>
+<li>分组交换：转发分组（数据包）<ul>
+<li>路由器</li>
+<li>交换机</li>
+</ul>
+</li>
+</ul>
+<p>为网络应用提供通信服务的基础设施</p>
+<ul>
+<li>Web</li>
+<li>电子邮件</li>
+<li>网络游戏</li>
+<li>电子商务...</li>
+</ul>
+<p>仅有硬件连接，Internet能否顺畅运行？能保证应用数据的有序交付吗？</p>
+<p><strong>还需要协议！</strong></p>
+<p>硬件是计算机网络的基础，计算机网络的数据交换必须遵守事先约定好的规则</p>
+<p>网络协议，简称协议，是为了进行网络中的数据交换而建立的规则、标准和约定</p>
+<p>协议规定了通信实体之间的消息的格式、语义、顺序以及针对收到信息或发生的时间采取的“动作”</p>
+<h3 id="_2">协议三要素<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>语法<ul>
+<li>数据和控制信息的结构或格式</li>
+<li>信号电平</li>
+</ul>
+</li>
+<li>语义<ul>
+<li>需要发出何种控制信息</li>
+<li>完成何种动作以及做出何种响应</li>
+<li>差错控制</li>
+</ul>
+</li>
+<li>时序<ul>
+<li>时间顺序</li>
+<li>速度匹配</li>
+</ul>
+</li>
+</ul>
+<p>协议规范了网络中所有信息发送和接受的过程</p>
+<p>常见协议如：TCP/IP协议、OSI协议、HTTP协议、SMTP协议、FTP协议、DNS协议、SNMP协议、Telnet协议等</p>
+<h3 id="_3">计算机网络的分类<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>按照覆盖范围</p>
+<ul>
+<li>个人区域网PAN（Personal Area Network） ~10m</li>
+<li>局域网LAN（Local Area Network）~1km</li>
+<li>城域网MAN（Metropolitan Area Network）</li>
+</ul>
+<h2 id="_4">计算机网络的结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="image.png" width="500px" /></p>
+<h3 id="_5">网络边缘<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>主机（端系统）<ul>
+<li>位于网络边缘，运行网络应用</li>
+</ul>
+</li>
+<li>客户/服务器应用模型<ul>
+<li>客户发送请求，接收服务器响应</li>
+<li>客户与客户之间不能进行任何通信</li>
+<li>如：Web应用，文件传输FTP应用</li>
+</ul>
+</li>
+<li>P2P应用模型<ul>
+<li>无/不仅依赖专用服务器</li>
+<li>通信在对等实体之间直接进行</li>
+<li>如：Gnutella、Skype、QQ等</li>
+</ul>
+</li>
+</ul>
+<h3 id="_6">接入网络<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>如何将网络边缘接入核心网（边缘路由器）？</p>
+<ul>
+<li>住宅接入网络</li>
+<li>机构接入网络</li>
+<li>移动接入网络</li>
+</ul>
+<p>用户关心的是：带宽、共享还是独占？</p>
+<h3 id="_7">接入网络：电缆网络<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>频分多路复用：在不同频带（载波）上传输不同频道</p>
+<h3 id="_8">无线接入网络<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>通过共享的无线接入网络连接端系统和路由器</p>
+<p>一般通过基站/接入点连接</p>
+<ul>
+<li>无线局域网（LANs）<ul>
+<li>同一建筑物范围内（30m）</li>
+<li>WiFi6最高速率9.6Gbps</li>
+</ul>
+</li>
+<li>广域无线接入<ul>
+<li>通过电信运营商（蜂窝网），接入范围在几十km</li>
+<li>带宽1Mbps~1Gbps</li>
+<li>也称为移动互联网</li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">网络核心<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>核心功能：路由+转发</p>
+<p>路由：确定分组从源到目的地的传输路径</p>
+<p>转发：将分组从路由器的输入端口交换到正确输出端口</p>
+<h2 id="_10">数据交换<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>Q：如何通过网络核心从源主机到达目的主机？</p>
+<p>A：数据交换</p>
+<h3 id="_11">为什么需要数据交换？<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>若主机全连接，则需要<span class="arithmatex">\(\frac{N(N-1)}{2}\)</span>条链路</p>
+<h3 id="_12">数据交换的类型<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>电路交换</li>
+<li>报文交换</li>
+<li>分组交换</li>
+</ul>
+<h4 id="_13">电路交换<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>典型电路交换网络：电话网络</p>
+<p>电路交换的三个阶段：</p>
+<ol>
+<li>建立连接（呼叫/电路建立）</li>
+<li>通信</li>
+<li>释放连接</li>
+</ol>
+<p>若某条链路被其中一个电话的通话占用了，其他通话就不能再用了？</p>
+<blockquote>
+<p>可以通过多路复用实现一个信道上传输多路信号或数据流</p>
+</blockquote>
+<h4 id="_14">报文交换<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>源发送信息整体，如一个文件、一张图像</p>
+<p>典型报文交换网络：电报通信网络</p>
+<h4 id="_15">分组交换<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>将报文拆出来得到一系列<strong>相对较小的数据包</strong></p>
+<p>每个分组都由<strong>头</strong>和<strong>数据</strong>组成</p>
+<p>分组交换需要对报文进行<strong>拆分</strong>和<strong>重组</strong>，产生<strong>额外的开销</strong></p>
+<h4 id="_16">分组交换：统计多路复用<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="image-1.png" width="400px" /></p>
+<h4 id="_17">分组交换：传输延迟<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li>接收应用报文（消息）</li>
+<li>拆分为较小长度为L的分组（packets）</li>
+<li>在传输速率为R的链路上传输分组</li>
+</ul>
+<div class="arithmatex">\[分组传输延迟（时延）=\frac{L(bits)}{R(bits/sec)}\]</div>
+<h3 id="_18">报文交换与分组交换的比较<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>都基于<strong>存储-转发</strong>的交换方式</p>
+<ul>
+<li>报文交换</li>
+</ul>
+<p><img alt="" src="image-2.png" width="400px" /></p>
+<ul>
+<li>分组交换</li>
+</ul>
+<p><img alt="" src="image-3.png" width="400px" /></p>
+<h2 id="_19">计算机网络性能<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<h2 id="_20">计算机网络体系结构<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>实体表示任何可发送或接收信息的硬件或软件进程</p>
+<p>协议是控制<strong>两个对等实体</strong>进行通信的规则的集合</p>
+<blockquote>
+<p>协议是“水平的”</p>
+</blockquote>
+<p>任何一层实体都需要使用下层服务，遵循本层协议，实现本层功能，向上层提供服务</p>
+<h3 id="osi">OSI参考模型<a class="headerlink" href="#osi" title="Permanent link">&para;</a></h3>
+<p><strong>开放系统互连</strong>参考模型是由国际标准化组织提出的分层网络体系结构模型</p>
+<p>OSI总共分为7层，每一层完成特定网络功能</p>
+<table>
+<thead>
+<tr>
+<th>结构</th>
+<th>协议数据单元</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>报文</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>报文</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>报文</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>段</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>分组</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据帧</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>比特</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="alt text" src="image-4.png" /></p>
+<p>直接通过协议互相联通的称为<strong>端-端层（End-End）</strong></p>
+<p>网络层-数据链路层-物理层称为<strong>互联网络</strong></p>
+<h3 id="_21">为什么需要数据封装？<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>增加控制信息<ul>
+<li>构造协议数据单元</li>
+</ul>
+</li>
+<li>控制信息内容<ul>
+<li>地址：标识发送端/接收端</li>
+<li>差错检测编码：用于差错检测或纠正</li>
+<li>协议控制：实现协议功能的附加信息</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../../%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB/5%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 特征提取">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                特征提取
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%89%A9%E7%90%86%E5%B1%82/" class="md-footer__link md-footer__link--next" aria-label="下一页: 物理层">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                物理层
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

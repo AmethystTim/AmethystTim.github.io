@@ -1,0 +1,788 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/">
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E5%B1%80%E5%9F%9F%E7%BD%91/">
+      
+      
+        <link rel="next" href="../../%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/%E5%AF%BC%E8%AE%BA/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>网络层 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">网络层</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">网络层服务</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">网络层拥塞控制策略</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_3">虚电路网络与数据报网络</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_4">虚电路</a>
+        
+      </li>
+    
+      <li>
+        <a href="#vc">VC的具体实现</a>
+        
+      </li>
+    
+      <li>
+        <a href="#vc_1">VC转发表</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">虚电路信令协议</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">数据报转发表</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">最长前缀匹配优先</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_8">路由器体系结构</a>
+        
+      </li>
+    
+      <li>
+        <a href="#ip">IP协议</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#ip_1">IP数据报分组格式</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#ip_2">IP相关协议</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#icmp">ICMP协议</a>
+        
+      </li>
+    
+      <li>
+        <a href="#ip_3">如何获得IP地址？</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#dhcp">动态主机配置协议DHCP</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#nat">网络地址转换（NAT）</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#nat_1">NAT穿透问题</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#arp">ARP协议</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_9">同一局域网内</a>
+        
+      </li>
+    
+      <li>
+        <a href="#lanlan">从一个LAN路由至另一个LAN</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_10">路由算法</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">路由与转发</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">网络抽象</a>
+        
+      </li>
+    
+      <li>
+        <a href="#djikstra">Djikstra算法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">距离向量路由算法</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#bellman-ford">Bellman-Ford算法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#dv">DV算法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#dv_1">DV的更新</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_14">层次路由</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_15">网关路由器</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_16">路由协议</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#rip">RIP</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三下/计算机网络/网络层/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>网络层</h1>
+
+<h2 id="_1">网络层服务<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>从发送主机向接收主机发送数据段</p>
+<p>路由器检验所有穿越它的IP数据报的<strong>头部域</strong></p>
+<p>网络层核心功能：<strong>转发与路由</strong></p>
+<h3 id="_2">网络层拥塞控制策略<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>例：ATM ABR控制拥塞</p>
+<p>ABR：如果发送方路径拥塞，将发送速率降低到最低保障速率</p>
+<p>RM：由发送方发送，交换机设置RM cell位，NI bit表示速率不许增长，CI bit表示拥塞指示</p>
+<h2 id="_3">虚电路网络与数据报网络<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>数据报网络提供<strong>网络层无连接服务</strong>，虚电路网络提供<strong>网络层连接服务</strong></p>
+<blockquote>
+<p>类似于传输层的无连接服务UDP和面向连接服务TCP，不同之处在于：是主机到主机服务，同时也是网络核心的实现</p>
+</blockquote>
+<h3 id="_4">虚电路<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>从一个源主机到目的主机，类似于电路的路径（是逻辑连接）</p>
+<ul>
+<li><strong>分组交换</strong></li>
+<li>每个分组的传输利用链路的全部带宽</li>
+<li>源到目的路径经过的网络层设备共同完成虚电路功能</li>
+</ul>
+<p>每个分组携带<strong>虚电路标识</strong>（VC ID），而<strong>不是目的主机地址</strong></p>
+<p>虚电路经过每个网络设备，维护每条经过它的虚电路连接状态</p>
+<p>链路、网络设备资源，可以面向VC进行<strong>预分配</strong></p>
+<h3 id="vc">VC的具体实现<a class="headerlink" href="#vc" title="Permanent link">&para;</a></h3>
+<p>每条虚电路包括：</p>
+<ol>
+<li>从源主机到目的主机的一条路径</li>
+<li>虚电路标识（VC ID），沿路每段链路一个编号</li>
+<li>沿路每个网络层设备都利用转发表记录经过的每一条虚电路</li>
+</ol>
+<blockquote>
+<p>沿某条虚电路传输的分组，携带对应虚电路的VCID，而不是目的地址</p>
+<p>同一条VC，在每一段链路上的VCID通常不同</p>
+</blockquote>
+<h3 id="vc_1">VC转发表<a class="headerlink" href="#vc_1" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="image-20.png" /></p>
+<blockquote>
+<p>VC路径上的<strong>每个路由器</strong>都需要维护VC连接的状态信息</p>
+</blockquote>
+<h3 id="_5">虚电路信令协议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>主要用于VC的建立维护与拆除</li>
+<li>应用于虚电路网络</li>
+<li>目前Internet不采用</li>
+</ul>
+<h3 id="_6">数据报转发表<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>由路由算法确定通过网络的端到端路径，转发表确定在本路由器如何转发分组</p>
+<p><img alt="alt text" src="image-21.png" /></p>
+<blockquote>
+<p>存在40多亿个IP地址，为了减少路由表大小，将IP地址分组，当IP地址属于某个范围，则使用相对应的链路接口转发</p>
+</blockquote>
+<p><img alt="alt text" src="image-22.png" /></p>
+<h3 id="_7">最长前缀匹配优先<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="image-23.png" /></p>
+<p>在检索转发表时，优先选择与分组目的地址<strong>匹配前缀最长</strong>的入口</p>
+<h2 id="_8">路由器体系结构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="ip">IP协议<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h2>
+<h3 id="ip_1">IP数据报分组格式<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="image-24.png" /></p>
+<h2 id="ip_2">IP相关协议<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h2>
+<h3 id="icmp">ICMP协议<a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h3>
+<p>全称为<strong>互联网报文控制协议</strong></p>
+<p>ICMP协议是IP协议的一部分，用于报告网络层事件和错误</p>
+<p>ICMP报文分为两类：</p>
+<ul>
+<li>差错报告报文<ul>
+<li>目的不可达</li>
+<li>源抑制</li>
+<li>超时/超期</li>
+<li>参数问题</li>
+<li>重定向</li>
+</ul>
+</li>
+<li>网络探寻报文<ul>
+<li>回声请求与应答报文</li>
+<li>时间戳请求与应答报文</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>几种<strong>不</strong>发送ICMP差错报告报文的特殊情况：</p>
+<ol>
+<li>对ICMP差错报告报文的响应，不发送ICMP差错报告报文</li>
+<li>除了第1个IP数据报分片外，对后续所有分片都不发送</li>
+<li>对所有多播IP数据报，不发送ICMP差错报告报文</li>
+<li>对具有特殊地址的IP数据报不发送ICMP差错报告报文</li>
+</ol>
+</blockquote>
+<p>ICMP报文封装到IP数据报中传输</p>
+<p><img alt="alt text" src="image-27.png" /></p>
+<p><img alt="alt text" src="image-28.png" /></p>
+<h3 id="ip_3">如何获得IP地址？<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h3>
+<p>硬编码：静态配置</p>
+<h4 id="dhcp">动态主机配置协议DHCP<a class="headerlink" href="#dhcp" title="Permanent link">&para;</a></h4>
+<ul>
+<li>从服务器动态获取<ul>
+<li>IP地址</li>
+<li>子网掩码</li>
+<li>默认网关地址</li>
+<li>DNS服务器名称与IP地址</li>
+</ul>
+</li>
+</ul>
+<p>由客户端（DHCP Client）向服务器（DHCP Server）提出配置申请，DHCP Server为网络上的每个设备动态分配IP地址、子网掩码、默认网关地址，域名服务器（DNS）地址和其他相关配置参数，以便可以与其他IP网络通信。</p>
+<p>DHCP流程</p>
+<ol>
+<li>主机广播发送DHCP DISCOVER“发现报文”</li>
+<li>DHCP服务器利用DHCP OFFER“提供报文”响应</li>
+<li>主机请求IP地址DHCP REQUEST“请求报文”</li>
+<li>DHCP服务器为期分配IP地址 DHCP ACK“确认报文”</li>
+</ol>
+<h3 id="nat">网络地址转换（NAT）<a class="headerlink" href="#nat" title="Permanent link">&para;</a></h3>
+<ul>
+<li>网络地址转换（NAT）是一种IP地址转换技术，它允许多个私有网络使用同一个公共IP地址。</li>
+</ul>
+<p>优势：</p>
+<ul>
+<li>本地网络设备IP地址变更，无须通知外界网络</li>
+<li>变更ISP时，无需修改内部网络设备IP地址</li>
+<li>内部网络设备对外界网络不可见，即不可直接寻址</li>
+</ul>
+<p>所有离开本地网络去往Internet的数据报的源IP必须替换为相同的NAT地址；本地网络内部的通信的IP数据报的源与目的IP地址均在子网内</p>
+<p><img alt="alt text" src="image-29.png" /></p>
+<h4 id="nat_1">NAT穿透问题<a class="headerlink" href="#nat_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>客户期望连接内网地址为10.0.0.1的服务器，客户不能直接利用地址10.0.0.1直接访问</li>
+<li>对外唯一可见NAT地址：138.76.29.7</li>
+</ul>
+<p><img alt="alt text" src="image-30.png" /></p>
+<ul>
+<li>解决方法1：静态配置NAT，将特定端口的连接请求转发给服务器</li>
+<li>解决方法2：利用UPnP互联网网关设备协议(IGD)自动配置</li>
+<li>解决方法3：中继，NAT内部客户和中继服务器建立连接，外部客户也和中继服务器连接</li>
+</ul>
+<h3 id="arp">ARP协议<a class="headerlink" href="#arp" title="Permanent link">&para;</a></h3>
+<p>在同一个LAN内，如何在已知目的接口的IP地址的前提下确定其MAC地址？</p>
+<p>LAN中每一个IP节点都维护了一个<code>&lt;IP,MAC&gt;</code>表，ARP协议主要是查询和更新这个表，表附带了TTL（Time-to-Live）字段，用来限制ARP表项的生存时间。</p>
+<h4 id="_9">同一局域网内<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><img alt="alt text" src="image-31.png" /></p>
+<h4 id="lanlan">从一个LAN路由至另一个LAN<a class="headerlink" href="#lanlan" title="Permanent link">&para;</a></h4>
+<p><img alt="alt text" src="image-32.png" /></p>
+<h2 id="_10">路由算法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">路由与转发<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>路由算法确定去往目的网络的最佳路径；转发表确定在本路由器如何转发分组</p>
+<h3 id="_12">网络抽象<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>可以将网络抽象为图</p>
+<p>N表示路由器集合，E表示所有的链路集合</p>
+<h3 id="djikstra">Djikstra算法<a class="headerlink" href="#djikstra" title="Permanent link">&para;</a></h3>
+<p>所有节点掌握网络拓扑和链路费用，需要计算的是：计算一个点（源点）到所有其他点的最短路径，令：</p>
+<ul>
+<li><span class="arithmatex">\(c(x,y)\)</span>为结点x到结点y链路费用；如果x和y不直接相连，则<span class="arithmatex">\(c(x,y)=\infty\)</span></li>
+<li><span class="arithmatex">\(D(v)\)</span>为从源到目的地v的当前路径费用值</li>
+<li><span class="arithmatex">\(p(v)\)</span>为沿这从源到v的当前路径，v的<strong>前序结点</strong></li>
+<li><span class="arithmatex">\(N'\)</span>为已经找到最小费用路径的结点结合</li>
+</ul>
+<p><img alt="alt text" src="image-36.png" /></p>
+<h3 id="_13">距离向量路由算法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="bellman-ford">Bellman-Ford算法<a class="headerlink" href="#bellman-ford" title="Permanent link">&para;</a></h4>
+<p>令<span class="arithmatex">\(d_x(y)=从x到y的最短路径的费用\)</span></p>
+<p>更新逻辑为：<span class="arithmatex">\(d_x(y)=\min_{v}\{c(x,y)+d_v(y)\}\)</span></p>
+<blockquote>
+<p>选择所有<span class="arithmatex">\(len(x\to v)+len(v\to y)\)</span>中的最小值作为<span class="arithmatex">\(d_x(y)\)</span>的候选值</p>
+</blockquote>
+<p>路由器据此获得了最短路径的下一跳，该信息用于转发表中</p>
+<h4 id="dv">DV算法<a class="headerlink" href="#dv" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(D_x(y)\)</span>表示从结点x到结点y的最小费用估计，x需要维护的是距离向量(DV)，即</p>
+<div class="arithmatex">\[D_x=[D_x(y): y\in N]\]</div>
+<p>结点x已知到达每个邻居的费用<span class="arithmatex">\(c(x,v)\)</span></p>
+<p>结点x需要维护：</p>
+<p>其所有邻居的距离向量<span class="arithmatex">\(D_v=[D_v(y): y\in N]\)</span></p>
+<p>核心思想：</p>
+<ul>
+<li>每个结点不定时地将自己的DV估计发送给邻居</li>
+<li>当结点x接受到邻居的新的DV估计时，根据B-F更新其自身的距离向量估计</li>
+</ul>
+<div class="arithmatex">\[D_x{y}\leftarrow\min_v{c(x,v)+D_v(y)} for each node y\in N\]</div>
+<h4 id="dv_1">DV的更新<a class="headerlink" href="#dv_1" title="Permanent link">&para;</a></h4>
+<p>对于每个结点x，都处在一个循环当中</p>
+<ul>
+<li>等待：本地局部链路费用变化火或者收到了邻居的DV更新</li>
+<li>重新计算：DV估计</li>
+<li>如果DV中到达任意一个目的地的距离发生了改变，则需要<strong>通告所有邻居</strong></li>
+</ul>
+<h2 id="_14">层次路由<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>将任意规模大小的网络抽象为一个图计算过于理想化</p>
+<ol>
+<li>网络规模过大，路由表无法存储所有路由信息</li>
+<li>路由计算过程的信息交换量巨大，会淹没链路</li>
+</ol>
+<p>聚合路由器为一个区域：自治系统（AS：Autonomous Systems）</p>
+<p>同一个AS内部的路由器运行相同的路由协议</p>
+<h3 id="_15">网关路由器<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>位于AS的边缘，通过链路链接其他AS的网关路由器</p>
+<h2 id="_16">路由协议<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>Internet采用层次路由</p>
+<p>AS内部路由协议也称为内部网络协议IGP</p>
+<p>常见的IGP</p>
+<ul>
+<li>路由信息协议：RIP</li>
+<li>开放最短路径优先：OSPF</li>
+<li>内部网关路由协议：IGRP</li>
+</ul>
+<h3 id="rip">RIP<a class="headerlink" href="#rip" title="Permanent link">&para;</a></h3>
+<p>距离向量路由算法</p>
+<ul>
+<li>距离向量：跳步数，每条链路一个跳步</li>
+<li>每隔30s，邻居之间交换一次DV，称为通告</li>
+<li>每次通告：最多25个目的子网</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 数据链路层与局域网">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                数据链路层与局域网
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/%E5%AF%BC%E8%AE%BA/" class="md-footer__link md-footer__link--next" aria-label="下一页: 大三下">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                大三下
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

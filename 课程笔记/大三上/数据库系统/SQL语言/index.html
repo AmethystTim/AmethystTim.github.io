@@ -1,0 +1,784 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/SQL%E8%AF%AD%E8%A8%80/">
+      
+      
+        <link rel="prev" href="../%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97/">
+      
+      
+        <link rel="next" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SQL语言 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">SQL语言</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">语言概述</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#sql">SQL概览</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#sql-ddldml">简单的SQL-DDl/DML：创建数据库</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_2">创建数据库</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">创建表</a>
+        
+      </li>
+    
+      <li>
+        <a href="#insert-into">向表中追加元组 INSERT INTO</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#sql-dmlselect">SQL-DML之查询SELECT</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_4">基本检索操作</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">子查询</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#in">IN谓词</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">相关子查询</a>
+        
+      </li>
+    
+      <li>
+        <a href="#theta-some-theta-all">\(\theta\) SOME/ \(\theta\) ALL谓词</a>
+        
+      </li>
+    
+      <li>
+        <a href="#exists">EXISTS谓词</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_7">分组查询</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">聚集函数</a>
+        
+      </li>
+    
+      <li>
+        <a href="#group-by">GROUP BY</a>
+        
+      </li>
+    
+      <li>
+        <a href="#having">HAVING</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_9">并、交、差的处理</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_10">空值处理</a>
+        
+      </li>
+    
+      <li>
+        <a href="#join">JOIN</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#sql_1">SQL视图</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">视图的定义与使用</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_12">定义视图</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">使用视图</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_14">视图的更新</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_15">视图的撤消</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大三上/数据库系统/SQL语言/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>SQL语言</h1>
+
+<h2 id="_1">语言概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="sql">SQL概览<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
+<p>1974，由Boyce与Chamber提出，是集DDl，DML，DCL于一体的数据库语言</p>
+<ol>
+<li>DDL语句引导词：<code>CREATE</code>，<code>ALTER</code>，<code>DROP</code></li>
+<li>DML语句引导词：<code>INSERT</code>，<code>UPDATE</code>，<code>DELETE</code>，<code>SELECT</code></li>
+<li>DCL语句引导词：<code>GRANT</code>，<code>REVOKE</code></li>
+</ol>
+<h2 id="sql-ddldml">简单的SQL-DDl/DML：创建数据库<a class="headerlink" href="#sql-ddldml" title="Permanent link">&para;</a></h2>
+<h3 id="_2">创建数据库<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbname</span><span class="o">&gt;</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="_3">创建表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tbname</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">col_name</span><span class="w"> </span><span class="n">data_type</span><span class="w"> </span><span class="p">[</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col_name_data_type</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</span></code></pre></div>
+<ul>
+<li><code>[ ]</code>：表示内部内容可以省略<br></li>
+<li><code>|</code>：表示隔开选项可以任选其一<br></li>
+<li><code>UNIQUE</code>：唯一性约束，即候选键<br></li>
+<li><code>NOT NULL</code>：指该列不允许出现空值，通常主键是不允许有空值</li>
+</ul>
+<blockquote>
+<p>各个商用DBMS的数据类型或有差异</p>
+</blockquote>
+<p>例：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">COURSE</span><span class="p">(</span><span class="n">CNo</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">CName</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+</span></code></pre></div>
+<h3 id="insert-into">向表中追加元组 <code>INSERT INTO</code><a class="headerlink" href="#insert-into" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tbname</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">colname</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">colname</span><span class="o">&gt;</span><span class="p">])</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">[,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">],</span><span class="w"> </span><span class="p">...);</span>
+</span></code></pre></div>
+<h2 id="sql-dmlselect">SQL-DML之查询SELECT<a class="headerlink" href="#sql-dmlselect" title="Permanent link">&para;</a></h2>
+<h3 id="_4">基本检索操作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">colname</span><span class="o">&gt;</span><span class="w"> </span>
+</span><span id="__span-4-2"><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tbname</span><span class="o">&gt;</span><span class="w">  </span>
+</span><span id="__span-4-3"><span class="w"> </span><span class="o">|</span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">conditions</span><span class="o">&gt;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>例：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">SNo</span><span class="p">,</span><span class="w"> </span><span class="n">Sname</span><span class="p">,</span><span class="w"> </span><span class="n">Sage</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Sage</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">19</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="_5">子查询<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="in">IN谓词<a class="headerlink" href="#in" title="Permanent link">&para;</a></h4>
+<p>练习：求选修了001号课程的学生的学号和姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="p">,</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-6-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">"001"</span>
+</span><span id="__span-6-4"><span class="p">);</span>
+</span></code></pre></div>
+<ul>
+<li>求既学过001号课程，又学过002号课程学生的学号</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-7-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"001"</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"002"</span><span class="p">);</span>
+</span></code></pre></div>
+<ul>
+<li>列出<strong>没有</strong>学过李明老师讲授课程的所有同学的姓名</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-8-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span>
+</span><span id="__span-8-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="p">,</span><span class="n">Course</span><span class="w"> </span><span class="k">C</span><span class="p">,</span><span class="w"> </span><span class="n">Teacher</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"李明"</span>
+</span><span id="__span-8-5"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">cno</span>
+</span><span id="__span-8-6"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">tno</span>
+</span><span id="__span-8-7"><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="_6">相关子查询<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>内层查询有时候需要依靠外层查询的某些参量作为<strong>限定条件</strong>才能进行</p>
+<p>外层向内层传递的参量需要使用<strong>外层的表名或者表别名来限定</strong></p>
+<p>例：求学过001号课程同学的姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span>
+</span><span id="__span-9-2"><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="n">Stud</span>
+</span><span id="__span-9-3"><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span>
+</span><span id="__span-9-4"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span>
+</span><span id="__span-9-5"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span>
+</span><span id="__span-9-6"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stud</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"001"</span>
+</span><span id="__span-9-7"><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="theta-some-theta-all"><span class="arithmatex">\(\theta\)</span> SOME/ <span class="arithmatex">\(\theta\)</span> ALL谓词<a class="headerlink" href="#theta-some-theta-all" title="Permanent link">&para;</a></h4>
+<p>例：找出<strong>工资最低</strong>的教师姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">tname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Teacher</span>
+</span><span id="__span-10-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">ALL</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Teacher</span><span class="p">);</span>
+</span></code></pre></div>
+<p>例：找出所有课程<strong>都不及格</strong>的学生姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-11-2"><span class="k">WHERE</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">ALL</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Studnet</span><span class="p">.</span><span class="n">sno</span><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="exists">EXISTS谓词<a class="headerlink" href="#exists" title="Permanent link">&para;</a></h4>
+<p>基本语法：<code>[NOT] EXISTS (子查询)</code></p>
+<p>例：检索选修了李明老师主讲课程的<strong>所有同学</strong>的姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-12-2"><span class="k">WHERE</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="p">,</span><span class="w"> </span><span class="n">Course</span><span class="p">,</span><span class="w"> </span><span class="n">Teacher</span><span class="w"> </span>
+</span><span id="__span-12-4"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">cno</span><span class="w"> </span>
+</span><span id="__span-12-5"><span class="w">        </span><span class="k">AND</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span>
+</span><span id="__span-12-6"><span class="w">        </span><span class="k">AND</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Teacher</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span>
+</span><span id="__span-12-7"><span class="w">        </span><span class="k">AND</span><span class="w"> </span><span class="n">tname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"李明"</span>
+</span><span id="__span-12-8"><span class="p">);</span>
+</span></code></pre></div>
+<p>Extra: 强大的<code>NOT EXISTS</code></p>
+<p>例：检索学过001号老师主讲的所有课程的所有同学的姓名</p>
+<blockquote>
+<p>可以将其转化为“<strong>不存在</strong>有一门001号老师主讲的课程该同学<strong>没学过</strong>”<br>
+本质是全称量词<span class="arithmatex">\(\forall\)</span>与存在量词<span class="arithmatex">\(\exists\)</span>的转换</p>
+</blockquote>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span><span class="w">  </span>
+</span><span id="__span-13-2"><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span><span class="w">   </span><span class="c1">-- 不存在</span>
+</span><span id="__span-13-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Course</span><span class="w">    </span><span class="c1">-- 有一门001教师主讲课程</span>
+</span><span id="__span-13-4"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"001"</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span><span class="w">    </span><span class="c1">-- 该同学没学过</span>
+</span><span id="__span-13-5"><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span>
+</span><span id="__span-13-6"><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span>
+</span><span id="__span-13-7"><span class="w">        </span><span class="k">AND</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">cno</span>
+</span><span id="__span-13-8"><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-13-9"><span class="p">);</span>
+</span></code></pre></div>
+<p>例：已知SPJ(sno, pno, jno, qty)，其中sno为供应商号，pno为零件号，jno为工程号，qty为数量，列出至少用了供应商S1供应的全部零件的工程号</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">jno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SPJ</span><span class="w"> </span><span class="n">spj1</span>
+</span><span id="__span-14-2"><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span><span class="w">   </span><span class="c1">-- 不存在</span>
+</span><span id="__span-14-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SPJ</span><span class="w"> </span><span class="n">spj2</span><span class="w">  </span><span class="c1">-- 有一种S1的零件</span>
+</span><span id="__span-14-4"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">spj2</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"S1"</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span><span class="w">   </span><span class="c1">-- 该工程没用过</span>
+</span><span id="__span-14-5"><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SPJ</span><span class="w"> </span><span class="n">spj3</span>
+</span><span id="__span-14-6"><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">spj3</span><span class="p">.</span><span class="n">pno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spj2</span><span class="p">.</span><span class="n">pno</span>
+</span><span id="__span-14-7"><span class="w">        </span><span class="k">AND</span><span class="w"> </span><span class="n">spj3</span><span class="p">.</span><span class="n">jno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spj1</span><span class="p">.</span><span class="n">jno</span>
+</span><span id="__span-14-8"><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-14-9"><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="_7">分组查询<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">聚集函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><code>COUNT</code>、<code>SUM</code>、<code>AVG</code></p>
+<p>例：求数据库课程平均成绩</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">Score</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="k">C</span><span class="p">,</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-15-2"><span class="k">WHERE</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">cname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'数据库'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">cname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">cname</span>
+</span></code></pre></div>
+<h4 id="group-by">GROUP BY<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h4>
+<p>为了解决若干个集合的聚集运算问题，引出了<strong>分组</strong>概念</p>
+<p>SQL可以将检索到的元组按照某一条件进行分类，<strong>具有相同条件值的元组划分到一个组或者一个集合中</strong></p>
+<p>分组可以在基本的SELECT语句基础上引入分组子句来完成</p>
+<p>例：求<strong>每一个学生</strong>的平均成绩</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-16-2"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sno</span><span class="p">;</span>
+</span></code></pre></div>
+<p>例：求<strong>每一门课程</strong>的平均成绩</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">cno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-17-2"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cno</span><span class="p">;</span>
+</span></code></pre></div>
+<h4 id="having">HAVING<a class="headerlink" href="#having" title="Permanent link">&para;</a></h4>
+<p>例：求不及格课程<strong>超过两门</strong>的同学的学号</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-18-1"><span class="c1">-- WRONG!</span>
+</span><span id="__span-18-2"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-18-3"><span class="k">WHERE</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sno</span>
+</span></code></pre></div>
+<blockquote>
+<p>聚集函数不可以用于WHERE子句中<br>
+WHERE子句对每个元组进行条件过滤，而不是对集和进行条件过滤</p>
+</blockquote>
+<ul>
+<li>若要对集和进行条件过滤，可使用<code>HAVING</code>子句</li>
+<li>HAVING子句中，又称为分组过滤子句，需要有GROUP BY子句</li>
+</ul>
+<p>修改后得到</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-19-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-19-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span>
+</span><span id="__span-19-3"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span>
+</span></code></pre></div>
+<p>例：求有两门以上不及格课程的同学的学号的学号及其平均成绩</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-20-1"><span class="c1">-- WRONG!</span>
+</span><span id="__span-20-2"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">FROm</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-20-3"><span class="k">WHERE</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span>
+</span><span id="__span-20-4"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span></code></pre></div>
+<p>注意语义问题，上述sql查询所求平均值为“<strong>不及格课程的平均值</strong>”</p>
+<p>修改为</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-21-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">FROm</span><span class="w"> </span><span class="n">SC</span>
+</span><span id="__span-21-2"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span>
+</span><span id="__span-21-3"><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="_9">并、交、差的处理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>UNION、INTERSECT、EXCEPT</p>
+<p><code>子查询 {UNION[ALL] | INTERSECT[ALL] | EXCEPT[ALL] 子查询}</code></p>
+<p>例：求学过002号课程或者学过003号课程的同学学号</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-22-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"002"</span><span class="w"> </span><span class="k">UNION</span>
+</span><span id="__span-22-2"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"003"</span>
+</span></code></pre></div>
+<p>例：假定所有学生都有选课，求没有学过002号课程的学生学号</p>
+<p>上例不能写成<code>SELECT sno FROM SC WHERE cno &lt;&gt; "002"</code>，这样只会排除“只选了002号课程的学生”</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-23-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">EXCEPT</span><span class="w"> </span>
+</span><span id="__span-23-2"><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"002"</span>
+</span></code></pre></div>
+<p>另解：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-24-1"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="n">SC1</span>
+</span><span id="__span-24-2"><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">(</span>
+</span><span id="__span-24-3"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">sno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="n">SC2</span>
+</span><span id="__span-24-4"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">SC2</span><span class="p">.</span><span class="n">cno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"002"</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SC1</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SC2</span><span class="p">.</span><span class="n">sno</span>
+</span><span id="__span-24-5"><span class="p">)</span>
+</span></code></pre></div>
+<p>例：求没学过李明老师讲课的所有同学的姓名</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-25-1"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="k">EXCEPT</span>
+</span><span id="__span-25-2"><span class="k">SELECT</span><span class="w"> </span><span class="n">sname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-25-3"><span class="k">JOIN</span><span class="w"> </span><span class="n">SC</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">.</span><span class="n">sno</span><span class="w"> </span>
+</span><span id="__span-25-4"><span class="k">JOIN</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">SC</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">tno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Course</span><span class="p">.</span><span class="n">tname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"李明"</span>
+</span></code></pre></div>
+<h3 id="_10">空值处理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>除了is [not] null 之外，空值不满足任何查找条件</li>
+<li>如果NULL参与算术运算，则算术表达式的值为NULL</li>
+<li>如果NULL参与比较运算，则返回结果均为False</li>
+<li>如果NULL参与聚集运算，则除了COUNT(*)之外的其他聚集函数都忽略NULL</li>
+</ul>
+<h3 id="join">JOIN<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-26-1"><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[[,</span><span class="err">列名</span><span class="p">]...]</span>
+</span><span id="__span-26-2"><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="k">NATURAL</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">INNER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="o">|</span><span class="k">FULL</span><span class="err">}</span><span class="p">[</span><span class="k">OUTER</span><span class="p">]]</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">column_name2</span><span class="o">&gt;</span>
+</span><span id="__span-26-3"><span class="err">{</span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="n">conditions</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">colname1</span><span class="err">{</span><span class="p">,</span><span class="n">colname</span><span class="p">...</span><span class="err">}</span><span class="p">)</span><span class="err">}</span>
+</span><span id="__span-26-4"><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">conidtions</span><span class="o">&gt;</span><span class="p">]</span>
+</span></code></pre></div>
+<h2 id="sql_1">SQL视图<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h2>
+<p>对应概念模式的数据在SQL中被称为<strong>基本表</strong>(table)，而对应外模式的数据被称为<strong>视图</strong>(view)</p>
+<ul>
+<li>基本表是实际存储于存储文件中的表，<strong>基本表</strong>中的数据是<strong>需要存储</strong>的</li>
+<li>视图在SQL中只存储其由基本表导出视图所需要的公式，即由基本表产生视图的映像信息，其<strong>数据并不存储</strong>，而是在运行过程中动态产生与维护的</li>
+<li>对视图数据的更改最终要反映在<strong>对基本表的更改</strong>上</li>
+</ul>
+<h3 id="_11">视图的定义与使用<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">定义视图<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-27-1"><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">[(</span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="k">column_name</span><span class="o">&gt;</span><span class="p">])]</span>
+</span><span id="__span-27-2"><span class="k">AS</span><span class="w"> </span><span class="err">子查询</span><span class="w"> </span><span class="p">[</span><span class="k">with</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="k">option</span><span class="p">]</span>
+</span></code></pre></div>
+<blockquote>
+<p><code>with check option</code>指明当对视图进行insert，update，delete时，要检查进行insert/update/delete的元组是否满足视图定义中子查询中定义的条件表达式</p>
+</blockquote>
+<p>例：定义一个视图CompStud为计算机系的学生，通过该视图可以将Student表中其他系的学生屏蔽掉</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-28-1"><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">CompStud</span><span class="w"> </span><span class="k">AS</span><span class="p">(</span>
+</span><span id="__span-28-2"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Student</span>
+</span><span id="__span-28-3"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dno</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-28-4"><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">dno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Dept</span>
+</span><span id="__span-28-5"><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"计算机"</span>
+</span><span id="__span-28-6"><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-28-7"><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="_13">使用视图<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>例：定义好CompStud之后，可以检索计算机系中年龄小于20的所有学生</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-29-1"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CompStud</span>
+</span><span id="__span-29-2"><span class="k">WHERE</span><span class="w"> </span><span class="n">sage</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="_14">视图的更新<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>SQL视图更新操作是一个比较复杂的问题，因视图不保存数据，对视图的更新最终要反映到对基本表的更新上，而有时，视图定义的映射不是可逆的</p>
+<p>因此，SQL视图更新操作受到很大的约束，很多情况是不能进行视图更新的。</p>
+<ul>
+<li>如果视图的select目标列包含<strong>聚集函数</strong>，则不能更新</li>
+<li>如果视图的select子句使用了<strong>UNIQUE</strong>或<strong>DISTINCT</strong>，则不能更新</li>
+<li>如果视图中包括了<strong>GROUP BY</strong>子句，则不能更新</li>
+<li>如果视图中包括经<strong>算术表达式</strong>计算出来的列，则不能更新</li>
+<li>如果视图是由单个表的列构成，但并<strong>没有包括主键</strong>，则不能更新</li>
+</ul>
+<h3 id="_15">视图的撤消<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>已经定义的视图也可以撤消</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-30-1"><span class="k">DROP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">view_name</span>
+</span></code></pre></div>
+<p>例：撤消视图CompStud <code>Drop View CompStud</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 关系模型与关系运算">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                关系模型与关系运算
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 数据库的安全性与完整性">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                数据库的安全性与完整性
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

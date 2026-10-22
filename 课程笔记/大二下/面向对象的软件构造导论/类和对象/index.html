@@ -1,0 +1,793 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E5%AF%BC%E8%AE%BA/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+      
+      
+        <link rel="prev" href="../Java%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="next" href="../static%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>类和对象 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">类和对象</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">对象和类</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#object">对象（object）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#class">类（class）</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_2">类的声明构造</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">封装性</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#gettersetter">通过getter/setter对属性进行访问</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_4">类的构造方法</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#this">this 关键字</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">默认构造方法</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_6">类的访问域</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">抽象类与接口</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">抽象类</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_9">接口</a>
+        
+      </li>
+    
+      <li>
+        <a href="#vs">接口 VS 抽象类</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_10">多态</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_11">实现方式</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_12">重写</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_13">抽象类</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_14">接口</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_15">多继承</a>
+        
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/面向对象的软件构造导论/类和对象/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>类和对象</h1>
+
+<h2 id="_1">对象和类<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="object">对象（object）<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>客观存在的具体实体，具有明确的状态和行为</p>
+<p>特征：标识符（用于区别其他对象）、属性（状态）、操作（行为）</p>
+<ul>
+<li>属性：与对象关联的变量，描述对象<strong>静态特征</strong></li>
+<li>操作：与对象关联的函数，描述对象<strong>动态特征</strong></li>
+</ul>
+<h3 id="class">类（class）<a class="headerlink" href="#class" title="Permanent link">&para;</a></h3>
+<p>对现实生活中一类具有共同属性和共同操作的对象的<strong>抽象</strong></p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><span class="n">Student</span><span class="w"> </span><span class="err">——</span><span class="n">类名</span>
+</span><span id="__span-0-2"><span class="o">---------</span>
+</span><span id="__span-0-3"><span class="n">name</span>
+</span><span id="__span-0-4"><span class="n">gender</span><span class="w">  </span><span class="err">——</span><span class="n">属性</span>
+</span><span id="__span-0-5"><span class="n">major</span>
+</span><span id="__span-0-6"><span class="o">---------</span>
+</span><span id="__span-0-7"><span class="n">enrol</span><span class="p">()</span><span class="w"> </span><span class="err">——</span><span class="n">操作方法</span>
+</span><span id="__span-0-8"><span class="nf">take_course</span><span class="p">()</span>
+</span></code></pre></div>
+<h2 id="_2">类的声明构造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+</span><span id="__span-1-2"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-1-4">
+</span><span id="__span-1-5"><span class="w">    </span><span class="n">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">){...}</span>
+</span><span id="__span-1-6"><span class="w">    </span><span class="n">getName</span><span class="p">(){...}</span>
+</span><span id="__span-1-7"><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>成员变量<ul>
+<li>作用：表示类和对象的属性、状态</li>
+<li>类型：可以是<strong>基本</strong>类型和<strong>引用类</strong>类型</li>
+</ul>
+</li>
+<li>成员方法<ul>
+<li>实质：实现某一功能的程序段，可以改变成员变量的属性和状态</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>访问控制符<br>
+<code>public</code>：可被公开访问<br>
+<code>private</code>：私有<br>
+<code>protected</code>：受保护<br>
+<code>default</code>：默认<br></p>
+</blockquote>
+<h2 id="_3">封装性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><span class="c1">//不使用封装</span>
+</span><span id="__span-2-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+</span><span id="__span-2-3"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-2-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-2-5"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tell</span><span class="p">(){</span>
+</span><span id="__span-2-6"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"姓名: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">","</span><span class="o">+</span><span class="s">"年龄: "</span><span class="o">+</span><span class="n">age</span><span class="p">);</span>
+</span><span id="__span-2-7"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-8"><span class="p">}</span>
+</span><span id="__span-2-9">
+</span><span id="__span-2-10"><span class="c1">//使用封装</span>
+</span><span id="__span-2-11"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+</span><span id="__span-2-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-2-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-2-14"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tell</span><span class="p">(){</span>
+</span><span id="__span-2-15"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"姓名: "</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">","</span><span class="o">+</span><span class="s">"年龄: "</span><span class="o">+</span><span class="n">age</span><span class="p">);</span>
+</span><span id="__span-2-16"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-17"><span class="p">}</span>
+</span></code></pre></div>
+<p>若直接运行下方代码，编译器会报错，因为外部无法直接调用类内部的属性</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><span class="n">Person</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">();</span>
+</span><span id="__span-3-2"><span class="n">per</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">张三</span><span class="err">”</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-3-3"><span class="n">per</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="p">;</span>
+</span><span id="__span-3-4"><span class="n">per</span><span class="p">.</span><span class="na">tell</span><span class="p">();</span>
+</span></code></pre></div>
+<h3 id="gettersetter">通过<code>getter/setter</code>对属性进行访问<a class="headerlink" href="#gettersetter" title="Permanent link">&para;</a></h3>
+<p>在Java开发标准规定中，只要是属性封装，设置和取得就要依靠<code>setter</code>和<code>getter</code>方法完成操作</p>
+<p>如：<code>Setter: public void setName(String n){}</code></p>
+<p><code>Getter: public String getName(){}</code></p>
+<h2 id="_4">类的构造方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>构造方法（constructor）是一种特殊方法<ul>
+<li>用来构造并初始化（new）该类的一个<strong>新的对象</strong></li>
+<li><mark>构造方法和类名<strong>同名</strong></mark>，而且<strong>不返回数据类型</strong></li>
+</ul>
+</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-4-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-4-4"><span class="w">    </span><span class="c1">//…</span>
+</span><span id="__span-4-5"><span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-4-7"><span class="w">        </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-4-8"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-9"><span class="p">}</span>
+</span><span id="__span-4-10"><span class="n">Person</span><span class="w"> </span><span class="n">Li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="err">“</span><span class="n">Li</span><span class="w"> </span><span class="n">Lei</span><span class="err">”</span><span class="p">,</span><span class="mi">19</span><span class="p">);</span>
+</span><span id="__span-4-11"><span class="n">Person</span><span class="w"> </span><span class="n">Han</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="err">“</span><span class="n">Han</span><span class="w"> </span><span class="n">Meimei</span><span class="err">”</span><span class="p">);</span><span class="w"> </span><span class="c1">// error</span>
+</span><span id="__span-4-12"><span class="n">Person</span><span class="w"> </span><span class="n">Han</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="err">“</span><span class="n">Han</span><span class="w"> </span><span class="n">Meimei</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span><span class="w"> </span>
+</span></code></pre></div>
+<h3 id="this">this 关键字<a class="headerlink" href="#this" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">){</span>
+</span><span id="__span-5-2"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-5-3"><span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-5-4"><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>构造函数的两个参数能够表达出含义，但是输入参数和Person类定义的私有变量名称一致，导致name=name，age=age。无法区分哪个是私有变量，哪个是输入变量。</p>
+</blockquote>
+<p>采用<code>this</code>关键字，将上方代码修改为</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-6-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-6-4"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-6-6"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-6-7"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-8"><span class="w">    </span><span class="c1">// 编写setter、getter</span>
+</span><span id="__span-6-9"><span class="w">    </span><span class="err">…</span>
+</span><span id="__span-6-10"><span class="p">}</span><span class="w"> </span>
+</span></code></pre></div>
+<h3 id="_5">默认构造方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>类都有一个至多个构造方法</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><span class="w">    </span><span class="c1">// …</span>
+</span><span id="__span-7-3"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"一个新的对象"</span><span class="p">);</span>
+</span><span id="__span-7-5"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-6"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><span class="w">        </span><span class="k">this</span><span class="p">();</span><span class="w"> </span><span class="c1">// 调用本类中的无参构造</span>
+</span><span id="__span-7-8"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-7-9"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-10"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">){</span>
+</span><span id="__span-7-11"><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// 调用有一个参数的构造</span>
+</span><span id="__span-7-12"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-13"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-14"><span class="w">    </span><span class="c1">// …</span>
+</span><span id="__span-7-15"><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>一个类中如果有多个构造方法，则需有一个不用<code>this</code>调用的构造方法作为出口</p>
+</blockquote>
+<ul>
+<li>若没有定义任何构造方法，系统会自动产生一个构造方法，称作<strong>默认构造方法</strong></li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><span class="c1">// 默认构造函数</span>
+</span><span id="__span-8-2"><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(){</span>
+</span><span id="__span-8-4">
+</span><span id="__span-8-5"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-6"><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="_6">类的访问域<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>定义：本类及本类内部的成员（成员变量、成员方法、内部类）对
+其他类的可见性，即这些内容是否允许其他类访问</p>
+<ul>
+<li><code>public</code>：该类可以被其他类所访问</li>
+<li><code>default</code>：该类只能被同一个包中的类访问</li>
+<li><code>private</code>：无法被其他类所访问</li>
+<li><code>protected</code>：可以被子类访问，以及子类的子类（作用于<strong>继承</strong>关系）</li>
+</ul>
+<blockquote>
+<p>包(package)： 在java编程中，经常把功能相似或相关的类或者接口放在一个包里；可以避免名字冲突；也限定了访问权限。</p>
+</blockquote>
+<h2 id="_7">抽象类与接口<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">抽象类<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>抽象类是不能实例化的</li>
+<li><strong>只能被继承</strong>，保证子类实现其定义的抽象方法</li>
+<li>可用于实现<strong>多态</strong></li>
+</ul>
+<h3 id="_9">接口<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>抽象类中，抽象方法本质上是定义接口规范，保证子类都有相同的接口实现</p>
+<p>比抽象类还要抽象：没有字段，所有方法都是抽象方法</p>
+<h3 id="vs">接口 VS 抽象类<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>抽象类</th>
+<th>接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抽象方法</td>
+<td>可以定义抽象方法</td>
+<td>可以定义抽象方法</td>
+</tr>
+<tr>
+<td>字段</td>
+<td>可以定义字段</td>
+<td>无字段</td>
+</tr>
+<tr>
+<td>继承</td>
+<td>只可以extends一个class</td>
+<td>可以implement多个interface</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>均不能使用<code>new</code>创建一个对象<br>
+接口是特殊的抽象类：接口里面的所有方法都是抽象方法，接口里面的所有属性都是常量</p>
+</blockquote>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Interface1</span><span class="p">,</span><span class="w"> </span><span class="n">Interface2</span><span class="p">{</span>
+</span><span id="__span-9-2"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-9-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-9-5"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getDuty</span><span class="p">(){</span>
+</span><span id="__span-9-6"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"好好学习"</span><span class="p">);</span>
+</span><span id="__span-9-7"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-8"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-9-9"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getMission</span><span class="p">(){</span>
+</span><span id="__span-9-10"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"为中华之崛起而读书"</span><span class="p">);</span>
+</span><span id="__span-9-11"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-12"><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="_10">多态<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ul>
+<li>多态（Polymorphism）是面向对象编程的三大重要特性之一</li>
+<li>多态是同一个行为具有多种表现形态的能力<ul>
+<li>不同情况下的不同处理方式</li>
+<li>程序中定义的变量和方法在编程时并不确定，而是在程序运行期间才确定</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">实现方式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>重写（继承）</li>
+<li>抽象类和抽象方法</li>
+<li>接口</li>
+</ul>
+<h4 id="_12">重写<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>父类中的某些方法对子类并不一定适用，需要重写/覆盖(override)父类中的这个方法</li>
+<li>重写：如果在子类中定义一个方法，其名称、参数、返回类型正好与父类中某个方法相同，那么可以说，子类的方法重写了父类的方法</li>
+</ul>
+<h4 id="_13">抽象类<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><span class="c1">//定义一个抽象类</span>
+</span><span id="__span-10-2"><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+</span><span id="__span-10-3"><span class="w">    </span><span class="c1">//抽象方法</span>
+</span><span id="__span-10-4"><span class="w">    </span><span class="c1">//没有方法体，用abstract做修饰</span>
+</span><span id="__span-10-5"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">();</span>
+</span><span id="__span-10-6"><span class="p">}</span>
+</span><span id="__span-10-7">
+</span><span id="__span-10-8"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Engineer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="p">{</span>
+</span><span id="__span-10-9"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-10-10"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">(){</span>
+</span><span id="__span-10-11"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"技术改变世界"</span><span class="p">);</span>
+</span><span id="__span-10-12"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-13"><span class="p">}</span>
+</span><span id="__span-10-14">
+</span><span id="__span-10-15"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Scientist</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="p">{</span>
+</span><span id="__span-10-16"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-10-17"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">(){</span>
+</span><span id="__span-10-18"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"勇攀科学高峰"</span><span class="p">);</span>
+</span><span id="__span-10-19"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-20"><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="_14">接口<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nf">GetTarget</span><span class="p">(){</span>
+</span><span id="__span-11-2"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">();</span>
+</span><span id="__span-11-3"><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Talent</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="nf">GetTarget</span><span class="p">(){</span>
+</span><span id="__span-12-2"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-12-3"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">(){</span>
+</span><span id="__span-12-4"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"打造国之重器"</span><span class="p">);</span>
+</span><span id="__span-12-5"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-6"><span class="p">}</span>
+</span><span id="__span-12-7">
+</span><span id="__span-12-8"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Entrepreneur</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="nf">GetTarget</span><span class="p">(){</span>
+</span><span id="__span-12-9"><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-12-10"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getTarget</span><span class="p">(){</span>
+</span><span id="__span-12-11"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"促进共同富裕"</span><span class="p">);</span>
+</span><span id="__span-12-12"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-13"><span class="p">}</span>
+</span><span id="__span-12-14">
+</span><span id="__span-12-15"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-16"><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">Zhang</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Talent</span><span class="p">();</span>
+</span><span id="__span-12-17"><span class="w">    </span><span class="n">Zhang</span><span class="p">.</span><span class="na">getTarget</span><span class="p">();</span>
+</span><span id="__span-12-18"><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">Ma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Entrepreneur</span><span class="p">();</span>
+</span><span id="__span-12-19"><span class="w">    </span><span class="n">Han</span><span class="p">.</span><span class="na">getTarget</span><span class="p">();</span>
+</span><span id="__span-12-20"><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="_15">多继承<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>多继承存在的问题：</p>
+<ol>
+<li>若子类继承的父类中拥有相同的成员变量，子类在引用该变量时将无法判别使用哪个父类的成员变量。</li>
+<li>
+<p>若一个子类继承的多个父类拥有相同方法，同时子类并未覆盖该方法（若覆盖，则直接使用子类中该方法），那么调用该方法时将无法确定调用哪个父类的方法。</p>
+</li>
+<li>
+<p>实现方法</p>
+<ul>
+<li>内部类</li>
+<li>接口</li>
+</ul>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Java%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Java语言基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Java语言基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../static%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="md-footer__link md-footer__link--next" aria-label="下一页: static修饰符">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                static修饰符
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

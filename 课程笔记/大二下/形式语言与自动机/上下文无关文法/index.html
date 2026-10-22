@@ -1,0 +1,585 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95/">
+      
+      
+        <link rel="prev" href="../%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%B4%A8/">
+      
+      
+        <link rel="next" href="../%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>上下文无关文法 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">上下文无关文法</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">自然语言的文法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_2">回文</a>
+        
+      </li>
+    
+      <li>
+        <a href="#cfg">上下文无关文法(CFG)</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">归约和派生</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_4">定义</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_5">最左派生与最右派生</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_6">文法的语言</a>
+        
+      </li>
+    
+      <li>
+        <a href="#cfl">上下文无关语言(CFL)</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">文法的歧义性</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_8">固有歧义性</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_9">文法的化简</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_10">消除无用符号</a>
+        
+      </li>
+    
+      <li>
+        <a href="#epsilon-">消除epsilon-产生式</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#gnf">格雷巴赫范式（GNF）</a>
+        
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/形式语言与自动机/上下文无关文法/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>上下文无关文法</h1>
+
+<h2 id="_1">自然语言的文法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>&lt;名词短语&gt;&lt;动词短语&gt;</li>
+<li>&lt;动词&gt;&lt;名词短语&gt;</li>
+<li>……</li>
+</ul>
+<h2 id="_2">回文<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>若字符串<span class="arithmatex">\(w\in \Sigma^*\)</span>满足<span class="arithmatex">\(w=w^R\)</span>，则称字符串<span class="arithmatex">\(w\)</span>为回文</p>
+<p>如果语言L的字符串都是回文，则称L为回文语言</p>
+<div class="arithmatex">\[L=\{w\in \Sigma^*|w=w^R\}\]</div>
+<p>例：字母表Σ = {0, 1} 上的回文语言</p>
+<p>如何定义？</p>
+<p>使用嵌套定义表示这种递归的结构：令A为回文语言中的字符串</p>
+<p>有<span class="arithmatex">\(A\to \epsilon,A\to0,A\to 1\)</span></p>
+<p><span class="arithmatex">\(A\to0A0,A\to1A1\)</span></p>
+<h2 id="cfg">上下文无关文法(CFG)<a class="headerlink" href="#cfg" title="Permanent link">&para;</a></h2>
+<p>G是一个四元组<span class="arithmatex">\(G=(V,T,P,S)\)</span></p>
+<ul>
+<li>V:变元的有穷集, 变元也称为非终结符或语法范畴</li>
+<li>T:终结符的有穷集（即字母表），且<span class="arithmatex">\(V\cap T=\phi\)</span></li>
+<li>P:产生式的有穷集，每个产生式包括:<ul>
+<li>一个变元，称为产生式的头(head)或左部；</li>
+<li>一个产生式符号→，读作定义为;</li>
+<li>一个<span class="arithmatex">\((V⋃T)^∗\)</span>中的符号串, 称为体(body)或右部（由变元和终结符组成的字符串）</li>
+</ul>
+</li>
+<li>S:初始符号S∈V，表示文法开始的地方</li>
+</ul>
+<blockquote>
+<p>产生式：<span class="arithmatex">\(A\to \alpha，读作A定义为\alpha\)</span>，若有多个A的产生式，<br>
+则可以简写为<span class="arithmatex">\(A\to\alpha_1|\alpha_2|\dots|\alpha_n\)</span><br>
+文法中变元A的全体产生式，称为A产生式<br></p>
+</blockquote>
+<p>例：回文字符串</p>
+<p>定义变元A，有产生式集<span class="arithmatex">\(\{A\to 0|1|0A0|1A1|\}\)</span></p>
+<h2 id="_3">归约和派生<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>从字符串到文法变元的分析过程, 称为归约</li>
+<li>从文法变元到字符串的分析过程, 称为派生</li>
+</ul>
+<h3 id="_4">定义<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>若上下文无关文法 <span class="arithmatex">\(G = (V, T, P, S)\)</span>, 设 <span class="arithmatex">\(α, β, γ ∈ (V ∪ T)^∗, A ∈ V , A → γ ∈ P\)</span>, 那么称在<span class="arithmatex">\(G\)</span>中由 <span class="arithmatex">\(αAβ\)</span> 可<strong>派生</strong>出 <span class="arithmatex">\(αγβ\)</span>, 记为</p>
+<div class="arithmatex">\[\alpha A \beta\xRightarrow[G]{} \alpha \gamma \beta\]</div>
+<p>相应地，称<span class="arithmatex">\(\alpha\gamma\beta\)</span>可归约为<span class="arithmatex">\(\alpha A \beta\)</span></p>
+<blockquote>
+<p>派生指的是用产生式<span class="arithmatex">\(A\to \gamma\)</span>的右部分<span class="arithmatex">\(\gamma\)</span>替换串<span class="arithmatex">\(\alpha A\beta\)</span>中变元A得到串<span class="arithmatex">\(\alpha\gamma\beta\)</span>的过程</p>
+</blockquote>
+<p>例：使用算术表达式文法<span class="arithmatex">\(G_{exp}\)</span>，将a*(a+b00)归约的过程</p>
+<p><img src="xsyy9-1.png" style="width:150px;margin-right:30%;" align=right></p>
+<ol>
+<li>I*(I+I00)</li>
+<li>I*(I+I0)</li>
+<li>I*(I+I)</li>
+<li>E*(E+E)</li>
+<li>E*(E)</li>
+<li>E*E</li>
+<li>E</li>
+</ol>
+<h2 id="_5">最左派生与最右派生<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>为限制派生的随意性, 要求只替换符号串中最左边变元的派生过程, 称为最左派生；只替换最右的，称为最右派生，分别记为</p>
+<div class="arithmatex">\[\xRightarrow[lm]{}\quad \xRightarrow[rm]{}\]</div>
+<blockquote>
+<p>任何派生都有等价的最左派生和最右派生</p>
+</blockquote>
+<h2 id="_6">文法的语言<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>定义：上下文无关文法<span class="arithmatex">\(G=(V,T,P,S)\)</span>的语言定义为</p>
+<div class="arithmatex">\[L(G)=\{w|w\in T^*,S\xRightarrow[G]{*}w\}\]</div>
+<p>需要满足:</p>
+<ol>
+<li>w仅由终结符组成</li>
+<li>初始符号S能派生出w</li>
+</ol>
+<h2 id="cfl">上下文无关语言(CFL)<a class="headerlink" href="#cfl" title="Permanent link">&para;</a></h2>
+<p>如果语言<span class="arithmatex">\(L\)</span>是某个 CFG <span class="arithmatex">\(G\)</span> 定义的语言, 即 <span class="arithmatex">\(L = L(G)\)</span>, 则称L为<strong>上下文无关语言</strong></p>
+<blockquote>
+<p>之所以称之为“上下文无关”，是因为文法派生的每一步<span class="arithmatex">\(\alpha A\beta \Rightarrow \alpha\gamma\beta\)</span>符号串<span class="arithmatex">\(\gamma\)</span>仅根据A的产生式派生，而无需依赖A的上下文<span class="arithmatex">\(\alpha\)</span>和<span class="arithmatex">\(\beta\)</span></p>
+</blockquote>
+<h2 id="_7">文法的歧义性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>如果CFG <span class="arithmatex">\(G\)</span>使某些符号串有两棵不同的语法分析树，则称该文法是<strong>歧义的</strong></p>
+<p>例：算数表达式的文法<span class="arithmatex">\(G_exp\)</span>中，对句型a+a∗a有下面两棵语法树</p>
+<p><img src="xsyy9-2.png" style="width:400px;"></p>
+<h3 id="_8">固有歧义性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>定义:定义同样的语言可以有多个文法，如果上下文无关语言L的所有文法都是有歧义的，那么称语言L是<strong>固有歧义的</strong>。</p>
+<h2 id="_9">文法的化简<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ol>
+<li>消除无用符号</li>
+<li>消除<span class="arithmatex">\(\epsilon\)</span>-产生式(<span class="arithmatex">\(A\to \epsilon\)</span>)</li>
+<li>消除单元产生式(<span class="arithmatex">\(A\to B\)</span>)</li>
+</ol>
+<h3 id="_10">消除无用符号<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>定义:CFG<span class="arithmatex">\(G = (V, T, P, S)\)</span>, 符号<span class="arithmatex">\(X ∈ (V∪T)\)</span>:</p>
+<ul>
+<li>如果<span class="arithmatex">\(S\xRightarrow{*}αXβ\)</span>,称X是<strong>可达的</strong></li>
+<li>如果<span class="arithmatex">\(\alpha X\beta\xRightarrow{*}w(w\in T^*)\)</span>，称X是<strong>产生的</strong></li>
+<li>如果X同时是产生的和可达的，那么称X是<strong>有用的</strong>，否则X是无用符号</li>
+</ul>
+<blockquote>
+<p>注意:先寻找并消除全部非“产生的”符号，再寻找并消除全部非“可达的”符号，否则可能消除不完整</p>
+</blockquote>
+<h3 id="epsilon-">消除epsilon-产生式<a class="headerlink" href="#epsilon-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>假如<span class="arithmatex">\(A\to \epsilon\)</span>，则A是可空的</li>
+<li>如果<span class="arithmatex">\(B\to \alpha\)</span>且<span class="arithmatex">\(\alpha\)</span>中的每个符号都是可空的，那么B是可空的</li>
+</ul>
+<p>例：消除CFG <span class="arithmatex">\(G=(\{S,A,B\},\{a,b\},P,S)\)</span>的<span class="arithmatex">\(\epsilon\)</span>-产生式。<span class="arithmatex">\(S\to AB,A\to AaA|\epsilon,B\to BbB|\epsilon\)</span></p>
+<p>先确定全部可空的变元，再替换全部带有可空符号的产生式</p>
+<h2 id="gnf">格雷巴赫范式（GNF）<a class="headerlink" href="#gnf" title="Permanent link">&para;</a></h2>
+<ul>
+<li>每个不带<span class="arithmatex">\(\epsilon\)</span>的CFL都可以由这样的CFG G定义，G的每个产生式的形式都为</li>
+</ul>
+<div class="arithmatex">\[A\to a\alpha\]</div>
+<blockquote>
+<p>其中 A 是变元, a 是终结符, α 是零或多个变元的串</p>
+</blockquote>
+<ul>
+<li>特点<ul>
+<li>GNF的每个产生式都会引入一个终结符</li>
+<li>长度为n的串的派生正好是n步</li>
+</ul>
+</li>
+</ul>
+<p>例：将下列文法转换为GNF</p>
+<div class="arithmatex">\[\begin{split}
+    S\to AB\\
+    A\to aA|bB|b\\
+    B\to b
+\end{split}\]</div>
+<p>转换为GNF后：</p>
+<div class="arithmatex">\[\begin{split}
+    S\to aAB|bBB|bB\\
+    A\to aA|bB|b\\
+    B\to b
+\end{split}\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%B4%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 正则语言的性质">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                正则语言的性质
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="md-footer__link md-footer__link--next" aria-label="下一页: 下推自动机">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                下推自动机
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1045 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="在代码、论文与生活之间，记录思考留下的轨迹。">
+      
+      
+      
+        <link rel="canonical" href="https://amethysttim.github.io/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/RISC-V%E6%B1%87%E7%BC%96%26%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="prev" href="../%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/">
+      
+      
+        <link rel="next" href="../%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E5%8F%8A%E6%A0%88%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>RISC-V汇编&指令系统 - AMETHYST / Tim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/navigation.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)">
+  <script>document.documentElement.classList.add("cine")</script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <header class="md-header garden-header" data-md-component="header">
+  <div class="md-header__inner md-grid garden-header__inner">
+    <a class="garden-brand" href="../../../.." aria-label="AMETHYST / Tim 首页">
+      <img src="../../../../assets/mark.svg" width="34" height="34" alt="">
+      <span class="md-header__title garden-brand__name" data-md-component="header-title">
+        <span class="md-header__ellipsis">
+          <span class="md-header__topic">AMETHYST <span class="garden-brand__byline">/ Tim</span></span>
+          <span class="md-header__topic" data-md-component="header-topic" aria-hidden="true">RISC-V汇编&指令系统</span>
+        </span>
+      </span>
+    </a>
+    
+    <nav class="garden-nav" aria-label="博客导航">
+      
+        
+        <a class="garden-nav__link" href="../../../..">首页</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../library/">文档库</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../blog/">随笔</a>
+      
+        
+        <a class="garden-nav__link" href="../../../../about/">关于</a>
+      
+    </nav>
+    <div class="garden-header__tools">
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      <label class="md-header__button md-icon garden-search-toggle" for="__search" title="全文搜索" aria-label="全文搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  
+    
+<aside class="garden-outline" aria-label="文章目录">
+  <details class="garden-outline__panel" open>
+    <summary>文章目录</summary>
+    
+  <ol>
+    
+      <li>
+        <a href="#_1">基本概念</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_2">指令集架构</a>
+        
+      </li>
+    
+      <li>
+        <a href="#isa">ISA位宽</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_3">存储器寻址</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_4">尾端问题</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_5">对齐问题</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_6">寻址方式</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_7">操作数类型、表示</a>
+        
+      </li>
+    
+      <li>
+        <a href="#asm">汇编语言（ASM）</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_8">主流架构</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_9">指令语法</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_10">汇编指令操作对象</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_11">汇编语言的变量</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_12">运算</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_13">整型加法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_14">整型减法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_15">整数乘法与除法</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_16">常数运算元</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_17">相关运算</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_18">位操作</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_19">比较</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_20">数据传输（主存访问指令）</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#_21">相关指令</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_22">传输一个字节的数据</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_23">如何在起始状态存储值到内存中</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_24">字节序</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_25">符号扩展</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_26">其他的存储与加载指令</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#byte-instruction">Byte instruction</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_27">条件分支（跳转）语句</a>
+        
+      </li>
+    
+      <li>
+        <a href="#_28">无条件跳转指令</a>
+        
+      </li>
+    
+      <li>
+        <a href="#risc-v">RISC-V伪指令</a>
+        
+      </li>
+    
+      <li>
+        <a href="#rv64ic">RV64I实现C语言（部分）</a>
+        
+  <ol>
+    
+      <li>
+        <a href="#for">实现for循环</a>
+        
+      </li>
+    
+      <li>
+        <a href="#while">实现while循环</a>
+        
+      </li>
+    
+  </ol>
+
+      </li>
+    
+      <li>
+        <a href="#_29">基本块</a>
+        
+      </li>
+    
+  </ol>
+
+  </details>
+</aside>
+  
+
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+                  
+
+
+  
+    <a href="https://github.com/amethysttim/amethysttim.github.io/edit/main/docs/课程笔记/大二下/计算机组成原理/RISC-V汇编&指令系统/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>RISC-V汇编&指令系统</h1>
+
+<h2 id="_1">基本概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>指令系统（指令集，IS：Instruction Set）</li>
+<li><strong>指令集系统架构</strong>（ISA）<ul>
+<li>简称架构，也可以称为：处理器架构、指令集体系结构</li>
+<li>包含了程序员正确编写二进制机器语言程序所需的全部信息</li>
+<li>例如：如何使用硬件、指令格式、操作种类、操作数所能存放的寄存器组和结构，包括每个寄存器名称、编号、长度、用途</li>
+</ul>
+</li>
+<li>系列机<ul>
+<li>基本指令系统相同，基本系统结构相同的计算机</li>
+<li>实际是为了解决<strong>软件兼容</strong>的问题，给定一个ISA，可以有不同的实现方式；例如：AMD/Intel CPU都是X86-64指令集，ARM ISA也有不同的实现方式</li>
+<li>IBM 360是第一个将<strong>ISA与其实现分离</strong>的系列机</li>
+</ul>
+</li>
+</ul>
+<h2 id="_2">指令集架构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ISA——抽象层，软件子系统与硬件子系统的桥梁和接口</li>
+</ul>
+<p><img alt="img" src="jz4-1.png" width="600" /></p>
+<div class="arithmatex">\[
+ISA功能\quad\begin{cases}
+数据类型\\存储模型\\软件可见的处理器状态\\指令集\\系统模型\\外部接口\\\dots
+\end{cases}
+\quad ISA特性\quad\begin{cases}
+    成本和资源占用低\\简洁性：指令规整简洁\\架构和具体实现分离\\可扩展\\易于编程\\性能好\\\dots
+\end{cases}
+\]</div>
+<h2 id="isa">ISA位宽<a class="headerlink" href="#isa" title="Permanent link">&para;</a></h2>
+<p>指的是<strong>通用寄存器的宽度</strong>，决定了<strong>寻址范围的大小</strong>，数据运算能力的强弱</p>
+<p>ISA位宽和指令编码长度<strong>不一定相等</strong>，在64位架构中，也存在大量的16位编码</p>
+<h2 id="_3">存储器寻址<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>指的是：<strong>处理器根据指令中给出的地址信息来寻找物理地址</strong></p>
+<ul>
+<li>1980年以来几乎所有的机器的存储器都是按字节编址</li>
+<li>一个存储器地址可以访问<ul>
+<li>1个字节，2个字节，4个字节……</li>
+</ul>
+</li>
+<li>不同体系结构对字的定义是不同的<ul>
+<li>16位字(Intel X86)，32位字(MIPS，RISC-V)</li>
+</ul>
+</li>
+<li>如何将字节地址映射到字地址（尾端问题）</li>
+<li>一个字是否可以存放在任何字节边界上（对齐问题）</li>
+</ul>
+<h3 id="_4">尾端问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>指的是：在一个（双）字内部的字节顺序问题</p>
+<p>例如：地址<code>addr</code>存储的字为<code>0x89ABCDEF</code>，<code>addr</code>，<code>addr+1</code>，<code>addr+2</code>，<code>addr+4</code>四个字节分别存放的数据是什么？</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>addr+3</th>
+<th>addr+2</th>
+<th>addr+1</th>
+<th>addr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小端</td>
+<td>89</td>
+<td>AB</td>
+<td>CD</td>
+<td>EF</td>
+</tr>
+<tr>
+<td>大端</td>
+<td>EF</td>
+<td>CD</td>
+<td>AB</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">对齐问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>假设对s个字节长的对象访问地址为A，如果A mod s=0 ，称为<strong>边界对齐</strong></li>
+<li>边界对齐的原因是存储器本身读写的要求，存储器本身读写通常就是边界对齐的，对于没有边界对齐的对象的访问，可能会导致两次访问或异常</li>
+</ul>
+<h2 id="_6">寻址方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>指的是：通过指令中的操作数（不同方式）计算出地址</p>
+<p>有效地址：由寻址方式说明的某一存储单元的实际存储器地址，有效地址</p>
+<h2 id="_7">操作数类型、表示<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>面向应用、软件系统所处理的各种数据类型</p>
+<p>类型由<strong>操作码决定</strong>，<del>或者数据附加硬件解释的标记</del>（现已弃用）</p>
+<ul>
+<li>操作数在机器中的表示<ul>
+<li>整型：原码、反码、补码、移码</li>
+<li>浮点：IEEE 754标准</li>
+<li>十进制：BCD码（二进制十进制表示）</li>
+<li>ASCII character = 1 byte (64位寄存器能存8个ASCII字符)</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<h2 id="asm">汇编语言（ASM）<a class="headerlink" href="#asm" title="Permanent link">&para;</a></h2>
+<ul>
+<li>如RISC-V</li>
+<li>是一种低级编程语言</li>
+<li>不同的架构实际上具有一组支持的不同操作</li>
+</ul>
+<h2 id="_8">主流架构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Intel x86</li>
+<li>ARM</li>
+<li>
+<p>RISC-V</p>
+</li>
+<li>
+<p>早期趋势</p>
+<ul>
+<li>进行复杂的指令集计算</li>
+</ul>
+</li>
+<li>当前<ul>
+<li>创建精简的指令集</li>
+</ul>
+</li>
+<li>RISC-V介绍<ul>
+<li>由UCB创建的第五代RISC的开源指令集规范</li>
+<li>适用于嵌入式的所有级别计算</li>
+</ul>
+</li>
+</ol>
+<h2 id="_9">指令语法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li>包含一个操作码和三个操作数(<code>op</code>,<code>dst</code>,<code>src1</code>,<code>src2</code>)<ul>
+<li>op：操作助记符</li>
+<li>dst：目标寄存器</li>
+</ul>
+</li>
+<li>每一行仅允许执行一条指令</li>
+<li>每一条指令只有一个操作</li>
+<li>“#”用于注释</li>
+<li>C语言中的一条指令可能要拆分为多条汇编语言实现</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"># Fibonacci Sequence
+</span><span id="__span-0-2">main: add  t0, x0,  x0
+</span><span id="__span-0-3">        ↑   ↑   ↑    ↑
+</span><span id="__span-0-4">       op  dst src1 src2
+</span><span id="__span-0-5"># 将两个寄存器相加，将结果存在dst中
+</span></code></pre></div>
+<h3 id="_10">汇编指令操作对象<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>寄存器<ul>
+<li>32个通用寄存器：x0~x31（仅涉及RV321的通用寄存器组）</li>
+<li>在RISC-V中，算术逻辑运算所操作的数据必须直接来自寄存器</li>
+<li>x0是一个特殊寄存器，只用于全零</li>
+<li>每个寄存器都有别名便于区别，实际硬件没有区别</li>
+<li>RV321指令集通用寄存器是32位，RV641是64位</li>
+</ul>
+</li>
+<li>内存<ul>
+<li>可执行在寄存器和内存之间的读写</li>
+<li>读写操作使用字节为基本单位进行寻址</li>
+<li>RV64可以访问最多<span class="arithmatex">\(2^{64}\)</span>个字节的内存空间，即<span class="arithmatex">\(2^{61}\)</span>个存储单元</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">汇编语言的变量<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ol>
+<li>不能使用变量（如<code>int a; float b;</code>）</li>
+<li>汇编语言的操作对象以寄存器为主</li>
+</ol>
+<p><img alt="img" src="jz4-2.png" width="600" /></p>
+<h3 id="_12">运算<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ol>
+<li>算术运算：add、sub、mul、div、addi</li>
+<li>逻辑运算：and、or、xor、andi、ori、xori</li>
+<li>移位操作：sll、srl、sra、slli、srli、srai</li>
+<li>数据传输：ld、sd、lw、sw、lwu、lh、lhu、sh、lb、lbu、lbu、sb、lui</li>
+<li>比较指令：slt、slti、sltu、sltiu</li>
+<li>条件分支：beq、bne、blt、bge、bltu、bgeu</li>
+</ol>
+<blockquote>
+<p>i表示其中有一个数是立即数
+u表示为无符号数</p>
+</blockquote>
+<h4 id="_13">整型加法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>C: <code>a=b+c;</code></li>
+<li>RISC-V: <code>add s1, s2, s3</code></li>
+</ul>
+<blockquote>
+<p>溢出是因为计算机中表达数本身是有范围限制的，RISC-V 忽略溢出问题，高位被截断，低位写入目标寄存器</p>
+</blockquote>
+<h4 id="_14">整型减法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>C: <code>a=b-c;</code></li>
+<li>RISC-V: <code>sub s1, s2, s3</code></li>
+</ul>
+<h4 id="_15">整数乘法与除法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li>乘法RISC-V：<code>mul rd, rs1, rs2</code><ul>
+<li>将计算结果写入寄存器<code>rd</code>，忽略算术溢出</li>
+<li>要得到高32位积，如果操作数都是有符号数，就用<code>mulh</code>指令</li>
+<li>如果一个有符号一个无符号，可以用mulhsu指令</li>
+</ul>
+</li>
+<li>除法RISC-V：<code>div rd, rs1, rs2</code><ul>
+<li>将计算结果向零舍入，将这些数视为二进制补码，商写入寄存器rd</li>
+</ul>
+</li>
+</ul>
+<h4 id="_16">常数运算元<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<ul>
+<li>immediate number</li>
+<li>可以将常数存入寄存器中进行运算</li>
+<li>有一个特殊的寄存器x0，村入了一个特定常数0，且该寄存器的值不可修改</li>
+</ul>
+<h4 id="_17">相关运算<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li><span class="arithmatex">\(eg:a=(b+c)-(d+e);\)</span></li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"># 假设a-&gt;s0,b-&gt;s1,c-&gt;s2,d&gt;s3,e-&gt;s4
+</span><span id="__span-1-2">add t1, s1, s2
+</span><span id="__span-1-3">add t2, s3, s4
+</span><span id="__span-1-4">sub s0, t1, t2
+</span></code></pre></div>
+<h3 id="_18">位操作<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li>按位逻辑运算<ul>
+<li>寄存器操作数：<code>and x5, x6, x7</code></li>
+<li>立即数操作：<code>andi x5, x6, 3</code></li>
+</ul>
+</li>
+<li>RISC-V中没有NOT，按位取反<ul>
+<li><code>xori x5, x6, -1</code>可以得到<span class="arithmatex">\(x5=\bar{x6}\)</span></li>
+</ul>
+</li>
+<li>移位运算<ul>
+<li>左移相当于乘以2</li>
+<li>逻辑右移，在最高位添加0</li>
+<li>算术右移：在最高位添加符号位</li>
+<li>移位的位数可以是<strong>立即数</strong>或者<strong>寄存器中的值</strong></li>
+<li>slli, srli, srai只需要最多移动63位？？？只会使用immediate低6位的值</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意区分<code>and</code>和<code>add</code>！</p>
+</blockquote>
+<h3 id="_19">比较<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有符号数的比较：Set Less Than(slt:通过比较两个操作数的大小来对目标寄存器进行设置)<ul>
+<li><code>slt dst, reg1, reg2</code>，若<code>reg1&lt;reg2</code>，返回1，否则返回0</li>
+</ul>
+</li>
+<li>无符号数的比较<ul>
+<li><code>sltu dst, src1, src2</code>，若<code>src1&lt;src2</code>，返回1，否则返回0</li>
+</ul>
+</li>
+</ul>
+<h3 id="_20">数据传输（主存访问指令）<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p><code>memop reg, offset(bAddr)</code></p>
+<blockquote>
+<p>memop:操作运算符</p>
+<p>reg：寄存器</p>
+<p>bAddr: 基地址</p>
+<p>offset：偏移值</p>
+</blockquote>
+<ul>
+<li>内存都是字节寻址</li>
+<li>1word=4bytes</li>
+<li>在c语言中我们可见的最小数据类型是char，为一个字节（8bit），所有的数据类型都是8bit的整数倍</li>
+<li>在字寻址每个地址的每个部分相隔4个字节</li>
+<li>指针算数在汇编中不会自动完成</li>
+<li>不同的体系结构对字（word）的定义不同(RISC-V中 1word = 4 bytes)</li>
+<li>内存是按照字节进行编址，不是按照字进行编址的</li>
+<li>字的地址为字内最低位字节的地址(小端模式)</li>
+<li>按字对齐，地址最后两位为0（4的倍数）</li>
+</ul>
+<h4 id="_21">相关指令<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>load word(lw)</strong><ul>
+<li>获取某个寄存器中的数据或者基地址加上内存的偏移量处的数据</li>
+</ul>
+</li>
+<li><strong>store word(sw)</strong><ul>
+<li>与lw相反，将某个值存储进某个寄存器或者基地址加上内存偏移量处的地址</li>
+</ul>
+</li>
+<li>eg：整形数组的地址是s3，值b存在s2中</li>
+<li>C:</li>
+</ul>
+<div class="language-C highlight"><pre><span></span><code><span id="__span-2-1"><span class="n">array</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+</span></code></pre></div>
+<ul>
+<li>Assembly:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1">lw t0, 12(s3) # t0=A[3]
+</span><span id="__span-3-2">lw t0, s2     # t0=A[3]+b
+</span><span id="__span-3-3">sw t0, 40(s3) # A[10]=t0=A[3]+b
+</span></code></pre></div>
+<h4 id="_22">传输一个字节的数据<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>使用专门的字节传输指令<code>lb,sb</code></p>
+<ul>
+<li>lb/sb使用的是低字节</li>
+<li>如果是sb指令，高56位(RVRV64)/24位(RVRV32)被忽略</li>
+<li>如果是lb指令，高56位(RVRV64)/24位(RVRV32)做符号扩展</li>
+</ul>
+<h4 id="_23">如何在起始状态存储值到内存中<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"># 汇编器指令类型之一，制定内存的数据存储，也可以将其视作内存的静态位置
+</span><span id="__span-4-2"># 在数字后面可以添加多个数字，用逗号隔开，便可以得到一个数组
+</span><span id="__span-4-3">.data
+</span><span id="__span-4-4">source:
+</span><span id="__span-4-5">    .word 3
+</span><span id="__span-4-6">    .word 1
+</span><span id="__span-4-7">    .word 4
+</span><span id="__span-4-8"># 告诉汇编器将以下所有内容解释为代码
+</span><span id="__span-4-9">.text
+</span><span id="__span-4-10">main:
+</span><span id="__span-4-11">    la t1, source
+</span><span id="__span-4-12">    lw t2, 0(t1)
+</span><span id="__span-4-13">    lw t3, 4(t1)
+</span></code></pre></div>
+<h4 id="_24">字节序<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何存储字符或者短整型？</li>
+<li>大字节序：最高字节位在地址最低位</li>
+<li>小字节序：最低字节位于内存最低位</li>
+<li>eg: s0=0x 0000 0180</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>big endian</th>
+<th>00</th>
+<th>00</th>
+<th>01</th>
+<th>80</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>little endian</td>
+<td>80</td>
+<td>01</td>
+<td>00</td>
+<td>00</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_25">符号扩展<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<ul>
+<li>指在保留数字符号（正负性）及其数值的情况下增加二进制数字位数的操作</li>
+<li>若为正数，如001010，则直接在最高位前添加0</li>
+<li>若为负数，如11 1111 0001（十进制的-15），则直接在最高位添加1</li>
+</ul>
+<h4 id="_26">其他的存储与加载指令<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<h5 id="byte-instruction">Byte instruction<a class="headerlink" href="#byte-instruction" title="Permanent link">&para;</a></h5>
+<ul>
+<li>load byte(lb)<ul>
+<li>高位的三个字节通过“符号扩展”填充</li>
+</ul>
+</li>
+<li>store byte(sb)<ul>
+<li>仅读取一个字节（8bit），高位的三个字节均被忽略</li>
+</ul>
+</li>
+<li>eg: s0=0x00000180</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1">lb s1,1(s0) # s1=0x00000001
+</span><span id="__span-5-2"># 将八位扩展成32位，因为s0最高位是1，所以前30位（2进制）都应该是1，所以用16进制表示为“F”（此时每一位代表4bit）
+</span><span id="__span-5-3">lb s2,0(s0) # s2=0xFFFFFF80
+</span><span id="__span-5-4"># 此时只看s2的最低1字节内容（16进制最低的两位）
+</span><span id="__span-5-5">sb s2,2(s0) # *(s0)=0x00800180
+</span></code></pre></div>
+<h2 id="_27">条件分支（跳转）语句<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<ul>
+<li>条件为真则转到标签所指的语句执行，否则顺序执行</li>
+<li><code>beq reg1,reg2,label #branch if equal</code><ul>
+<li>如果reg1中的值=reg2中的值, 程序跳转到label处继续执行</li>
+</ul>
+</li>
+<li><code>bne reg1,reg2,label #branch if equal</code><ul>
+<li>如果reg1中的值≠reg2中的值, 程序跳转到label处继续执行</li>
+</ul>
+</li>
+<li><code>blt reg1,reg2,label #branch if less than</code><ul>
+<li>如果reg1 &lt; reg2, 程序跳转到label处继续执行</li>
+</ul>
+</li>
+<li><code>bge reg1,reg2,label #branch if greater than or equal</code><ul>
+<li>如果<strong>reg1 &gt;= reg2</strong>, 程序跳转到label处继续执行</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意:没有依据标志位的跳转（与x86不同）</p>
+</blockquote>
+<h2 id="_28">无条件跳转指令<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>jal rd, offset   # (jump and link)</code><ul>
+<li>将下一条指令的地址PC+4保存在寄存器rd（一般使用<strong>x1/ra</strong>）</li>
+</ul>
+</li>
+<li><code>jalr rd, offset(rs1)   #(jump and link register)</code><ul>
+<li>把PC+4存到rd中</li>
+<li>类似jal，但是跳转到rsl+offset地址处的指令（更远）</li>
+<li>可以用于过程<strong>返回</strong></li>
+<li>如果rd用x0，那么相当于只跳转不返回</li>
+</ul>
+</li>
+</ul>
+<h2 id="risc-v">RISC-V伪指令<a class="headerlink" href="#risc-v" title="Permanent link">&para;</a></h2>
+<ul>
+<li>方便程序员编程</li>
+<li>通过汇编语言的变化或者组合来实现，不是硬件实现</li>
+</ul>
+<p>例：
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"># 将src存入dst
+</span><span id="__span-6-2">mv dst, src
+</span><span id="__span-6-3">
+</span><span id="__span-6-4"># 装入一个立即数
+</span><span id="__span-6-5">li dst, imm
+</span></code></pre></div></p>
+<p>实际硬件实现</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1">addi dst, src, 0
+</span><span id="__span-7-2">
+</span><span id="__span-7-3">addi dst, x0, imm
+</span></code></pre></div>
+<h2 id="rv64ic">RV64I实现C语言（部分）<a class="headerlink" href="#rv64ic" title="Permanent link">&para;</a></h2>
+<h3 id="for">实现for循环<a class="headerlink" href="#for" title="Permanent link">&para;</a></h3>
+<p><div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span><span id="__span-8-2"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-3"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-8-5"><span class="p">}</span>
+</span></code></pre></div>
+假设数组A的首地址保存在 x8，sum保存在x10中</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1">    add x9, x8, x0 # x9=&amp;A[0]
+</span><span id="__span-9-2">    add x10, x0, x0# sum=0
+</span><span id="__span-9-3">    add x11, x0, x0 # i=0
+</span><span id="__span-9-4">    addi x13, x0, 20 # x13=20
+</span><span id="__span-9-5">Loop:
+</span><span id="__span-9-6">    bge x11, x13, Done
+</span><span id="__span-9-7">    ld x12,0(x9) # x12=A[i]
+</span><span id="__span-9-8">    add x10, x10, x12
+</span><span id="__span-9-9">    addi x9, x9, 8 # &amp;A[i+1]
+</span><span id="__span-9-10">    addi x11, x11, 1 # i++
+</span><span id="__span-9-11">    beq x0, x0, Loop
+</span><span id="__span-9-12">Done:
+</span></code></pre></div>
+<h3 id="while">实现while循环<a class="headerlink" href="#while" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">save</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span id="__span-10-2"><span class="k">while</span><span class="p">(</span><span class="n">save</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">k</span><span class="p">){</span>
+</span><span id="__span-10-3"><span class="w">    </span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-10-4"><span class="p">}</span>
+</span></code></pre></div>
+<p>假设i存储在x22中，k存储在x24中，save数组元素的地址保存在x25中</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1">Loop:
+</span><span id="__span-11-2">    slli x10, x22, 3  # 8*i
+</span><span id="__span-11-3">    add x10, x10, x25 # save[]+8*i
+</span><span id="__span-11-4">    ld x9, 0(x10) # save[i]-&gt;x9
+</span><span id="__span-11-5">    bne x9, x24, Exit # save[i]!=k Exit
+</span><span id="__span-11-6">    addi x22, x22, 1 # i+=1
+</span><span id="__span-11-7">    beq x0, x0, Loop
+</span><span id="__span-11-8">Exit: ...
+</span></code></pre></div>
+<h2 id="_29">基本块<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<ul>
+<li>基本块是这样的指令序列</li>
+<li>没有嵌入分支（除非在末尾）</li>
+<li>没有分支目标（除非在开头）</li>
+<li>编译器可以识别基本块以进行优化</li>
+<li>先进的处理器能够加速基本块的执行</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 计算机中数的运算方法">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                计算机中数的运算方法
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E5%8F%8A%E6%A0%88%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 过程调用及栈的使用">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                过程调用及栈的使用
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Alea jacta est!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/amethysttim" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.tracking", "navigation.top", "search.share", "search.highlight", "search.suggest", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../javascripts/library.js"></script>
+      
+        <script src="../../../../javascripts/cinema.js"></script>
+      
+    
+  </body>
+</html>
