@@ -154,6 +154,12 @@ body:has(.home-shell) .md-content__button{display:none}
 .library-filter{font:inherit;font-size:.65rem;padding:.35rem .95rem;background:transparent;border:1px solid var(--line);border-radius:999px;color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s,background .2s}
 .library-filter:hover{border-color:var(--ink);color:var(--ink)}
 .library-filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+/* Third level: folders under the selected section */
+.library-subfilters{margin:-.3rem 0 .8rem;padding:.6rem 0 0 .9rem;border-left:2px solid var(--line)}
+.library-subfilters[hidden]{display:none}
+.library-subfilters .library-filter{font-size:.6rem;padding:.28rem .8rem}
+.library-subfilters .library-filter[aria-pressed="true"]{background:var(--wash);border-color:var(--clay);color:var(--ink)}
+.library-filter-count{margin-left:.35rem;opacity:.6;font-variant-numeric:tabular-nums}
 .library-count{font-size:.62rem;color:var(--muted);margin:.7rem 0 1rem}
 .md-typeset .library-list{padding:0;list-style:none;margin-left:0}
 .md-typeset .library-item{margin:0;padding:.95rem .6rem;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;transition:background .25s}

@@ -28,7 +28,7 @@ jobs:
       - name: Validate content
         run: python tools/content.py check
       - name: Test content management
-        run: python -m unittest discover -s tools -p test_content.py -v
+        run: python -m unittest discover -s tools -p "test_*.py" -v
       - name: Build
         run: mkdocs build --strict
       - name: Publish to GitHub Pages

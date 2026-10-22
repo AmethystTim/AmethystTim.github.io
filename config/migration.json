@@ -39,15 +39,15 @@
     },
     {
       "source": "docs/Paper/VAE/i.md",
-      "destination": "docs/Paper/VAE/i/index.md"
+      "destination": "docs/Paper/VAE/index.md"
     },
     {
       "source": "docs/Paper/数学基础/Diffusion model/i.md",
-      "destination": "docs/Paper/数学基础/Diffusion model/i/index.md"
+      "destination": "docs/Paper/数学基础/Diffusion model/index.md"
     },
     {
       "source": "docs/Paper/数学基础/梯度有界性/i.md",
-      "destination": "docs/Paper/数学基础/梯度有界性/i/index.md"
+      "destination": "docs/Paper/数学基础/梯度有界性/index.md"
     },
     {
       "source": "docs/比赛/CUPT/COMSOL.md",
@@ -299,23 +299,23 @@
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/0基本概念/i.md",
-      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/index.md"
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/index.md"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/1距离分类器/i.md",
-      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/index.md"
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/index.md"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/i.md",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/index.md"
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/index.md"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i.md",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/index.md"
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/index.md"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/i.md",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/index.md"
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/index.md"
     },
     {
       "source": "docs/课程笔记/大三上/编译原理/FIRST集和FOLLOW集的计算.md",
@@ -627,17 +627,17 @@
     },
     {
       "source": "docs/Paper/VAE/image.png",
-      "destination": "docs/Paper/VAE/i/image.png",
+      "destination": "docs/Paper/VAE/image.png",
       "sha256": "8e8a71377660473a4c61e5128abd51c1ed95c22674791f54823d05e7fda6868d"
     },
     {
       "source": "docs/Paper/VAE/image-1.png",
-      "destination": "docs/Paper/VAE/i/image-1.png",
+      "destination": "docs/Paper/VAE/image-1.png",
       "sha256": "317ca4631ae3ace0806f2f356914ac8e872996126f6d83b3ce39d34cf79d72e7"
     },
     {
       "source": "docs/Paper/数学基础/Diffusion model/image.png",
-      "destination": "docs/Paper/数学基础/Diffusion model/i/image.png",
+      "destination": "docs/Paper/数学基础/Diffusion model/image.png",
       "sha256": "9c3247b0ae8368f3a281e612910e9521980522736eaecf1ba58b8d9d32454f14"
     },
     {
@@ -932,212 +932,212 @@
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/0基本概念/image.png",
-      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/image.png",
       "sha256": "96c1aecb69d43071a8b5f8ebd6e44ee3d7361daeda5b598c29241b67f741d862"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-1.png",
-      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/image-1.png",
       "sha256": "f2f418c4df859ade2f8135cc441de66425561430ccd516fe98842c8d433e9704"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-2.png",
-      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/image-2.png",
       "sha256": "e05c291fc4b0fcdeb105753eee3d4a04d0a108216c8486aa03d53ad6f6ed72da"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/0基本概念/image-3.png",
-      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/i/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/0基本概念/image-3.png",
       "sha256": "140ed1c1dbd05f1e600b2c5c7a97aaeff13222443a7c30445cd986dcb3159bc8"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image.png",
-      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/image.png",
       "sha256": "185b8ca850018ad26f6cb606dc60efddf13ef8362d20e3ed5c94d6f4f315297c"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image-1.png",
-      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/image-1.png",
       "sha256": "c3829f044d35cbe2d4d4d0625150577e7e74572b64d3664bdb3cb72aa69721d0"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/1距离分类器/image-2.png",
-      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/i/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/1距离分类器/image-2.png",
       "sha256": "b02471f97660678723d861b52d940732afaf6a5fee554b1b0a0da9f4a40c2e32"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image.png",
       "sha256": "0d27e0be436a00609b3548c8f49e34834dbdd4a10f65d7f5f7752e4e964b70af"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-1.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-1.png",
       "sha256": "f9a8ac689a8bc2e50425b8a9a7d0e44a7c9784b6fa487667e19dee9e39b7346f"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-2.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-2.png",
       "sha256": "a0a380c1366458dded8965721583dcfd2f5f1907f6ba254abfcb286a8de1fe3e"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-3.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-3.png",
       "sha256": "692e30ec3758b32c9d1498d390a8cbbde7601b87138f5d238a03b377dd03f1b2"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-4.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-4.png",
       "sha256": "8323fcfe572e3f09d22c7e5aac706ccf388566371e59795f817cdb9c8b8054ea"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-5.png",
-      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/i/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/2模式识别系统/image-5.png",
       "sha256": "ce0b9354cb9680cc123c68931e4c01b4edc5cfa3c47e96b84e0318a36f4bc861"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image.png",
       "sha256": "088f7151f86d78a2c1172d4dddf6684a37a902e1ec7b218b18a0549c2de27230"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-1.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-1.png",
       "sha256": "0e4d5e1b50927f490b751c97d6d3adeb04c07a2e54927de53230d689c56fec51"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-2.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-2.png",
       "sha256": "8ba88cbcfb80f40182d18f684f9efc0fab26463421d6026a812b12d44b436add"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-3.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-3.png",
       "sha256": "a59ff9a7eb29b89a37f3612d8b84e8fa73a708f88246a7d0865ff8388487a71e"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-17.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-17.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-17.png",
       "sha256": "33cc9d3801c458ce24358ebb48b9a415535e3a95d0cebee5f6a03781c6924e44"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-4.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-4.png",
       "sha256": "a321dafba31ba7b1891eb730be035611be8ab602e556f7b8dca2f919292f3203"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-5.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-5.png",
       "sha256": "5844d5b236233a13b8084b1932cf0ae4cf049553707d73f3a0c9f2ddbe10bb90"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-6.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-6.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-6.png",
       "sha256": "cf0c6b47968c5fc81fddb3a2e767f6abcc3a56f39a611ef81be193aa5211f3fb"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-7.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-7.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-7.png",
       "sha256": "2da2b8c2e4d9511f55ec59cc8a6cfa331445f95f93571e5e31d671e942b1f78b"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-8.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-8.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-8.png",
       "sha256": "ed437b72631c345672616e0f43fb3d9e5b0afdc685ca314fff56a5740a034950"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-9.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-9.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-9.png",
       "sha256": "24d2f08097d5f9e1845d271be20a72286defc959fdd90670929785e51f71f0d4"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-10.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-10.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-10.png",
       "sha256": "4d2de92d3cf57506ab56d1b770b55149e16bbff07858d0b8ba49e0c50aeba8cf"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-11.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-11.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-11.png",
       "sha256": "5e0813cc59c11fbd86d4e64e7d523707ca6b883944635c1ccae0d8ee83b8054b"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-12.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-12.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-12.png",
       "sha256": "b050f0f16677fd7f1a8465e9211e314ec056fc17db611bdac919d2a276848778"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-13.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-13.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-13.png",
       "sha256": "fbb4eda97b73871afd8bacc2a0b100edb656d485fc9becb14f0615e1ad5067e7"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-14.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-14.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-14.png",
       "sha256": "0ff7b350e99b9f909d84037152b3781cfe1866e6298ea83f1bf9c7ff86ab2a68"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-15.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-15.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-15.png",
       "sha256": "05aec038261672a1c19670b34a7b5d1d05376299149ed9581eee1d5eb1b47162"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-16.png",
-      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/i/image-16.png",
+      "destination": "docs/课程笔记/大三上/模式识别/3统计分类器及其学习/image-16.png",
       "sha256": "d4a55bfc3271d1fa1ed2c41b0bca2da6582935264e1a98cda7cdd00db1aecc6b"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image.png",
       "sha256": "2062a9278bc92b4100c5bc48083f253c2b86147884551ea771d5e4c50caf4996"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-1.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-1.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-1.png",
       "sha256": "14d27a50ec150e54f961b94902d59fcfb5f5f6810973fd39c97f97970dd3a1e3"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-2.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-2.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-2.png",
       "sha256": "9bd0ba0948e3ee10be127815c5abb6a9a7509ce2287af607cf01225fd4f1c1d1"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-3.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-3.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-3.png",
       "sha256": "a674c94f9c96daed6917a8e8e8743868e123ab6b4bf4d416ccbdbf326f9f7e12"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-4.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-4.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-4.png",
       "sha256": "414e014cf4fdb25545aec0c91d655d49533291e9e5157f5157c824e212dbc6a8"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-5.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-5.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-5.png",
       "sha256": "e19e68b9cd22340b4f40b4d9d1b088113642c2a6aeedd5568010c8d6ffb3369c"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-6.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-6.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-6.png",
       "sha256": "757fd1dfc57a49056f044bee5df6353acb6b2e52a6dd641f3c3c9aa589131b6a"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-7.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-7.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-7.png",
       "sha256": "8250ac94f285262d6db21831ddd382295bb6df1b6726cabf6e6e16edfb2995ae"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-8.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-8.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-8.png",
       "sha256": "8eb9ed5b5cd5f99aa200c5c3c76534c2d824cee6a663807c4d33fd187e37a026"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-9.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-9.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-9.png",
       "sha256": "7241dfa6f766be68f27c429b059823c0c2421b5fae39c55f05145d374f7bf01e"
     },
     {
       "source": "docs/课程笔记/大三上/模式识别/5特征提取/image-10.png",
-      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/i/image-10.png",
+      "destination": "docs/课程笔记/大三上/模式识别/5特征提取/image-10.png",
       "sha256": "fccb04a268377b5b38f8427b46503c1c56d3cb8b2caa0e9916fc5ac5c89eb530"
     },
     {

@@ -20,7 +20,7 @@ if (-not (Test-Path -LiteralPath $pythonPath)) {
 if ($LASTEXITCODE -ne 0) { throw 'Dependency installation failed.' }
 & $pythonPath tools/content.py check
 if ($LASTEXITCODE -ne 0) { throw 'Content checks failed.' }
-& $pythonPath -m unittest discover -s tools -p test_content.py -v
+& $pythonPath -m unittest discover -s tools -p 'test_*.py' -v
 if ($LASTEXITCODE -ne 0) { throw 'Content management tests failed.' }
 & $pythonPath -m mkdocs build --strict
 if ($LASTEXITCODE -ne 0) { throw 'Site build failed.' }
@@ -47,7 +47,7 @@ if (-not $gitEmail) { Invoke-ProjectGit config user.email '130140331+AmethystTim
 
 # Stage only website source. Personal Markdown files in the workspace root,
 # .local, .venv, drafts and the recycle bin are excluded.
-Invoke-ProjectGit add -- docs config tools overrides archive .github README.md mkdocs.yml requirements.txt .gitignore publish.ps1
+Invoke-ProjectGit add -- docs config tools overrides archive .github README.md mkdocs.yml requirements.txt .gitignore publish.ps1 admin.cmd
 & git -c "safe.directory=$projectRoot" diff --cached --quiet
 if ($LASTEXITCODE -eq 1) {
     Invoke-ProjectGit commit -m $Message

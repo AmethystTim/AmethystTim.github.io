@@ -107,11 +107,11 @@ nav:
       - 数据库设计和ER模型: 课程笔记/大三上/数据库系统/数据库设计和ER模型/index.md
       - 函数依赖、范式、分解理论: 课程笔记/大三上/数据库系统/函数依赖、范式、分解理论/index.md
     - 模式识别:
-      - 基本概念: 课程笔记/大三上/模式识别/0基本概念/i/index.md
-      - 距离分类器: 课程笔记/大三上/模式识别/1距离分类器/i/index.md
-      - 模式识别系统: 课程笔记/大三上/模式识别/2模式识别系统/i/index.md
-      - 统计分类器及其学习: 课程笔记/大三上/模式识别/3统计分类器及其学习/i/index.md
-      - 特征提取: 课程笔记/大三上/模式识别/5特征提取/i/index.md
+      - 基本概念: 课程笔记/大三上/模式识别/0基本概念/index.md
+      - 距离分类器: 课程笔记/大三上/模式识别/1距离分类器/index.md
+      - 模式识别系统: 课程笔记/大三上/模式识别/2模式识别系统/index.md
+      - 统计分类器及其学习: 课程笔记/大三上/模式识别/3统计分类器及其学习/index.md
+      - 特征提取: 课程笔记/大三上/模式识别/5特征提取/index.md
   - 大三下:
     - 计算机网络:
       - 计算机网络概述: 课程笔记/大三下/计算机网络/计算机网络概述/index.md
@@ -171,7 +171,7 @@ nav:
 - Thesis:
   - Thesis: Paper/index.md
   - 数学基础:
-    - 梯度有界性: Paper/数学基础/梯度有界性/i/index.md
-    - Diffusion model: Paper/数学基础/Diffusion model/i/index.md
+    - 梯度有界性: Paper/数学基础/梯度有界性/index.md
+    - Diffusion model: Paper/数学基础/Diffusion model/index.md
   - MambaIR: Paper/mambaIR/index.md
   - PnP: Paper/PnP/index.md

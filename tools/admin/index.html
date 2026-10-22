@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>博客管理台</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 16 16 30 3 16Z' fill='%23d97757'/%3E%3C/svg%3E">
+<style>
+:root{--paper:#f4f0e8;--panel:#faf8f3;--wash:#ebe5d8;--ink:#1f1e1b;--muted:#6b665c;--line:#ddd5c6;--clay:#d97757;--clay-ink:#b0502f;--violet:#7b61d1;--danger:#b3261e;--shadow:0 18px 50px #1f1e1b26;--serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;--mono:"JetBrains Mono","Cascadia Code",Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--paper:#0f0e0c;--panel:#171512;--wash:#1e1b17;--ink:#ede8de;--muted:#a39d91;--line:#2c2924;--clay:#e0876a;--clay-ink:#eb9877;--violet:#a996f2;--danger:#f2766b;--shadow:0 18px 50px #0009;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:14px/1.6 "Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:var(--clay-ink)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+input,select,textarea{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 10px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--clay) 55%,transparent);outline-offset:1px;border-color:var(--clay)}
+input[type=checkbox]{width:auto;accent-color:var(--clay)}
+button,.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 14px;cursor:pointer;text-decoration:none;color:var(--ink);white-space:nowrap;font-size:13px}
+button:hover,.btn:hover{border-color:var(--ink)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.primary:hover{background:var(--clay);border-color:var(--clay);color:#1f1e1b}
+.danger{color:var(--danger)}
+.danger.solid{background:var(--danger);border-color:var(--danger);color:#fff}
+.small{padding:3px 10px;font-size:12px}
+.hint{color:var(--muted);font-size:12.5px;margin:6px 0 0}
+.badge{display:inline-block;border-radius:999px;padding:0 8px;font-size:11.5px;background:var(--wash);color:var(--muted);line-height:20px}
+.badge.draft{background:color-mix(in srgb,var(--violet) 18%,transparent);color:var(--violet)}
+.badge.warn{background:color-mix(in srgb,var(--clay) 20%,transparent);color:var(--clay-ink)}
+.top{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 24px;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:18px;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.brand em{font-style:normal;color:var(--muted);font-size:14px}
+.mark{color:var(--clay)}
+.status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.pill:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line)}
+.pill.on:before{background:var(--violet);box-shadow:0 0 0 4px color-mix(in srgb,var(--violet) 20%,transparent)}
+.pill.wait:before{background:var(--clay)}
+.count{background:var(--clay);color:#1f1e1b;border-radius:999px;padding:0 7px;font-size:11.5px;line-height:18px}
+.tabs{display:flex;gap:4px;padding:14px 24px 0;max-width:1180px;margin:0 auto;overflow-x:auto}
+.tabs button{border:none;background:none;border-radius:8px 8px 0 0;padding:8px 14px;color:var(--muted);font-size:14px;border-bottom:2px solid transparent}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--clay)}
+main{max-width:1180px;margin:0 auto;padding:16px 24px 64px}
+.tab[hidden]{display:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h2{font-size:17px;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.span2{grid-column:1/-1}
+.field{display:grid;gap:5px;margin-bottom:12px}
+.field>span{font-size:12.5px;color:var(--muted)}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0 14px}
+.row{display:flex;gap:8px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border-radius:999px;padding:4px 12px;font-size:13px}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.drop{display:grid;place-items:center;text-align:center;min-height:150px;border:1.5px dashed var(--line);border-radius:12px;color:var(--muted);cursor:pointer;padding:20px;transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--clay);background:color-mix(in srgb,var(--clay) 7%,transparent)}
+.drop strong{display:block;color:var(--ink);font-size:15px;font-family:var(--serif);font-weight:500}
+.files{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:4px;font-size:13px}
+.files li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:3px 0}
+.files .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.result{margin-top:14px;border-left:3px solid var(--violet);padding:8px 12px;background:var(--wash);border-radius:0 8px 8px 0}
+.result ul{margin:6px 0 0;padding-left:18px;color:var(--clay-ink)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.toolbar input[type=search]{max-width:320px}
+.toolbar select{width:auto}
+.doc-table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.doc-table th,.doc-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.doc-table th{font-weight:600;font-size:12.5px;color:var(--muted);background:var(--wash)}
+.doc-table tr:last-child td{border-bottom:none}
+.doc-title{font-weight:600;cursor:pointer}
+.doc-title:hover{color:var(--clay-ink)}
+.doc-path{color:var(--muted);font-size:12px;font-family:var(--mono);word-break:break-all}
+.acts{display:flex;flex-wrap:wrap;gap:4px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.cat-list{list-style:none;padding:0;margin:0}
+.cat-list li{display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.cat-list .label{flex:1;min-width:0;overflow-wrap:anywhere}
+.cat-list .acts{flex-wrap:nowrap}
+.cat-list .acts{opacity:.25;transition:opacity .15s}
+.cat-list li:hover .acts,.cat-list li:focus-within .acts{opacity:1}
+.empty{color:var(--muted);text-align:center;padding:30px}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--ink);padding:0;box-shadow:var(--shadow);max-width:min(560px,calc(100vw - 32px));width:100%}
+dialog::backdrop{background:#0f0e0c80;backdrop-filter:blur(2px)}
+.dlg{padding:20px 22px}
+.dlg h3{font-size:18px;margin-bottom:8px}
+.dlg .msg{white-space:pre-wrap;color:var(--muted);margin:0 0 12px;max-height:50vh;overflow:auto}
+.dlg footer{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+#editor{max-width:none;width:calc(100vw - 32px);height:calc(100vh - 32px);max-height:none}
+#editor[open]{display:flex;flex-direction:column}
+.ed-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line)}
+.ed-head .grow{flex:1;min-width:120px;overflow:hidden}
+.ed-head strong{font-family:var(--serif);font-weight:500;font-size:17px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ed-body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:0}
+.ed-left{display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line)}
+.ed-meta{padding:10px 16px;border-bottom:1px solid var(--line);max-height:45%;overflow:auto}
+.ed-meta summary{cursor:pointer;color:var(--muted);font-size:13px;margin-bottom:8px}
+.ed-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line)}
+#ed-body{flex:1;border:none;border-radius:0;resize:none;font:13.5px/1.7 var(--mono);padding:14px 16px;background:var(--panel);tab-size:4}
+#ed-body:focus{outline:none}
+#ed-body.over{background:color-mix(in srgb,var(--clay) 7%,var(--panel))}
+.ed-right{display:flex;flex-direction:column;min-height:0;position:relative}
+.pv-bar{display:flex;gap:6px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.pv-bar span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono)}
+#pv-frame{flex:1;border:none;width:100%;background:#fff}
+.pv-off{position:absolute;inset:41px 0 0;display:grid;place-content:center;gap:10px;text-align:center;color:var(--muted);background:var(--wash)}
+#pub-log{background:var(--wash);border-radius:8px;padding:10px;font:12px/1.5 var(--mono);max-height:38vh;overflow:auto;white-space:pre-wrap;margin:10px 0 0}
+#pub-log:empty{display:none}
+.changes{list-style:none;padding:0;margin:0 0 10px;max-height:22vh;overflow:auto;font:12px/1.7 var(--mono)}
+.changes b{display:inline-block;width:26px;color:var(--clay-ink)}
+#toasts{position:fixed;right:16px;bottom:16px;display:grid;gap:8px;z-index:20;max-width:min(420px,calc(100vw - 32px))}
+.toast{background:var(--ink);color:var(--paper);border-radius:10px;padding:10px 14px;box-shadow:var(--shadow);white-space:pre-wrap;font-size:13px;animation:rise .2s ease-out}
+.toast.err{background:var(--danger);color:#fff}
+@keyframes rise{from{transform:translateY(8px);opacity:0}}
+.post-only,.folder-only{display:none}
+[data-kind=posts] .post-only,[data-kind=folder] .folder-only{display:grid}
+@media (max-width:860px){
+  .top,.tabs,main{padding-left:16px;padding-right:16px}
+  .grid2{grid-template-columns:1fr}
+  .ed-body{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr)}
+  .ed-left{border-right:none;border-bottom:1px solid var(--line)}
+  .doc-table,.doc-table tbody{display:block}
+  .doc-table thead{display:none}
+  .doc-table tr{display:grid;padding:8px 0;border-bottom:1px solid var(--line)}
+  .doc-table td{border:none;padding:3px 12px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark">◆</span>AMETHYST <em>本地管理台</em></div>
+  <div class="status">
+    <span id="pv-pill" class="pill">预览 · 检测中</span>
+    <button id="pv-toggle" class="small">启动预览</button>
+    <a id="pv-open-site" class="btn small" target="_blank" rel="noopener">打开预览 ↗</a>
+    <button id="check-btn" class="small">检查链接</button>
+    <button id="publish-btn" class="primary">发布到线上 <span id="pending" class="count" hidden></span></button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="upload" aria-selected="true">上传文章</button>
+  <button role="tab" data-tab="docs" aria-selected="false">文章管理</button>
+  <button role="tab" data-tab="cats" aria-selected="false">分类</button>
+  <button role="tab" data-tab="trash" aria-selected="false">回收站</button>
+</nav>
+
+<main>
+  <section id="tab-upload" class="tab">
+    <div class="grid2">
+      <div class="card">
+        <h2>1 · 选择文件</h2>
+        <label id="drop" class="drop">
+          <span><strong>拖入一个 .md 文件和它的图片</strong>或点击选择。正文里的图片路径会自动改成与文章同目录。</span>
+          <input id="up-files" type="file" multiple hidden>
+        </label>
+        <ul id="up-filelist" class="files"></ul>
+        <p id="up-missing" class="hint"></p>
+      </div>
+      <div class="card" id="up-place">
+        <h2>2 · 放到哪里</h2>
+        <div class="field"><span>板块</span><div id="up-sections" class="chips"></div></div>
+        <div class="field folder-only"><span>分类目录</span>
+          <div class="row"><select id="up-category"></select><button id="up-newcat" class="small" type="button">+ 新建</button></div>
+        </div>
+        <div class="field post-only"><span>随笔分类（可多选）</span>
+          <div class="chips" id="up-postcats"></div>
+        </div>
+        <label class="field"><span>文章目录名（会出现在网址里）</span><input id="up-slug" placeholder="例如 HarnessIR"></label>
+        <p class="hint">将创建：<code id="up-target">—</code></p>
+      </div>
+      <div class="card span2" id="up-meta">
+        <h2>3 · 元数据</h2>
+        <div class="fields">
+          <label class="field"><span>标题</span><input id="up-title"></label>
+          <label class="field"><span>日期</span><input id="up-date" type="date"></label>
+          <label class="field"><span>标签（逗号分隔）</span><input id="up-tags" placeholder="图像恢复, 多模态"></label>
+          <label class="field"><span>描述（可选，用于搜索引擎）</span><input id="up-desc"></label>
+        </div>
+        <label class="row post-only-inline" id="up-draft-row" hidden><input id="up-draft" type="checkbox"> 存为草稿（不在网站上显示）</label>
+        <div class="row" style="margin-top:12px;justify-content:flex-end">
+          <button id="up-reset" type="button">清空</button>
+          <button id="up-submit" class="primary" type="button">上传并创建</button>
+        </div>
+        <div id="up-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-docs" class="tab" hidden>
+    <div class="toolbar">
+      <input id="doc-search" type="search" placeholder="按标题、路径、标签查找">
+      <div id="doc-sections" class="chips"></div>
+      <label class="row"><input id="doc-drafts" type="checkbox"> 仅草稿</label>
+      <select id="doc-sort" aria-label="排序">
+        <option value="modified">最近修改</option>
+        <option value="date">文章日期</option>
+        <option value="path">路径</option>
+      </select>
+    </div>
+    <div id="doc-list"></div>
+  </section>
+
+  <section id="tab-cats" class="tab" hidden>
+    <p class="hint" style="margin:0 0 14px">课程笔记、论文阅读、竞赛手记按<strong>目录</strong>分类；重命名会连同文章与图片一起移动并修正站内链接。生活随笔按元数据里的 <code>categories</code> 分类。</p>
+    <div id="cat-grid" class="cat-grid"></div>
+  </section>
+
+  <section id="tab-trash" class="tab" hidden>
+    <p class="hint" style="margin:0 0 14px">删除的文章连同图片保存在本机 <code>.trash/</code>，可以随时恢复。</p>
+    <div id="trash-list"></div>
+  </section>
+</main>
+
+<dialog id="editor" aria-label="编辑文章">
+  <div class="ed-head">
+    <div class="grow"><strong id="ed-name"></strong><span id="ed-path" class="doc-path"></span></div>
+    <span id="ed-state" class="hint" style="margin:0"></span>
+    <button id="ed-save" class="primary">保存 <span style="opacity:.6">Ctrl+S</span></button>
+    <button id="ed-close">关闭</button>
+  </div>
+  <div class="ed-body">
+    <div class="ed-left">
+      <details class="ed-meta" open>
+        <summary>元数据</summary>
+        <div class="fields" id="ed-fields">
+          <label class="field"><span>标题</span><input id="ed-title"></label>
+          <label class="field"><span>日期</span><input id="ed-date" type="date"></label>
+          <label class="field"><span>标签（逗号分隔）</span><input id="ed-tags"></label>
+          <label class="field"><span>描述</span><input id="ed-desc"></label>
+        </div>
+        <div id="ed-post" hidden>
+          <div class="field"><span>随笔分类</span><div class="chips" id="ed-postcats"></div></div>
+          <label class="row"><input id="ed-draft" type="checkbox"> 草稿（不在网站上显示）</label>
+        </div>
+        <p id="ed-extra" class="hint"></p>
+      </details>
+      <div class="ed-tools">
+        <label class="btn small">导入 .md 替换正文<input id="ed-import" type="file" accept=".md,.markdown,text/markdown" hidden></label>
+        <label class="btn small">插入图片/附件<input id="ed-attach" type="file" multiple hidden></label>
+        <span id="ed-files" class="hint" style="margin:0">也可以直接把图片拖进或粘贴到正文</span>
+      </div>
+      <textarea id="ed-body" spellcheck="false" aria-label="正文"></textarea>
+    </div>
+    <div class="ed-right">
+      <div class="pv-bar"><span id="pv-url"></span><button id="pv-reload" class="small">刷新</button><a id="pv-newtab" class="btn small" target="_blank" rel="noopener">新窗口 ↗</a></div>
+      <iframe id="pv-frame" title="本地实时预览"></iframe>
+      <div id="pv-off" class="pv-off"><span>本地预览未运行</span><button id="pv-start-inline" class="primary">启动预览</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="ask">
+  <form class="dlg" id="ask-form" method="dialog">
+    <h3 id="ask-title"></h3>
+    <p class="msg" id="ask-msg"></p>
+    <div id="ask-fields"></div>
+    <footer><button type="button" id="ask-cancel">取消</button><button type="submit" id="ask-ok" class="primary">确定</button></footer>
+  </form>
+</dialog>
+
+<dialog id="publish">
+  <div class="dlg">
+    <h3>发布到线上</h3>
+    <p class="msg">运行 <code>publish.ps1</code>：内容检查 → 测试 → 严格构建 → 提交并推送 <code>main</code>。推送后 GitHub Actions 大约 1–2 分钟完成部署，博客随即更新。</p>
+    <ul id="pub-changes" class="changes"></ul>
+    <label class="field"><span>提交说明</span><input id="pub-msg"></label>
+    <pre id="pub-log"></pre>
+    <p id="pub-result" class="hint"></p>
+    <footer><button type="button" id="pub-close">关闭</button><button type="button" id="pub-go" class="primary">开始发布</button></footer>
+  </div>
+</dialog>
+
+<datalist id="cat-options"></datalist>
+<div id="toasts" aria-live="polite"></div>
+
+<script>
+const TOKEN = '__ADMIN_TOKEN__';
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const today = () => new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+const splitList = v => v.split(/[,，、]/).map(s => s.trim()).filter(Boolean);
+const MD = /\.(md|markdown)$/i;
+let S = {sections: [], documents: [], categories: {}, trash: [], site: ''};
+let ST = {preview: {}, publish: {}, pending: {changes: []}};
+
+async function api(path, body) {
+  const opt = {headers: {'X-Admin-Token': TOKEN}};
+  if (body !== undefined) {
+    opt.method = 'POST';
+    opt.headers['Content-Type'] = 'application/json';
+    opt.body = JSON.stringify(body);
+  }
+  const res = await fetch(path, opt);
+  let data;
+  try { data = await res.json(); } catch { data = {error: res.statusText}; }
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+
+function toast(message, kind = 'ok') {
+  const el = document.createElement('div');
+  el.className = 'toast' + (kind === 'err' ? ' err' : '');
+  el.textContent = message;
+  $('#toasts').append(el);
+  setTimeout(() => el.remove(), kind === 'err' ? 9000 : 3500);
+}
+
+async function attempt(fn, ok) {
+  try {
+    const result = await fn();
+    if (ok) toast(ok);
+    return result;
+  } catch (e) {
+    toast(e.message, 'err');
+    return undefined;
+  }
+}
+
+function ask({title, message = '', fields = [], ok = '确定', danger = false, cancel = '取消'}) {
+  const dialog = $('#ask');
+  $('#ask-title').textContent = title;
+  $('#ask-msg').textContent = message;
+  $('#ask-msg').hidden = !message;
+  const box = $('#ask-fields');
+  box.innerHTML = fields.map((f, i) => `<label class="field"><span>${esc(f.label)}</span>${f.options
+    ? `<select data-i="${i}">${f.options.map(o => `<option value="${esc(o.value)}"${o.value === f.value ? ' selected' : ''}>${esc(o.label)}</option>`).join('')}</select>`
+    : `<input data-i="${i}" value="${esc(f.value ?? '')}" placeholder="${esc(f.placeholder ?? '')}"${f.list ? ` list="${f.list}"` : ''}>`}</label>`).join('');
+  $('#ask-ok').textContent = ok;
+  $('#ask-ok').className = danger ? 'danger solid' : 'primary';
+  $('#ask-cancel').hidden = cancel === null;
+  dialog.showModal();
+  box.querySelector('input,select')?.focus();
+  return new Promise(resolve => {
+    const finish = value => {
+      $('#ask-form').onsubmit = $('#ask-cancel').onclick = dialog.oncancel = null;
+      dialog.close();
+      resolve(value);
+    };
+    $('#ask-form').onsubmit = e => {
+      e.preventDefault();
+      finish(fields.length ? fields.map((_, i) => box.querySelector(`[data-i="${i}"]`).value.trim()) : true);
+    };
+    $('#ask-cancel').onclick = () => finish(null);
+    dialog.oncancel = e => { e.preventDefault(); finish(null); };
+  });
+}
+
+const readB64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+  reader.onerror = () => reject(new Error('读取文件失败：' + file.name));
+  reader.readAsDataURL(file);
+});
+const pack = files => Promise.all([...files].map(async f => ({name: f.name, data: await readB64(f)})));
+const label = key => S.sections.find(s => s.key === key)?.label ?? key;
+const folder = key => S.sections.find(s => s.key === key)?.folder ?? key;
+const safeName = s => s.replace(/[<>:"/\\|?*#%\x00-\x1f]/g, '-').replace(/^[.\s]+|[.\s]+$/g, '');
+
+function referenced(text) {
+  const names = new Set();
+  const re = /!?\[[^\]\n]*\]\(\s*<?([^)\s>]+)>?[^)]*\)|\bsrc\s*=\s*["']([^"']+)["']/g;
+  for (const m of text.matchAll(re)) {
+    const url = m[1] || m[2];
+    if (/^(https?:)?\/\//i.test(url) || /^(data|mailto):|^#/i.test(url)) continue;
+    const base = decodeURIComponent(url.split(/[?#]/)[0]).split(/[\\/]/).pop();
+    if (/\.(png|jpe?g|gif|webp|svg|avif|bmp|pdf)$/i.test(base)) names.add(base);
+  }
+  return names;
+}
+
+/* ---------------------------------------------------------------- state */
+async function refresh() {
+  const data = await attempt(() => api('/api/state'));
+  if (!data) return;
+  S = data;
+  renderUploadPlace();
+  renderDocs();
+  renderCats();
+  renderTrash();
+}
+
+function previewBase() { return ST.preview.url || 'http://127.0.0.1:8000/'; }
+
+async function poll() {
+  try {
+    ST = await api('/api/status');
+    renderStatus();
+  } catch {
+    $('#pv-pill').className = 'pill';
+    $('#pv-pill').textContent = '管理台已断开，请重新运行 tools/admin.py';
+  }
+  setTimeout(poll, 3000);
+}
+
+function renderStatus() {
+  const p = ST.preview, pill = $('#pv-pill');
+  pill.className = 'pill ' + (p.online ? 'on' : p.managed ? 'wait' : '');
+  pill.textContent = p.online ? (p.managed ? '实时预览运行中' : '实时预览运行中（外部启动）') : p.managed ? '预览构建中…' : '预览未启动';
+  $('#pv-toggle').textContent = p.managed ? '停止预览' : '启动预览';
+  $('#pv-toggle').hidden = p.online && !p.managed;
+  $('#pv-open-site').href = previewBase();
+  $('#pv-open-site').hidden = !p.online;
+  const n = ST.pending.changes.length;
+  $('#pending').hidden = !n;
+  $('#pending').textContent = n;
+  $('#publish-btn').title = ST.pending.error || (n ? `${n} 处改动尚未发布` : '没有未发布的改动');
+  if ($('#editor').open) syncPreview();
+  if ($('#publish').open) renderPublish();
+}
+
+/* --------------------------------------------------------------- upload */
+const UP = {section: 'papers', md: null, text: '', files: [], postcats: new Set()};
+
+function renderUploadPlace() {
+  $('#up-sections').innerHTML = S.sections.map(s => `<button type="button" class="chip" data-key="${s.key}" aria-pressed="${s.key === UP.section}">${esc(s.label)}</button>`).join('');
+  const posts = UP.section === 'posts';
+  $('#up-place').dataset.kind = posts ? 'posts' : 'folder';
+  $('#up-draft-row').hidden = !posts;
+  const select = $('#up-category'), keep = select.value;
+  const cats = S.categories[UP.section] || [];
+  select.innerHTML = `<option value="">（板块根目录）</option>` + cats.map(c => `<option value="${esc(c.path)}">${esc(c.path)}　·　${c.count} 篇</option>`).join('');
+  if (cats.some(c => c.path === keep)) select.value = keep;
+  $('#up-postcats').innerHTML = (S.categories.posts || []).map(c => `<button type="button" class="chip" data-cat="${esc(c.path)}" aria-pressed="${UP.postcats.has(c.path)}">${esc(c.path)}</button>`).join('')
+    + `<button type="button" class="chip" data-newcat>+ 新建</button>`;
+  updateTarget();
+}
+
+function updateTarget() {
+  const slug = $('#up-slug').value.trim() || '目录名';
+  const cat = UP.section === 'posts' ? '' : $('#up-category').value;
+  const path = UP.section === 'posts' ? `${folder('posts')}/${slug}/${slug}.md` : [folder(UP.section), cat, slug, 'index.md'].filter(Boolean).join('/');
+  $('#up-target').textContent = 'docs/' + path;
+}
+
+async function takeFiles(list) {
+  const files = [...list];
+  const mds = files.filter(f => MD.test(f.name));
+  if (mds.length > 1) toast('一次只上传一篇文章，已使用第一个 .md：' + mds[0].name, 'err');
+  if (mds.length) {
+    UP.md = mds[0];
+    UP.text = await mds[0].text();
+    const front = UP.text.match(/^﻿?---\s*\n([\s\S]*?)\n---/);
+    const meta = front ? front[1] : '';
+    const title = (meta.match(/^title:\s*['"]?(.+?)['"]?\s*$/m) || UP.text.match(/^#\s+(.+?)\s*#*\s*$/m) || [])[1];
+    const date = (meta.match(/^date:\s*(\d{4}-\d{2}-\d{2})/m) || [])[1];
+    const tags = meta.match(/^tags:\s*\n((?:\s+-\s*.+\n?)+)/m);
+    $('#up-title').value = title || '';
+    $('#up-slug').value = safeName(mds[0].name.replace(MD, ''));
+    if (date) $('#up-date').value = date;
+    if (tags) $('#up-tags').value = tags[1].split('\n').map(l => l.replace(/^\s*-\s*/, '').trim()).filter(Boolean).join(', ');
+  }
+  const extras = files.filter(f => !MD.test(f.name));
+  const names = new Set(UP.files.map(f => f.name));
+  for (const f of extras) if (!names.has(f.name)) UP.files.push(f);
+  renderFiles();
+  updateTarget();
+}
+
+function renderFiles() {
+  const refs = UP.text ? referenced(UP.text) : new Set();
+  const have = new Set(UP.files.map(f => f.name));
+  const rows = [];
+  if (UP.md) rows.push(`<li><span class="name">📄 ${esc(UP.md.name)}</span><span class="badge">正文</span></li>`);
+  UP.files.forEach((f, i) => rows.push(`<li><span class="name">${esc(f.name)}</span><span>${refs.has(f.name) ? '<span class="badge">已引用</span>' : '<span class="badge warn">未被引用</span>'} <button class="small" data-drop="${i}" type="button">移除</button></span></li>`));
+  $('#up-filelist').innerHTML = rows.join('');
+  const missing = [...refs].filter(n => !have.has(n));
+  $('#up-missing').textContent = missing.length ? `正文引用了但还没选择的文件：${missing.join('、')}（可以一起拖进来）` : '';
+}
+
+function resetUpload() {
+  Object.assign(UP, {md: null, text: '', files: []});
+  UP.postcats.clear();
+  for (const id of ['up-title', 'up-slug', 'up-tags', 'up-desc']) $('#' + id).value = '';
+  $('#up-date').value = today();
+  $('#up-draft').checked = false;
+  $('#up-files').value = '';
+  renderFiles();
+  renderUploadPlace();
+}
+
+async function submitUpload() {
+  if (!UP.md) return toast('先选择一个 .md 文件', 'err');
+  const button = $('#up-submit');
+  button.disabled = true;
+  const result = await attempt(async () => api('/api/upload', {
+    section: UP.section,
+    category: $('#up-category').value,
+    slug: $('#up-slug').value.trim(),
+    filename: UP.md.name,
+    markdown: UP.text,
+    attachments: await pack(UP.files),
+    meta: {
+      title: $('#up-title').value, date: $('#up-date').value, tags: splitList($('#up-tags').value),
+      description: $('#up-desc').value,
+      ...(UP.section === 'posts' ? {categories: [...UP.postcats], draft: $('#up-draft').checked} : {}),
+    },
+  }));
+  button.disabled = false;
+  if (!result) return;
+  $('#up-result').innerHTML = `<div class="result"><strong>已创建「${esc(result.title)}」</strong>
+    <div class="doc-path">docs/${esc(result.path)}</div>
+    ${result.warnings.length ? `<ul>${result.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul>` : ''}
+    <div class="acts" style="margin-top:8px"><button class="small primary" data-edit="${esc(result.path)}">编辑并预览</button>
+    ${result.url ? `<a class="btn small" target="_blank" rel="noopener" href="${esc(previewBase() + result.url)}">本地预览 ↗</a>` : ''}</div>
+    <p class="hint">保存后本地预览自动刷新；点击顶部「发布到线上」即可更新博客。</p></div>`;
+  resetUpload();
+  refresh();
+}
+
+/* ----------------------------------------------------------- documents */
+let docFilter = 'all';
+
+function renderDocs() {
+  $('#doc-sections').innerHTML = [{key: 'all', label: '全部'}, ...S.sections].map(s =>
+    `<button type="button" class="chip" data-key="${s.key}" aria-pressed="${s.key === docFilter}">${esc(s.label)}</button>`).join('');
+  const q = $('#doc-search').value.trim().toLowerCase();
+  const draftsOnly = $('#doc-drafts').checked;
+  const sort = $('#doc-sort').value;
+  let docs = S.documents.filter(d => (docFilter === 'all' || d.section === docFilter) && (!draftsOnly || d.draft)
+    && (!q || [d.title, d.path, ...d.tags, ...d.categories].join(' ').toLowerCase().includes(q)));
+  docs.sort(sort === 'path' ? (a, b) => a.path.localeCompare(b.path, 'zh')
+    : sort === 'date' ? (a, b) => (b.date || '').localeCompare(a.date || '')
+    : (a, b) => (b.modified || '').localeCompare(a.modified || ''));
+  if (!docs.length) return $('#doc-list').innerHTML = `<p class="empty">没有匹配的文章。</p>`;
+  $('#doc-list').innerHTML = `<p class="hint" style="margin:0 0 8px">${docs.length} 篇</p><table class="doc-table"><thead><tr><th>标题</th><th>板块 / 分类</th><th>日期</th><th>标签</th><th>操作</th></tr></thead><tbody>${docs.map(d => `
+    <tr>
+      <td><span class="doc-title" data-edit="${esc(d.path)}">${esc(d.title)}</span> ${d.draft ? '<span class="badge draft">草稿</span>' : ''}${d.error ? `<span class="badge warn" title="${esc(d.error)}">元数据有误</span>` : ''}<div class="doc-path">${esc(d.path)}</div></td>
+      <td>${esc(label(d.section))}<div class="hint" style="margin:0">${esc(d.section === 'posts' ? d.categories.join('、') : d.category || '根目录')}</div></td>
+      <td>${esc(d.date || '—')}</td>
+      <td>${d.tags.map(t => `<span class="badge">${esc(t)}</span>`).join(' ')}</td>
+      <td><div class="acts">
+        <button class="small" data-edit="${esc(d.path)}">编辑</button>
+        ${d.section !== 'posts' ? `<button class="small" data-move="${esc(d.path)}">移动</button>` : ''}
+        <button class="small danger" data-delete="${esc(d.path)}">删除</button>
+        ${d.url ? `<a class="btn small" target="_blank" rel="noopener" href="${esc(previewBase() + d.url)}">预览 ↗</a>` : ''}
+        ${d.online ? `<a class="btn small" target="_blank" rel="noopener" href="${esc(d.online)}">线上 ↗</a>` : ''}
+      </div></td>
+    </tr>`).join('')}</tbody></table>`;
+}
+
+async function moveDoc(path) {
+  const doc = S.documents.find(d => d.path === path);
+  $('#cat-options').innerHTML = (S.categories[doc.section] || []).map(c => `<option value="${esc(c.path)}">`).join('');
+  const values = await ask({
+    title: '移动 / 重命名文章', message: `图片随文章一起移动，站内链接自动更新。外部书签会失效。\n当前：docs/${doc.path}`,
+    fields: [{label: '分类目录（可输入新目录，留空为板块根目录）', value: doc.category, list: 'cat-options'}, {label: '文章目录名', value: doc.slug}],
+    ok: '移动',
+  });
+  if (!values) return;
+  const result = await attempt(() => api('/api/doc/move', {path, category: values[0], slug: values[1]}), '已移动');
+  if (result) refresh();
+}
+
+async function deleteDoc(path) {
+  const doc = S.documents.find(d => d.path === path);
+  if (!await ask({title: '删除文章', message: `「${doc.title}」及其图片将移入本地回收站，可在「回收站」恢复。`, ok: '删除', danger: true})) return;
+  try {
+    await api('/api/doc/delete', {path});
+    toast('已移入回收站');
+  } catch (e) {
+    if (!/link here|use --force/i.test(e.message)) return toast(e.message, 'err');
+    const refs = e.message.split('\n').slice(1).join('\n');
+    if (!await ask({title: '还有文章链接到它', message: `以下文章包含指向它的链接，删除后这些链接会失效：\n${refs}`, ok: '仍然删除', danger: true})) return;
+    if (!await attempt(() => api('/api/doc/delete', {path, force: true}), '已移入回收站')) return;
+  }
+  refresh();
+}
+
+/* ----------------------------------------------------------- categories */
+function renderCats() {
+  $('#cat-grid').innerHTML = S.sections.map(s => {
+    const cats = S.categories[s.key] || [];
+    return `<div class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 style="margin:0">${esc(s.label)}</h2><button class="small" data-cat-new="${s.key}">+ 新建分类</button></div>
+      ${cats.length ? `<ul class="cat-list">${cats.map(c => {
+        const depth = s.key === 'posts' ? 0 : c.path.split('/').length - 1;
+        const name = s.key === 'posts' ? c.path : c.path.split('/').pop();
+        return `<li style="padding-left:${depth * 16}px"><span class="label" title="${esc(c.path)}">${depth ? '└ ' : ''}${esc(name)}</span><span class="badge">${c.count}</span>
+          <span class="acts"><button class="small" data-cat-rename="${s.key}" data-name="${esc(c.path)}">重命名</button><button class="small danger" data-cat-delete="${s.key}" data-name="${esc(c.path)}" ${c.count ? 'disabled title="分类里还有文章"' : ''}>删除</button></span></li>`;
+      }).join('')}</ul>` : '<p class="hint">还没有分类。</p>'}</div>`;
+  }).join('');
+}
+
+async function newCategory(section, parent = '') {
+  const values = await ask({
+    title: `在「${label(section)}」新建分类`,
+    message: section === 'posts' ? '随笔分类写入文章元数据；空分类会记录在 config/post-categories.yml。' : '用 / 表示层级，例如「图像恢复/扩散模型」。',
+    fields: [{label: '分类名', value: parent ? parent + '/' : '', placeholder: section === 'posts' ? '例如 生活' : '例如 图像恢复'}],
+    ok: '创建',
+  });
+  if (!values || !values[0]) return null;
+  const result = await attempt(() => api('/api/category/create', {section, name: values[0]}), '分类已创建');
+  if (result) await refresh();
+  return result?.path ?? null;
+}
+
+async function renameCategory(section, name) {
+  const count = (S.categories[section] || []).find(c => c.path === name)?.count || 0;
+  const values = await ask({
+    title: '重命名分类',
+    message: section === 'posts' ? `会更新 ${count} 篇随笔的分类元数据。` : `会移动其中 ${count} 篇文章及图片，并修正站内链接。已发布文章的网址会改变。`,
+    fields: [{label: '新名称', value: name}], ok: '重命名',
+  });
+  if (!values || !values[0] || values[0] === name) return;
+  if (await attempt(() => api('/api/category/rename', {section, old: name, new: values[0]}), '已重命名')) refresh();
+}
+
+async function deleteCategory(section, name) {
+  if (!await ask({title: '删除分类', message: `删除空分类「${name}」？`, ok: '删除', danger: true})) return;
+  if (await attempt(() => api('/api/category/delete', {section, name}), '分类已删除')) refresh();
+}
+
+/* ---------------------------------------------------------------- trash */
+function renderTrash() {
+  $('#trash-list').innerHTML = S.trash.length ? `<table class="doc-table"><thead><tr><th>原位置</th><th>删除时间</th><th></th></tr></thead><tbody>${S.trash.map(t => `
+    <tr><td class="doc-path">docs/${esc(t.path)}</td><td>${esc((t.deleted_at || '').replace('T', ' ').slice(0, 19))}</td><td><button class="small" data-restore="${esc(t.id)}">恢复</button></td></tr>`).join('')}</tbody></table>`
+    : '<p class="empty">回收站是空的。</p>';
+}
+
+/* --------------------------------------------------------------- editor */
+const ED = {doc: null, dirty: false, postcats: new Set(), src: ''};
+
+function setDirty(dirty) {
+  ED.dirty = dirty;
+  if (dirty) $('#ed-state').textContent = '未保存';
+}
+
+function fillEditor(doc, keepBody = false) {
+  ED.doc = doc;
+  $('#ed-name').textContent = doc.title;
+  $('#ed-path').textContent = 'docs/' + doc.path;
+  $('#ed-title').value = doc.title;
+  $('#ed-date').value = doc.date;
+  $('#ed-tags').value = doc.tags.join(', ');
+  $('#ed-desc').value = doc.description;
+  const posts = doc.section === 'posts';
+  $('#ed-post').hidden = !posts;
+  $('#ed-draft').checked = doc.draft;
+  ED.postcats = new Set(doc.categories);
+  renderEditorCats();
+  $('#ed-extra').textContent = doc.extra.length ? `其他元数据（保留不变）：${doc.extra.join(', ')}` : '';
+  $('#ed-files').textContent = doc.attachments.length ? `目录内文件：${doc.attachments.join('、')}` : '也可以直接把图片拖进或粘贴到正文';
+  const area = $('#ed-body');
+  if (!keepBody || area.value !== doc.body) {
+    const {selectionStart, selectionEnd, scrollTop} = area;
+    area.value = doc.body;
+    if (keepBody) { area.setSelectionRange(selectionStart, selectionEnd); area.scrollTop = scrollTop; }
+  }
+}
+
+function renderEditorCats() {
+  const names = new Set([...(S.categories.posts || []).map(c => c.path), ...ED.postcats]);
+  $('#ed-postcats').innerHTML = [...names].map(n => `<button type="button" class="chip" data-edcat="${esc(n)}" aria-pressed="${ED.postcats.has(n)}">${esc(n)}</button>`).join('')
+    + `<button type="button" class="chip" data-edcat-new>+ 新建</button>`;
+}
+
+async function openEditor(path) {
+  const doc = await attempt(() => api('/api/doc?path=' + encodeURIComponent(path)));
+  if (!doc) return;
+  ED.src = '';
+  fillEditor(doc);
+  setDirty(false);
+  $('#ed-state').textContent = '';
+  $('#editor').showModal();
+  syncPreview();
+  $('#ed-body').focus();
+}
+
+async function syncPreview() {
+  const online = ST.preview.online, url = ED.doc?.url;
+  const src = url ? previewBase() + url : '';
+  $('#pv-url').textContent = src || '这篇文章没有日期，暂时无法计算网址';
+  $('#pv-newtab').href = src || previewBase();
+  $('#pv-start-inline').hidden = ST.preview.managed || online;
+  if (!online) {
+    $('#pv-off').hidden = false;
+    $('#pv-off span').textContent = ST.preview.managed ? '预览正在启动，稍候自动显示…' : '本地预览未运行';
+    return;
+  }
+  if (!src || ED.src === src || ED.probing) { $('#pv-off').hidden = !!ED.src || !src; return; }
+  // A page that has not been built yet would show a 404 that never reloads; wait for it.
+  ED.probing = true;
+  const probe = await api('/api/preview/ready?url=' + encodeURIComponent(url)).catch(() => ({ready: false}));
+  ED.probing = false;
+  if (!ED.doc || ED.doc.url !== url) return;
+  if (probe.ready) {
+    ED.src = src;
+    $('#pv-frame').src = src;
+    $('#pv-off').hidden = true;
+  } else {
+    $('#pv-off').hidden = false;
+    $('#pv-off span').textContent = '预览正在构建这篇文章，几秒后自动显示…';
+  }
+}
+
+function editorMeta() {
+  return {
+    title: $('#ed-title').value, date: $('#ed-date').value, tags: splitList($('#ed-tags').value), description: $('#ed-desc').value,
+    ...(ED.doc.section === 'posts' ? {categories: [...ED.postcats], draft: $('#ed-draft').checked} : {}),
+  };
+}
+
+async function saveEditor() {
+  if (!ED.doc) return;
+  $('#ed-state').textContent = '保存中…';
+  const result = await attempt(() => api('/api/doc/save', {path: ED.doc.path, meta: editorMeta(), body: $('#ed-body').value}));
+  if (!result) return $('#ed-state').textContent = '保存失败';
+  result.warnings.forEach(w => toast(w, 'err'));
+  const fresh = await attempt(() => api('/api/doc?path=' + encodeURIComponent(result.path)));
+  if (fresh) fillEditor(fresh, true);
+  setDirty(false);
+  $('#ed-state').textContent = '已保存 ' + new Date().toLocaleTimeString() + ' · 预览自动刷新';
+  syncPreview();
+  refresh();
+}
+
+async function closeEditor() {
+  if (ED.dirty && !await ask({title: '放弃未保存的修改？', ok: '放弃修改', danger: true})) return;
+  $('#editor').close();
+  $('#pv-frame').src = 'about:blank';
+  ED.doc = null;
+}
+
+function insertAtCursor(text) {
+  const area = $('#ed-body');
+  const {selectionStart: s, selectionEnd: e, value} = area;
+  const before = s && value[s - 1] !== '\n' ? '\n' : '';
+  area.value = value.slice(0, s) + before + text + '\n' + value.slice(e);
+  area.selectionStart = area.selectionEnd = s + before.length + text.length + 1;
+  area.focus();
+  setDirty(true);
+}
+
+async function attachToEditor(files) {
+  if (!files.length || !ED.doc) return;
+  const result = await attempt(async () => api('/api/doc/attach', {path: ED.doc.path, attachments: await pack(files)}), '附件已保存到文章目录');
+  if (!result) return;
+  insertAtCursor(result.snippets.join('\n\n'));
+  const fresh = await attempt(() => api('/api/doc?path=' + encodeURIComponent(ED.doc.path)));
+  if (fresh) $('#ed-files').textContent = `目录内文件：${fresh.attachments.join('、')}`;
+}
+
+/* -------------------------------------------------------------- publish */
+function renderPublish() {
+  const changes = ST.pending.changes, pub = ST.publish;
+  $('#pub-changes').innerHTML = ST.pending.error ? `<li>${esc(ST.pending.error)}</li>`
+    : changes.length ? changes.slice(0, 200).map(c => `<li><b>${esc(c.status)}</b>${esc(c.path)}</li>`).join('') : '<li>没有未发布的改动。</li>';
+  const log = $('#pub-log'), atBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 30;
+  log.textContent = pub.log || '';
+  if (atBottom) log.scrollTop = log.scrollHeight;
+  const running = pub.state === 'running';
+  $('#pub-go').disabled = running;
+  $('#pub-go').textContent = running ? '发布中…' : '开始发布';
+  $('#pub-result').innerHTML = pub.state === 'success'
+    ? `已推送。部署进度见 <a href="https://github.com/AmethystTim/AmethystTim.github.io/actions" target="_blank" rel="noopener">GitHub Actions ↗</a>，完成后访问 <a href="${esc(S.site)}" target="_blank" rel="noopener">${esc(S.site)} ↗</a>`
+    : pub.state === 'failed' ? `<span class="danger">发布失败（退出码 ${esc(pub.code)}），请查看上面的日志。</span>` : '';
+}
+
+async function startPublish() {
+  const result = await attempt(() => api('/api/publish', {message: $('#pub-msg').value}));
+  if (result) { ST.publish = result; renderPublish(); }
+}
+
+/* --------------------------------------------------------------- events */
+function showTab(name) {
+  if (!document.getElementById('tab-' + name)) name = 'upload';
+  document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name));
+  document.querySelectorAll('.tab').forEach(s => s.hidden = s.id !== 'tab-' + name);
+  history.replaceState(null, '', '#' + name);
+}
+
+document.addEventListener('click', async e => {
+  const t = e.target.closest('button,[data-edit]');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.tab) showTab(d.tab);
+  else if (d.edit) openEditor(d.edit);
+  else if (d.move) moveDoc(d.move);
+  else if (d.delete) deleteDoc(d.delete);
+  else if (d.restore) { if (await attempt(() => api('/api/trash/restore', {id: d.restore}), '已恢复')) refresh(); }
+  else if (d.catNew) newCategory(d.catNew);
+  else if (d.catRename) renameCategory(d.catRename, d.name);
+  else if (d.catDelete) deleteCategory(d.catDelete, d.name);
+  else if (d.drop !== undefined) { UP.files.splice(+d.drop, 1); renderFiles(); }
+  else if (t.closest('#up-sections') && d.key) { UP.section = d.key; renderUploadPlace(); }
+  else if (t.closest('#doc-sections') && d.key) { docFilter = d.key; renderDocs(); }
+  else if (t.closest('#up-postcats')) {
+    if (d.newcat !== undefined) { const name = await newCategory('posts'); if (name) { UP.postcats.add(name); renderUploadPlace(); } }
+    else { UP.postcats.has(d.cat) ? UP.postcats.delete(d.cat) : UP.postcats.add(d.cat); t.setAttribute('aria-pressed', UP.postcats.has(d.cat)); }
+  } else if (t.closest('#ed-postcats')) {
+    if (d.edcatNew !== undefined) { const name = await newCategory('posts'); if (name) ED.postcats.add(name); }
+    else ED.postcats.has(d.edcat) ? ED.postcats.delete(d.edcat) : ED.postcats.add(d.edcat);
+    renderEditorCats();
+    setDirty(true);
+  }
+});
+
+$('#up-newcat').onclick = async () => {
+  const path = await newCategory(UP.section, $('#up-category').value);
+  if (path) { renderUploadPlace(); $('#up-category').value = path; updateTarget(); }
+};
+$('#up-category').onchange = updateTarget;
+$('#up-slug').oninput = updateTarget;
+$('#up-files').onchange = e => takeFiles(e.target.files);
+$('#up-submit').onclick = submitUpload;
+$('#up-reset').onclick = () => { resetUpload(); $('#up-result').innerHTML = ''; };
+const drop = $('#drop');
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+drop.ondragleave = () => drop.classList.remove('over');
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); takeFiles(e.dataTransfer.files); };
+
+$('#doc-search').oninput = renderDocs;
+$('#doc-drafts').onchange = renderDocs;
+$('#doc-sort').onchange = renderDocs;
+
+$('#ed-save').onclick = saveEditor;
+$('#ed-close').onclick = closeEditor;
+$('#editor').addEventListener('cancel', e => { e.preventDefault(); closeEditor(); });
+$('#editor').addEventListener('input', e => { if (e.target.matches('input,textarea')) setDirty(true); });
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's' && $('#editor').open) { e.preventDefault(); saveEditor(); }
+});
+$('#ed-import').onchange = async e => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  if (!await ask({title: '用这个文件替换正文？', message: `${file.name}\n正文会被替换（保存后生效）；文件里的元数据会合并进当前文章。`, ok: '替换'})) return;
+  $('#ed-body').value = await file.text();
+  setDirty(true);
+};
+$('#ed-attach').onchange = e => { attachToEditor([...e.target.files]); e.target.value = ''; };
+const area = $('#ed-body');
+area.ondragover = e => { if (e.dataTransfer.types.includes('Files')) { e.preventDefault(); area.classList.add('over'); } };
+area.ondragleave = () => area.classList.remove('over');
+area.ondrop = e => {
+  if (!e.dataTransfer.files.length) return;
+  e.preventDefault();
+  area.classList.remove('over');
+  attachToEditor([...e.dataTransfer.files]);
+};
+area.onpaste = e => {
+  const files = [...e.clipboardData.files];
+  if (!files.length) return;
+  e.preventDefault();
+  const stamp = new Date().toISOString().replace(/\D/g, '').slice(0, 14);
+  attachToEditor(files.map((f, i) => new File([f], `pasted-${stamp}${i ? '-' + i : ''}.${(f.type.split('/')[1] || 'png').replace('jpeg', 'jpg')}`, {type: f.type})));
+};
+area.onkeydown = e => {
+  if (e.key === 'Tab' && !e.ctrlKey && !e.altKey) {
+    e.preventDefault();
+    const {selectionStart: s, selectionEnd: end, value} = area;
+    area.value = value.slice(0, s) + '    ' + value.slice(end);
+    area.selectionStart = area.selectionEnd = s + 4;
+    setDirty(true);
+  }
+};
+$('#pv-reload').onclick = () => { ED.src = ''; syncPreview(); };
+
+async function togglePreview() {
+  const path = ST.preview.managed ? '/api/preview/stop' : '/api/preview/start';
+  const result = await attempt(() => api(path, {}));
+  if (result) { ST.preview = result; renderStatus(); }
+}
+$('#pv-toggle').onclick = togglePreview;
+$('#pv-start-inline').onclick = togglePreview;
+$('#check-btn').onclick = async () => {
+  const result = await attempt(() => api('/api/check', {}));
+  if (result) ask({title: result.ok ? '检查通过' : '发现问题', message: result.output, cancel: null, ok: '好'});
+};
+$('#publish-btn').onclick = () => {
+  if (!$('#pub-msg').value) $('#pub-msg').value = 'Update blog ' + today();
+  renderPublish();
+  $('#publish').showModal();
+};
+$('#pub-close').onclick = () => $('#publish').close();
+$('#pub-go').onclick = startPublish;
+
+window.addEventListener('focus', refresh);
+window.addEventListener('beforeunload', e => { if (ED.dirty) e.preventDefault(); });
+
+$('#up-date').value = today();
+showTab(location.hash.slice(1));
+refresh().then(poll);
+</script>
+</body>
+</html>

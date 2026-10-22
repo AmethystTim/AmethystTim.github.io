@@ -20,6 +20,23 @@ python -m venv .venv
 
 macOS / Linux 使用 `.venv/bin/python` 代替 `.\.venv\Scripts\python.exe`。
 
+## 本地管理台（推荐）
+
+双击项目根目录的 `admin.cmd`，或在 PowerShell 运行：
+
+```powershell
+.\.venv\Scripts\python.exe tools/admin.py
+```
+
+浏览器会自动打开 http://127.0.0.1:8765/ ，同时在后台启动实时预览 http://127.0.0.1:8000/ 。端口被其他程序占用时会自动改用下一个空闲端口，以命令行窗口里显示的地址为准；在管理台地址上打开博客页面会自动跳到预览。关闭命令行窗口即退出。
+
+- **上传文章**：拖入一个 `.md` 和它的图片，选择板块与分类目录，填写标题、日期、标签。正文中 `assets/x.png`、`C:\...\x.png` 这类图片路径会自动改成与文章同目录；文件自带的 front matter 会保留，表单里填写的值优先。
+- **文章管理**：搜索、筛选、编辑元数据和正文，移动、删除到回收站。编辑页右侧是本地实时预览，`Ctrl+S` 保存后几秒内自动刷新；图片可以直接拖进或粘贴到正文。
+- **分类**：新建、重命名、删除空分类。目录型板块重命名时，文章和图片一起移动，站内链接与 `config/navigation.yml` 同步更新；随笔分类写在文章元数据里，空分类记录在 `config/post-categories.yml`。
+- **热更新**：本地改动通过实时预览即时可见；顶部「发布到线上」列出未发布的改动，并运行 `publish.ps1`（检查 → 测试 → 严格构建 → 提交并推送）。GitHub Actions 约 1–2 分钟后更新线上博客。
+
+管理台只监听本机地址，每次启动生成新的访问令牌，其他网页无法调用它。可用参数：`--port`、`--preview-port`、`--no-preview`、`--no-browser`。
+
 ## 一篇文章，一个目录
 
 ```text
@@ -94,9 +111,9 @@ drafts/                         # 本地私有草稿（Git 忽略；自行创建
 .\.venv\Scripts\python.exe tools/content.py restore "列表中显示的ID"
 ```
 
-`move` 的目标相对于 `docs/`，会调整站内相对链接；已发表文章若移动路径，外部书签需要另行设置重定向，建议保持路径稳定。回收站仅保存在这台电脑，已提交内容也可以通过 Git 历史找回。工具拒绝把包含多篇文章的分类目录当作一篇文章删除。
+`move` 的目标相对于 `docs/`，会调整站内相对链接；已发表文章若移动路径，可在 `config/redirects.yml` 登记「旧网址: 新网址」，构建时会为旧网址生成跳转页（通过本地管理台移动文章或重命名分类时会自动登记）。回收站仅保存在这台电脑，已提交内容也可以通过 Git 历史找回。工具拒绝把包含多篇文章的分类目录当作一篇文章删除。
 
-网页文档库可按分类、标题、路径或标签筛选，筛选条件可复制 URL 分享；顶部搜索检索正文。文档页右上角铅笔图标和文档库中的「编辑」会打开 GitHub 上的对应文件，适合简单修改。
+网页文档库可按分类、标题、路径或标签筛选，筛选条件可复制 URL 分享。选中课程笔记、论文阅读或竞赛手记后会出现子分类，取自该板块下的第一层目录（如 `课程笔记/大三上/`）；直接放在板块根目录的文章归入「未分组」，随笔的子分类取自文章的 `categories`。板块首页的「全部记录」也按同样的子分类分组。顶部搜索检索正文。文档页右上角铅笔图标和文档库中的「编辑」会打开 GitHub 上的对应文件，适合简单修改。
 
 ## 导航与元信息
 
@@ -132,10 +149,10 @@ powershell -ExecutionPolicy Bypass -File .\publish.ps1
 
 ```powershell
 .\.venv\Scripts\python.exe tools/content.py check
-.\.venv\Scripts\python.exe -m unittest discover -s tools -p test_content.py -v
+.\.venv\Scripts\python.exe -m unittest discover -s tools -p "test_*.py" -v
 .\.venv\Scripts\python.exe -m mkdocs build --strict
 
-git add docs config tools overrides mkdocs.yml README.md requirements.txt .gitignore .github archive
+git add docs config tools overrides mkdocs.yml README.md requirements.txt .gitignore .github archive admin.cmd
 git commit -m "Update blog"
 git push origin main
 ```
